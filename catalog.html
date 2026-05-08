@@ -968,7 +968,11 @@
         justify-content: center !important;
       }
 
-      .catalog-grid {
+      .catalog-grid,
+      .curator-grid,
+      .tech-grid,
+      .cut-grid,
+      .lookbook-grid {
         grid-template-columns: 1fr !important;
         gap: 30px !important;
         padding: 0 !important;
@@ -988,6 +992,31 @@
         padding: 0 24px !important;
         width: calc(100% + 48px) !important;
         box-sizing: border-box !important;
+      }
+
+      .modal-content {
+        width: calc(100% - 32px) !important;
+        grid-template-columns: 1fr !important;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-gallery {
+        height: 280px !important;
+      }
+
+      .modal-details {
+        padding: 30px 24px !important;
+        text-align: center !important;
+      }
+
+      .modal-details h2,
+      .modal-details p {
+        text-align: center !important;
+      }
+
+      .modal-details h2 {
+        font-size: 1.6rem !important;
       }
 
       .sizing-img-wrap {
