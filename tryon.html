@@ -333,7 +333,8 @@
     }
 
     @media (max-width: 480px) {
-      .tryon-main { height: 320px !important; }
+      .tryon-main { height: 400px !important; }
+      .upload-overlay { padding-bottom: 50px !important; box-sizing: border-box; }
       .upload-box { padding: 20px !important; }
       .upload-box i { font-size: 2rem !important; }
       .tryon-sidebar { padding: 20px !important; gap: 20px !important; }
@@ -346,7 +347,7 @@
     @media (max-width: 375px) {
       .tryon-hero { padding-top: 90px !important; }
       .tryon-container { gap: 20px !important; }
-      .tryon-main { height: 280px !important; }
+      .tryon-main { height: 380px !important; }
       .tryon-sidebar { padding: 16px !important; }
       .category-tabs { gap: 4px !important; }
       .tab-btn { padding: 6px 10px !important; font-size: 0.65rem !important; }
@@ -851,14 +852,23 @@
     rotateSlider.oninput = updateJewelryStyle;
 
     let isDragging = false;
-    jewelryOverlay.onmousedown = (e) => { isDragging = true; jewelryOverlay.style.borderColor = 'var(--color-gold)'; };
-    window.onmousemove = (e) => {
+    const startDrag = () => { isDragging = true; jewelryOverlay.style.borderColor = 'var(--color-gold)'; };
+    const drag = (e) => {
       if (!isDragging) return;
+      let clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      let clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
       const rect = previewContainer.getBoundingClientRect();
-      jewelryOverlay.style.left = ((e.clientX - rect.left) / rect.width) * 100 + '%';
-      jewelryOverlay.style.top = ((e.clientY - rect.top) / rect.height) * 100 + '%';
+      jewelryOverlay.style.left = ((clientX - rect.left) / rect.width) * 100 + '%';
+      jewelryOverlay.style.top = ((clientY - rect.top) / rect.height) * 100 + '%';
     };
-    window.onmouseup = () => { isDragging = false; jewelryOverlay.style.borderColor = 'transparent'; };
+    const endDrag = () => { isDragging = false; jewelryOverlay.style.borderColor = 'transparent'; };
+
+    jewelryOverlay.addEventListener('mousedown', startDrag);
+    jewelryOverlay.addEventListener('touchstart', startDrag, { passive: true });
+    window.addEventListener('mousemove', drag);
+    window.addEventListener('touchmove', drag, { passive: true });
+    window.addEventListener('mouseup', endDrag);
+    window.addEventListener('touchend', endDrag);
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.onclick = () => {
@@ -882,14 +892,18 @@
     const comparison = document.getElementById('comparison');
     const afterImg = document.getElementById('afterImg');
     const slider = document.getElementById('comparisonSlider');
-    comparison.onmousemove = (e) => {
+    const handleComparisonSlide = (e) => {
+      let clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
       let rect = comparison.getBoundingClientRect();
-      let percent = ((e.clientX - rect.left) / rect.width) * 100;
+      let percent = ((clientX - rect.left) / rect.width) * 100;
       if (percent >= 0 && percent <= 100) {
         afterImg.style.width = percent + '%';
         slider.style.left = percent + '%';
       }
     };
+    
+    comparison.addEventListener('mousemove', handleComparisonSlide);
+    comparison.addEventListener('touchmove', handleComparisonSlide, { passive: true });
   </script>
 </body>
 </html>
