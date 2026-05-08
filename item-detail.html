@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the details of this exquisite Tanishq Fine Jewelry piece — craftsmanship, materials, and bespoke ordering information.">
+  <title>Piece Detail | Tanishq Fine Jewelry</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .detail-hero { height: 70vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; }
+    .detail-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+    .detail-hero-content { position: relative; z-index: 2; text-align: center; color: #fff; }
+
+    .detail-main { padding: 100px 0; background: var(--color-ivory); }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .detail-info h1 { font-size: 3rem; margin-bottom: 20px; }
+    .detail-info .category { color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; margin-bottom: 10px; display: block; }
+    .detail-info p { line-height: 1.8; color: #555; margin-bottom: 40px; font-size: 1.1rem; }
+
+    .specs-table { border-top: 1px solid #ddd; padding-top: 30px; }
+    .spec-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #eee; gap: 20px; }
+    .spec-label { font-weight: 700; color: #333; flex-shrink: 0; }
+    .spec-value { color: #777; text-align: right; overflow-wrap: break-word; word-break: break-word; }
+
+    .back-btn { display: inline-flex; align-items: center; gap: 10px; color: var(--color-black); text-decoration: none; font-weight: 700; margin-bottom: 40px; transition: 0.3s; }
+    .back-btn:hover { color: var(--color-gold); transform: translateX(-5px); }
+
+    /* --- Ultimate Responsive Pass for Detail --- */
+    @media (max-width: 1024px) {
+      .detail-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .detail-hero { height: 60vh !important; }
+      .detail-info h1 { font-size: 2.5rem !important; }
+    }
+
+    @media (max-width: 768px) {
+      .detail-hero { height: 50vh !important; }
+      .detail-main { padding: 40px 0 !important; }
+      .detail-info h1 { font-size: 2rem !important; }
+      .detail-info h2 { font-size: 1.8rem !important; }
+      .detail-info p { font-size: 1rem !important; margin-bottom: 30px !important; }
+      .spec-row { padding: 12px 0 !important; }
+      .back-btn { margin-bottom: 30px !important; }
+      .detail-main .btn { width: 100% !important; justify-content: center !important; }
+    }
+
+    @media (max-width: 480px) {
+      .detail-hero { height: 40vh !important; min-height: 250px !important; }
+      .detail-info h1 { font-size: 1.8rem !important; }
+      .spec-label, .spec-value { font-size: 0.85rem !important; }
+      .spec-row { flex-direction: column !important; gap: 4px !important; }
+      .spec-value { text-align: left !important; }
+    }
+
+    @media (max-width: 375px) {
+      .detail-hero { height: 35vh !important; min-height: 200px !important; }
+      .detail-main { padding: 28px 0 !important; }
+      .detail-info h2 { font-size: 1.4rem !important; }
+      .back-btn { font-size: 0.85rem !important; gap: 8px !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-name">Tanishq</span>
+        <span class="nav-logo-tagline">Fine Jewelry</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Collections</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="tryon.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.75rem; background: var(--color-gold); color: #000; margin-right: 10px;"><i class="fa-solid fa-camera"></i> Virtual Try-On</a>
+        <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="navMobile">
+    <button class="nav-mobile-close" id="navClose" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Collections</a>
+    <a href="catalog.html">Catalog</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+    <hr style="width: 40px; border: 0; border-top: 1px solid rgba(212,175,55,0.3); margin: 5px 0;">
+    <a href="tryon.html" style="color: var(--color-gold);"><i class="fa-solid fa-camera"></i> Virtual Try-On</a>
+    <a href="contact.html">Book Appointment</a>
+  </div>
+
+  <div class="detail-hero">
+    <img id="mainImg" src="" alt="Jewelry Detail" class="detail-hero-img">
+    <div class="container detail-hero-content">
+      <span class="category" id="catLabel">Loading...</span>
+      <h1 class="heading-xl" id="titleLabel" style="color: #fff;">-</h1>
+    </div>
+  </div>
+
+  <section class="detail-main">
+    <div class="container">
+      <a href="gallery.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Gallery</a>
+      
+      <div class="detail-grid">
+        <div class="detail-visual">
+          <img id="sideImg" src="" alt="Side View" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-soft);">
+        </div>
+        <div class="detail-info">
+          <span class="category" id="catLabel2">Collection Detail</span>
+          <h2 class="heading-lg" id="titleLabel2" style="margin-bottom: 20px;">-</h2>
+          <p id="descLabel">Please wait while we load the piece details from our archives.</p>
+          
+          <div class="specs-table">
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-value" id="specMaterial">18K Solid Gold</span></div>
+            <div class="spec-row"><span class="spec-label">Gemstones</span><span class="spec-value" id="specGems">Certified Diamonds</span></div>
+            <div class="spec-row"><span class="spec-label">Certification</span><span class="spec-value">GIA / IGI Verified</span></div>
+            <div class="spec-row"><span class="spec-label">Availability</span><span class="spec-value">Bespoke Order Only</span></div>
+          </div>
+
+          <div style="margin-top: 50px;">
+            <a href="contact.html" class="btn btn-primary">Enquire for Bespoke Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Data for gallery items
+    const galleryData = {
+      "1": { title: "Royal Solitaire", cat: "Rings Collection", desc: "A timeless masterpiece featuring a 5-carat brilliant cut diamond set in a handcrafted platinum band. This piece represents the pinnacle of Tanishq's solitaire craftsmanship.", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1200", material: "Platinum 950", gems: "5ct D-Flawless Diamond" },
+      "2": { title: "Paris Flagship", cat: "Global Ateliers", desc: "Our iconic flagship store in Place Vendôme, where every piece of high jewelry is conceived. Experience the heritage in every corner.", img: "https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=1200", material: "French Limestone Interior", gems: "Bespoke Lighting" },
+      "3": { title: "Midnight Orb", cat: "Celestial Series", desc: "Inspired by the lunar phases, this necklace features a deep sapphire surrounded by a halo of micro-pave diamonds.", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1200", material: "18K White Gold", gems: "Blue Sapphire & Diamonds" },
+      "4": { title: "Aurelia Cuff", cat: "Modernist Edge", desc: "A bold statement piece combining architectural lines with the warmth of hammered gold. Designed for the modern muse.", img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=1200", material: "24K Vermeil Gold", gems: "None (Textured Metal)" },
+      "5": { title: "Diamond Pavé Hoops", cat: "Earrings", desc: "A daily essential reimagined. These hoops are encrusted with over 200 hand-set diamonds for maximum brilliance.", img: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?q=80&w=1200", material: "18K Rose Gold", gems: "VVS Quality Diamonds" },
+      "6": { title: "The Empire Watch", cat: "Timepieces", desc: "A fusion of horology and high jewelry. This timepiece features a Swiss movement encased in a diamond-set gold frame.", img: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?q=80&w=1200", material: "Yellow Gold", gems: "Ruby Accents & Diamonds" },
+      "7": { title: "The Prong Study", cat: "Craftsmanship", desc: "A technical masterpiece showcasing our patented micro-prong setting technique, allowing for maximum light refraction.", img: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=1200", material: "18K White Gold", gems: "F-Grade Diamonds" },
+      "8": { title: "Eternal Love Set", cat: "Bridal Archive", desc: "A complete bridal set featuring a matching necklace and earring duo, inspired by classic Victorian lace patterns.", img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=1200", material: "18K Yellow Gold", gems: "Cultured Pearls & Diamonds" },
+      "9": { title: "Milan Gala 2026", cat: "Exhibitions", desc: "A candid shot from our private gala in Milan, showcasing the 'Aura' collection in its natural evening environment.", img: "https://plus.unsplash.com/premium_photo-1661645473770-90d750452fa0?w=1200", material: "Various High Jewelry", gems: "Mixed Precious Stones" },
+      "10": { title: "Emerald Elegance", cat: "Campaign", desc: "Featured in our 2026 'Verdant' campaign, this piece explores the depth of Colombian emeralds.", img: "https://images.unsplash.com/photo-1601821765780-754fa98637c1?w=1200", material: "18K Gold", gems: "Colombian Emeralds" }
+    };
+
+    // Load data from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const itemId = urlParams.get('id');
+
+    if (itemId && galleryData[itemId]) {
+      const item = galleryData[itemId];
+      document.getElementById('mainImg').src = item.img;
+      document.getElementById('sideImg').src = item.img;
+      document.getElementById('catLabel').innerText = item.cat;
+      document.getElementById('catLabel2').innerText = item.cat;
+      document.getElementById('titleLabel').innerText = item.title;
+      document.getElementById('titleLabel2').innerText = item.title;
+      document.getElementById('descLabel').innerText = item.desc;
+      document.getElementById('specMaterial').innerText = item.material;
+      document.getElementById('specGems').innerText = item.gems;
+      document.title = item.title + " | Tanishq Detail";
+    } else {
+      document.getElementById('titleLabel').innerText = "Exquisite Piece";
+    }
+  </script>
+</body>
+</html>
+
