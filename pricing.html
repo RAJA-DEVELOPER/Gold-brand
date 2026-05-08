@@ -503,9 +503,17 @@
         height: 350px !important;
         padding: 24px !important;
         border-radius: 0 !important;
-        width: 100vw !important;
-        margin-left: 0 !important;
+        width: calc(100% + 48px) !important;
+        margin: 20px -24px !important;
+        box-sizing: border-box !important;
       }
+
+      .graph-container > div:first-child {
+        left: 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+      }
+
 
       .package-card {
         border-radius: 0 !important;
