@@ -436,23 +436,32 @@
       }
 
       .container {
-        padding: 0 !important;
+        padding: 0 24px !important;
         width: 100% !important;
         max-width: none !important;
+        box-sizing: border-box !important;
       }
 
       .section-header,
       .faq-list,
-      .page-banner-content,
-      .comparison-grid>div:not(.reveal) {
-        padding-left: 24px !important;
-        padding-right: 24px !important;
-        text-align: left !important;
+      .page-banner-content {
+        text-align: center !important;
       }
 
       .section-header p,
       .section-header h2 {
-        text-align: left !important;
+        text-align: center !important;
+      }
+
+      .comparison-grid ul,
+      .grid-2 ul {
+        align-items: center !important;
+        text-align: center !important;
+        padding-left: 0 !important;
+      }
+
+      .grid-2 .reveal {
+        text-align: center !important;
       }
 
       .rate-grid {
@@ -473,13 +482,21 @@
       .comparison-table-wrap {
         overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
-        margin: 20px 0;
+        margin: 20px -24px !important;
         padding: 0 24px !important;
+        width: calc(100% + 48px) !important;
+        box-sizing: border-box !important;
       }
 
       .index-table,
       .comparison-table {
-        min-width: 500px !important;
+        min-width: 100% !important;
+      }
+      
+      .index-table th, .index-table td,
+      .comparison-table th, .comparison-table td {
+        padding: 12px 8px !important;
+        font-size: 0.8rem !important;
       }
 
       .graph-container {
@@ -964,12 +981,12 @@
             </table>
           </div>
         </div>
-        <div class="reveal reveal-delay-1">
-          <h3 class="heading-md" style="margin-bottom: 20px;">The <em>Tanishq</em> Difference</h3>
-          <p style="margin-bottom: 20px; color: #555;">Many brands use 14K gold for diamond settings to reduce cost. At
+        <div class="reveal reveal-delay-1" style="text-align: left !important;">
+          <h3 class="heading-md" style="margin-bottom: 20px; text-align: left !important;">The <em>Tanishq</em> Difference</h3>
+          <p style="margin-bottom: 20px; color: #555; text-align: left !important;">Many brands use 14K gold for diamond settings to reduce cost. At
             Tanishq, we use 18K minimum for all our diamond jewelry, ensuring a richer gold hue and higher intrinsic
             value.</p>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px;">
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px; padding-left: 0 !important; text-align: left !important; align-items: flex-start !important;">
             <li><i class="fa-solid fa-circle-check" style="color: var(--color-gold); margin-right: 10px;"></i> 100% BIS
               Hallmarked Gold</li>
             <li><i class="fa-solid fa-circle-check" style="color: var(--color-gold); margin-right: 10px;"></i> IGI/GIA

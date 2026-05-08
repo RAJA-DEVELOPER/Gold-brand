@@ -667,7 +667,7 @@ ul {
   background-position: center;
   background-attachment: scroll; /* Removed parallax for speed */
   opacity: 0.42;
-  transition: opacity 1.2s ease;
+  transition: opacity 0.4s ease; /* Accelerated from 1.2s */
 }
 
 .hero-overlay {
@@ -1087,10 +1087,9 @@ ul {
 
 /* Intersection Observer animation variants */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s var(--transition-smooth);
-  will-change: transform, opacity;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.2s ease !important;
 }
 
 .reveal.active {
@@ -1099,16 +1098,15 @@ ul {
 }
 
 .reveal-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform, opacity;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.2s ease;
 }
 
 .reveal-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.2s ease;
 }
 
 .reveal.visible,
@@ -1879,6 +1877,14 @@ ul {
   position: absolute;
   inset: 0;
   z-index: 1;
+}
+
+.masonry-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
 .vision-bg img {

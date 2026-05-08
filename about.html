@@ -1,130 +1,642 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover the story of Tanishq Fine Jewelry. From our Parisian heritage to our master craftsmanship, learn what makes us the world's most trusted jewelry house." />
+  <meta name="description"
+    content="Discover the story of Tanishq Fine Jewelry. From our Parisian heritage to our master craftsmanship, learn what makes us the world's most trusted jewelry house." />
   <title>Our Story | Tanishq Fine Jewelry - A Legacy of Brilliance</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* ─── Page Specific Luxury Styles ─── */
-    
+
     /* 1. Timeline Journey */
-    .timeline { position:relative; padding:60px 0; }
-    .timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,transparent,var(--color-gold),transparent); transform:translateX(-50%); }
-    .timeline-item { position: relative; display:grid; grid-template-columns:1fr 1fr; gap:100px; margin-bottom:80px; align-items:center; }
-    .timeline-item:nth-child(even) .timeline-content { order:2; text-align:left; }
-    .timeline-item:nth-child(even) .timeline-empty { display: none; }
-    .timeline-content { padding:40px; background:#fff; border-radius:var(--radius-md); box-shadow:var(--shadow-card); border-top:4px solid var(--color-gold); transition: transform 0.3s ease; z-index: 2; }
-    .timeline-content:hover { transform: translateY(-5px); }
-    .timeline-content h3 { font-family:var(--font-heading); font-size:1.4rem; margin-bottom:10px; }
-    .timeline-year { font-family:var(--font-heading); font-size:1.1rem; font-weight:700; color:var(--color-gold); margin-bottom:10px; display: block; }
-    .timeline-dot { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width:20px; height:20px; border-radius:50%; background:var(--color-gold); border:4px solid var(--color-ivory); box-shadow:0 0 0 5px var(--color-gold); z-index:3; }
+    .timeline {
+      position: relative;
+      padding: 60px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      margin-bottom: 80px;
+      align-items: center;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      order: 2;
+      text-align: left;
+    }
+
+    .timeline-item:nth-child(even) .timeline-empty {
+      display: none;
+    }
+
+    .timeline-content {
+      padding: 40px;
+      background: #fff;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      border-top: 4px solid var(--color-gold);
+      transition: transform 0.3s ease;
+      z-index: 2;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+    }
+
+    .timeline-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .timeline-year {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      border: 4px solid var(--color-ivory);
+      box-shadow: 0 0 0 5px var(--color-gold);
+      z-index: 3;
+    }
 
 
     /* 2. Craftsmanship Process */
-    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 50px; }
-    .process-card { text-align: center; padding: 40px 20px; background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-soft); position: relative; }
-    .process-number { position: absolute; top: 15px; left: 15px; font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-gold-dim); opacity: 0.3; line-height: 1; }
-    .process-icon { font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px; }
-    .process-card h4 { font-family: var(--font-heading); margin-bottom: 10px; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 50px;
+    }
+
+    .process-card {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+
+    .process-number {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-gold-dim);
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    .process-icon {
+      font-size: 2.5rem;
+      color: var(--color-gold);
+      margin-bottom: 20px;
+    }
+
+    .process-card h4 {
+      font-family: var(--font-heading);
+      margin-bottom: 10px;
+    }
 
     /* 3. Materials & Purity */
-    .purity-section { background: var(--color-black); color: var(--color-ivory); padding: 100px 0; }
-    .purity-item { border-left: 1px solid rgba(212,175,55,0.3); padding-left: 30px; margin-bottom: 40px; }
-    .purity-item h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-gold); margin-bottom: 15px; }
+    .purity-section {
+      background: var(--color-black);
+      color: var(--color-ivory);
+      padding: 100px 0;
+    }
+
+    .purity-item {
+      border-left: 1px solid rgba(212, 175, 55, 0.3);
+      padding-left: 30px;
+      margin-bottom: 40px;
+    }
+
+    .purity-item h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-gold);
+      margin-bottom: 15px;
+    }
 
     /* 4. Founder Message */
-    .founder-box { background: var(--color-ivory); border-radius: var(--radius-lg); overflow: hidden; display: flex; align-items: center; box-shadow: var(--shadow-soft); margin: 80px 0; }
-    .founder-img { width: 45%; height: 600px; object-fit: cover; }
-    .founder-content { padding: 80px; flex: 1; position: relative; }
-    .founder-content i.quote-icon { font-size: 4rem; color: var(--color-gold-dim); position: absolute; top: 40px; left: 40px; }
-    .founder-sign { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2rem; color: var(--color-gold); margin-top: 30px; display: block; }
+    .founder-box {
+      background: var(--color-ivory);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      box-shadow: var(--shadow-soft);
+      margin: 80px 0;
+    }
+
+    .founder-img {
+      width: 45%;
+      height: 600px;
+      object-fit: cover;
+    }
+
+    .founder-content {
+      padding: 80px;
+      flex: 1;
+      position: relative;
+    }
+
+    .founder-content i.quote-icon {
+      font-size: 4rem;
+      color: var(--color-gold-dim);
+      position: absolute;
+      top: 40px;
+      left: 40px;
+    }
+
+    .founder-sign {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 2rem;
+      color: var(--color-gold);
+      margin-top: 30px;
+      display: block;
+    }
 
     /* 5. Mission/Vision Cards */
-    .mission-vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
-    .mv-card { padding: 60px; border-radius: var(--radius-md); background: #fff; box-shadow: var(--shadow-card); position: relative; overflow: hidden; border-bottom: 5px solid var(--color-gold); }
-    .mv-card h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 20px; color: var(--color-black); }
-    .mv-card p { font-size: 1.1rem; color: #555; line-height: 1.8; }
-    .mv-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, var(--color-gold-dim), transparent); opacity: 0; transition: opacity 0.3s; }
-    .mv-card:hover::after { opacity: 0.2; }
+    .mission-vision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .mv-card {
+      padding: 60px;
+      border-radius: var(--radius-md);
+      background: #fff;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 5px solid var(--color-gold);
+    }
+
+    .mv-card h2 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--color-black);
+    }
+
+    .mv-card p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .mv-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, var(--color-gold-dim), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .mv-card:hover::after {
+      opacity: 0.2;
+    }
 
     /* 6. Why Choose Us */
-    .choice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-    .choice-item { background: var(--color-ivory); padding: 40px; border-radius: var(--radius-md); text-align: center; transition: all 0.3s; }
-    .choice-item:hover { background: #fff; box-shadow: var(--shadow-gold); }
-    .choice-item i { font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px; }
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .choice-item {
+      background: var(--color-ivory);
+      padding: 40px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .choice-item:hover {
+      background: #fff;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .choice-item i {
+      font-size: 2.5rem;
+      color: var(--color-gold);
+      margin-bottom: 20px;
+    }
 
     /* 7. Sustainability & Ethics */
-    .ethics-section { background: #0a0a0a; color: #fff; padding: 120px 0; overflow: hidden; position: relative; }
-    .ethics-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
-    .ethics-box { border-left: 2px solid var(--color-gold); padding-left: 40px; margin-bottom: 50px; }
-    .ethics-box h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-gold); margin-bottom: 20px; }
-    .ethics-box p { color: rgba(255,255,255,0.7); line-height: 1.9; }
+    .ethics-section {
+      background: #0a0a0a;
+      color: #fff;
+      padding: 120px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ethics-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .ethics-box {
+      border-left: 2px solid var(--color-gold);
+      padding-left: 40px;
+      margin-bottom: 50px;
+    }
+
+    .ethics-box h3 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: var(--color-gold);
+      margin-bottom: 20px;
+    }
+
+    .ethics-box p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.9;
+    }
 
     /* 8. Global Presence */
-    .global-stats { background: var(--color-ivory); padding: 100px 0; }
-    .stat-card { text-align: center; padding: 30px; border-right: 1px solid rgba(212,175,55,0.2); }
-    .stat-card:last-child { border-right: none; }
-    .stat-num { font-family: var(--font-heading); font-size: 3.5rem; color: var(--color-black); margin-bottom: 10px; display: block; }
-    .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-gold); }
+    .global-stats {
+      background: var(--color-ivory);
+      padding: 100px 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 30px;
+      border-right: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .stat-card:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      color: var(--color-black);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-gold);
+    }
 
     /* 9. Press Strip */
-    .press-strip { padding: 80px 0; background: #fff; border-bottom: 1px solid #eee; }
-    .press-logos { display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; opacity: 0.4; filter: grayscale(100%); }
-    .press-logos img { height: 35px; transition: all 0.3s; }
-    .press-logos img:hover { opacity: 1; filter: none; }
+    .press-strip {
+      padding: 80px 0;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .press-logos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      opacity: 0.4;
+      filter: grayscale(100%);
+    }
+
+    .press-logos img {
+      height: 35px;
+      transition: all 0.3s;
+    }
+
+    .press-logos img:hover {
+      opacity: 1;
+      filter: none;
+    }
 
     /* Artisan Profiles */
-    .artisan-expanded { padding: 120px 0; background: #fff; }
-    .artisan-profile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; margin-top: 60px; }
-    .artisan-profile { display: flex; gap: 40px; align-items: flex-start; }
-    .artisan-avatar { width: 200px; height: 200px; border-radius: var(--radius-md); object-fit: cover; border: 1px solid var(--color-gold); padding: 5px; }
-    .artisan-info h3 { font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 10px; }
-    .artisan-info .title { font-size: 0.8rem; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 15px; display: block; }
-    .artisan-info p { font-size: 0.95rem; color: #555; line-height: 1.7; }
+    .artisan-expanded {
+      padding: 120px 0;
+      background: #fff;
+    }
+
+    .artisan-profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px;
+      margin-top: 60px;
+    }
+
+    .artisan-profile {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .artisan-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      border: 1px solid var(--color-gold);
+      padding: 5px;
+    }
+
+    .artisan-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .artisan-info .title {
+      font-size: 0.8rem;
+      color: var(--color-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .artisan-info p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.7;
+    }
 
     /* Atelier Aura */
-    .atelier-aura { background: var(--color-black); color: #fff; padding: 120px 0; overflow: hidden; }
-    .aura-flex { display: flex; gap: 50px; align-items: center; }
-    .aura-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 50%; }
-    .aura-img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius-sm); filter: grayscale(1); transition: all 0.5s; }
-    .aura-img:hover { filter: grayscale(0); transform: scale(1.05); }
+    .atelier-aura {
+      background: var(--color-black);
+      color: #fff;
+      padding: 120px 0;
+      overflow: hidden;
+    }
+
+    .aura-flex {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .aura-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      width: 50%;
+    }
+
+    .aura-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      filter: grayscale(1);
+      transition: all 0.5s;
+    }
+
+    .aura-img:hover {
+      filter: grayscale(0);
+      transform: scale(1.05);
+    }
 
     /* Global Map Concept */
-    .heritage-map { padding: 120px 0; background: var(--color-ivory); text-align: center; }
-    .map-container { position: relative; max-width: 1000px; height: 500px; margin: 60px auto 0; background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1200') center/cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); overflow: hidden; }
-    .map-pin { position: absolute; width: 12px; height: 12px; background: var(--color-gold); border-radius: 50%; box-shadow: 0 0 20px var(--color-gold); cursor: pointer; transition: all 0.3s; }
-    .map-pin::after { content: attr(data-city); position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: var(--color-black); color: #fff; padding: 5px 12px; font-size: 0.7rem; border-radius: 20px; opacity: 0; pointer-events: none; transition: all 0.3s; }
-    .map-pin:hover { transform: scale(1.5); }
-    .map-pin:hover::after { opacity: 1; top: -40px; }
+    .heritage-map {
+      padding: 120px 0;
+      background: var(--color-ivory);
+      text-align: center;
+    }
+
+    .map-container {
+      position: relative;
+      max-width: 1000px;
+      height: 500px;
+      margin: 60px auto 0;
+      background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1200') center/cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .map-pin {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--color-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--color-gold);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .map-pin::after {
+      content: attr(data-city);
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-black);
+      color: #fff;
+      padding: 5px 12px;
+      font-size: 0.7rem;
+      border-radius: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+
+    .map-pin:hover {
+      transform: scale(1.5);
+    }
+
+    .map-pin:hover::after {
+      opacity: 1;
+      top: -40px;
+    }
 
     /* --- Ultimate Responsive Pass for About --- */
     @media (max-width: 1024px) {
-      .process-grid, .choice-grid, .ethics-grid, .artisan-profile-grid { grid-template-columns: repeat(2, 1fr) !important; }
-      .aura-flex { flex-direction: column !important; }
-      .aura-gallery { width: 100% !important; }
-      .founder-box { flex-direction: column !important; }
-      .founder-img { width: 100% !important; height: 400px !important; }
-      .mission-vision-grid { grid-template-columns: 1fr !important; }
-      .stat-card { border-right: none !important; border-bottom: 1px solid rgba(212,175,55,0.2) !important; }
+
+      .process-grid,
+      .choice-grid,
+      .ethics-grid,
+      .artisan-profile-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      .aura-flex {
+        flex-direction: column !important;
+      }
+
+      .aura-gallery {
+        width: 100% !important;
+      }
+
+      .founder-box {
+        flex-direction: column !important;
+      }
+
+      .founder-img {
+        width: 100% !important;
+        height: 400px !important;
+      }
+
+      .mission-vision-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .stat-card {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+      }
+
+      .page-banner {
+        height: auto !important;
+        min-height: 300px !important;
+        padding-bottom: 40px !important;
+      }
+
+      .page-banner-content {
+        padding-top: 110px !important;
+        text-align: center !important;
+      }
+
+      .navbar {
+        height: 70px !important;
+      }
+
+      .nav-logo-name {
+        font-size: 1.1rem !important;
+        font-weight: 700 !important;
+      }
+
+      .nav-logo-tagline {
+        display: none !important;
+      }
+
+      .nav-toggle {
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+      }
+
+      .section-header {
+        text-align: center !important;
+      }
+
+      .breadcrumb {
+        justify-content: center !important;
+        margin-top: 20px !important;
+      }
     }
 
     @media (max-width: 768px) {
-      .timeline::before { left: 24px !important; transform: none !important; }
-      .timeline-item { grid-template-columns: 1fr !important; gap: 40px !important; padding-left: 60px !important; }
-      .timeline-item:nth-child(even) .timeline-content { order: 1 !important; }
-      .timeline-dot { left: 24px !important; transform: translateX(-50%) !important; top: 40px !important; }
-      
-      .process-grid, .choice-grid, .ethics-grid, .artisan-profile-grid { grid-template-columns: 1fr !important; }
-      .founder-content { padding: 40px !important; }
-      .mv-card { padding: 30px !important; }
-      .artisan-profile { flex-direction: column !important; align-items: center; text-align: center; }
-      .artisan-avatar { width: 100% !important; max-width: 300px !important; height: auto !important; }
-      
-      .ethics-box { padding-left: 20px !important; }
-      .map-container { height: 350px !important; }
+      .timeline::before {
+        left: 24px !important;
+        transform: none !important;
+      }
+
+      .timeline-item {
+        display: block !important;
+        padding-left: 60px !important;
+        margin-bottom: 50px !important;
+        text-align: center !important;
+      }
+
+      .timeline-empty {
+        display: none !important;
+      }
+
+      .timeline-content {
+        padding: 30px !important;
+        width: auto !important;
+        text-align: center !important;
+      }
+
+      .timeline-item:nth-child(even) .timeline-content {
+        text-align: center !important;
+      }
+
+      .timeline-dot {
+        left: 24px !important;
+        transform: translateX(-50%) !important;
+        top: 20px !important;
+      }
+
+      .process-grid,
+      .choice-grid,
+      .ethics-grid,
+      .artisan-profile-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .founder-content {
+        padding: 40px !important;
+      }
+
+      .mv-card {
+        padding: 30px !important;
+      }
+
+      .artisan-profile {
+        flex-direction: column !important;
+        align-items: center;
+        text-align: center;
+      }
+
+      .artisan-avatar {
+        width: 100% !important;
+        max-width: 300px !important;
+        height: auto !important;
+      }
+
+      .ethics-box {
+        padding-left: 20px !important;
+      }
+
+      .map-container {
+        height: 350px !important;
+      }
 
       /* RJC badge: move inside the image on tablet */
       .rjc-badge {
@@ -135,9 +647,17 @@
     }
 
     @media (max-width: 480px) {
-      .stat-num { font-size: 2.5rem !important; }
-      .aura-gallery { grid-template-columns: 1fr !important; }
-      .mv-card h2 { font-size: 1.8rem !important; }
+      .stat-num {
+        font-size: 2.5rem !important;
+      }
+
+      .aura-gallery {
+        grid-template-columns: 1fr !important;
+      }
+
+      .mv-card h2 {
+        font-size: 1.8rem !important;
+      }
 
       /* RJC badge: static block below the image on small phones */
       .rjc-badge {
@@ -150,10 +670,10 @@
         bottom: auto !important;
       }
     }
-
   </style>
 
 </head>
+
 <body>
 
   <!-- NAVBAR -->
@@ -173,7 +693,9 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        <a href="tryon.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.75rem; background: var(--color-gold); color: #000; margin-right: 10px;"><i class="fa-solid fa-camera"></i> Virtual Try-On</a>
+        <a href="tryon.html" class="btn btn-primary"
+          style="padding: 8px 18px; font-size: 0.75rem; background: var(--color-gold); color: #000; margin-right: 10px;"><i
+            class="fa-solid fa-camera"></i> Virtual Try-On</a>
         <a href="contact.html" class="btn btn-primary nav-cta">Enquire Now</a>
         <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
       </div>
@@ -196,13 +718,16 @@
 
   <!-- PAGE BANNER -->
   <div class="page-banner">
-    <div class="page-banner-bg" style="background-image:url('https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?q=80&w=1600');"></div>
+    <div class="page-banner-bg"
+      style="background-image:url('https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?q=80&w=1600');"></div>
 
     <div class="page-banner-overlay"></div>
     <div class="container page-banner-content">
       <p class="subtext">A Legacy of Brilliance</p>
-      <h1 class="heading-xl" style="color:var(--color-ivory);">Our <em style="color:var(--color-gold);">Heritage</em></h1>
-      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span class="current">About Us</span></nav>
+      <h1 class="heading-xl" style="color:var(--color-ivory);">Our <em style="color:var(--color-gold);">Heritage</em>
+      </h1>
+      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span class="current">About
+          Us</span></nav>
     </div>
   </div>
 
@@ -213,15 +738,26 @@
         <div class="reveal">
           <p class="subtext">The Beginning</p>
           <h2 class="heading-lg">Born in the Heart of <em>Paris</em></h2>
-          <p class="lead" style="margin-top: 20px;">Tanishq began in 1998, in a sun-drenched atelier on Rue Saint-Honoré. Founder Étienne Moreau, a fourth-generation goldsmith, sought to bridge the gap between traditional Parisian craftsmanship and contemporary elegance.</p>
-          <p style="margin-top: 20px; color: #555; line-height: 1.8;">Our name, French for 'Light', represents our obsession with how diamonds and metals interact with the world around them. We don't just create objects; we capture light and freeze it in time.</p>
+          <p class="lead" style="margin-top: 20px;">Tanishq began in 1998, in a sun-drenched atelier on Rue
+            Saint-Honoré. Founder Étienne Moreau, a fourth-generation goldsmith, sought to bridge the gap between
+            traditional Parisian craftsmanship and contemporary elegance.</p>
+          <p style="margin-top: 20px; color: #555; line-height: 1.8;">Our name, French for 'Light', represents our
+            obsession with how diamonds and metals interact with the world around them. We don't just create objects; we
+            capture light and freeze it in time.</p>
           <div style="margin-top: 40px; display: flex; gap: 40px; flex-wrap: wrap;">
-            <div><h3 style="font-family: var(--font-heading); color: var(--color-gold); font-size: 2.5rem;">28</h3><p class="subtext" style="font-size: 0.7rem;">Years of History</p></div>
-            <div><h3 style="font-family: var(--font-heading); color: var(--color-gold); font-size: 2.5rem;">150</h3><p class="subtext" style="font-size: 0.7rem;">Master Artisans</p></div>
+            <div>
+              <h3 style="font-family: var(--font-heading); color: var(--color-gold); font-size: 2.5rem;">28</h3>
+              <p class="subtext" style="font-size: 0.7rem;">Years of History</p>
+            </div>
+            <div>
+              <h3 style="font-family: var(--font-heading); color: var(--color-gold); font-size: 2.5rem;">150</h3>
+              <p class="subtext" style="font-size: 0.7rem;">Master Artisans</p>
+            </div>
           </div>
         </div>
         <div class="reveal reveal-delay-2">
-          <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=800" alt="Paris Atelier" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-gold);" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=800" alt="Paris Atelier"
+            style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-gold);" loading="lazy">
 
         </div>
       </div>
@@ -232,13 +768,18 @@
   <section class="section" style="background: #fff;">
     <div class="container">
       <div class="founder-box reveal">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600" class="founder-img" alt="Founder Étienne Moreau" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600" class="founder-img"
+          alt="Founder Étienne Moreau" loading="lazy">
 
         <div class="founder-content">
           <i class="fa-solid fa-quote-left quote-icon"></i>
           <p class="subtext" style="margin-bottom: 10px;">Message from the Founder</p>
-          <h2 class="heading-md" style="margin-bottom: 25px;">"Jewelry is the most intimate form of art. It carries our memories, our promises, and our legacy. At Tanishq, we honor that trust with every cut of a diamond and every pour of gold."</h2>
-          <p style="color: #666; font-style: italic;">We remain a family-owned house, independent and focused solely on the perfection of our craft. My promise to you is a piece that will be as brilliant on your great-grandchild as it is on you today.</p>
+          <h2 class="heading-md" style="margin-bottom: 25px;">"Jewelry is the most intimate form of art. It carries our
+            memories, our promises, and our legacy. At Tanishq, we honor that trust with every cut of a diamond and
+            every pour of gold."</h2>
+          <p style="color: #666; font-style: italic;">We remain a family-owned house, independent and focused solely on
+            the perfection of our craft. My promise to you is a piece that will be as brilliant on your great-grandchild
+            as it is on you today.</p>
           <span class="founder-sign">Étienne Moreau</span>
         </div>
       </div>
@@ -258,7 +799,8 @@
           <div class="timeline-content reveal">
             <span class="timeline-year">1998</span>
             <h3>Atelier Saint-Honoré</h3>
-            <p>The first Tanishq boutique opens in Paris, specializing in bespoke engagement rings for the city's elite.</p>
+            <p>The first Tanishq boutique opens in Paris, specializing in bespoke engagement rings for the city's elite.
+            </p>
           </div>
           <div class="timeline-dot"></div>
           <div class="timeline-empty"></div>
@@ -287,7 +829,8 @@
           <div class="timeline-content reveal">
             <span class="timeline-year">2023</span>
             <h3>Digital Renaissance</h3>
-            <p>Launch of our worldwide digital boutique and Virtual Try-On AR technology, bringing the showroom to you.</p>
+            <p>Launch of our worldwide digital boutique and Virtual Try-On AR technology, bringing the showroom to you.
+            </p>
           </div>
         </div>
       </div>
@@ -307,25 +850,29 @@
           <span class="process-number">01</span>
           <i class="fa-solid fa-pen-nib process-icon"></i>
           <h4>Conceptual Design</h4>
-          <p style="font-size: 0.85rem; color: #666;">Every piece begins as a hand-drawn sketch, where light and form are mathematically balanced.</p>
+          <p style="font-size: 0.85rem; color: #666;">Every piece begins as a hand-drawn sketch, where light and form
+            are mathematically balanced.</p>
         </div>
         <div class="process-card reveal reveal-delay-1">
           <span class="process-number">02</span>
           <i class="fa-solid fa-gem process-icon"></i>
           <h4>Ethical Sourcing</h4>
-          <p style="font-size: 0.85rem; color: #666;">We hand-select only the top 1% of GIA-certified diamonds and rare gemstones from ethical mines.</p>
+          <p style="font-size: 0.85rem; color: #666;">We hand-select only the top 1% of GIA-certified diamonds and rare
+            gemstones from ethical mines.</p>
         </div>
         <div class="process-card reveal reveal-delay-2">
           <span class="process-number">03</span>
           <i class="fa-solid fa-fire-burner process-icon"></i>
           <h4>Master Forging</h4>
-          <p style="font-size: 0.85rem; color: #666;">Our goldsmiths use age-old lost-wax casting and hand-forging techniques in our private ateliers.</p>
+          <p style="font-size: 0.85rem; color: #666;">Our goldsmiths use age-old lost-wax casting and hand-forging
+            techniques in our private ateliers.</p>
         </div>
         <div class="process-card reveal reveal-delay-3">
           <span class="process-number">04</span>
           <i class="fa-solid fa-wand-sparkles process-icon"></i>
           <h4>Micro-Polishing</h4>
-          <p style="font-size: 0.85rem; color: #666;">Each piece undergoes 12 stages of polishing to achieve the signature Tanishq mirror finish.</p>
+          <p style="font-size: 0.85rem; color: #666;">Each piece undergoes 12 stages of polishing to achieve the
+            signature Tanishq mirror finish.</p>
         </div>
       </div>
     </div>
@@ -338,20 +885,24 @@
         <div>
           <p class="subtext" style="color: var(--color-gold);">Excellence in Materials</p>
           <h2 class="heading-lg">Uncompromising <em>Purity</em></h2>
-          <p class="lead" style="margin-top: 20px; color: rgba(255,255,255,0.7);">We believe that the soul of a piece lies in its foundation. That's why we never compromise on the materials we use.</p>
+          <p class="lead" style="margin-top: 20px; color: rgba(255,255,255,0.7);">We believe that the soul of a piece
+            lies in its foundation. That's why we never compromise on the materials we use.</p>
         </div>
         <div>
           <div class="purity-item">
             <h3>18K & 22K Gold</h3>
-            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">We use only 18K and 22K recycled gold, ensuring the perfect balance of richness, durability, and sustainability.</p>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">We use only 18K and 22K recycled gold, ensuring
+              the perfect balance of richness, durability, and sustainability.</p>
           </div>
           <div class="purity-item">
             <h3>GIA Triple Excellent</h3>
-            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">Every diamond above 0.5ct is GIA certified with a 'Triple Excellent' rating in Cut, Polish, and Symmetry.</p>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">Every diamond above 0.5ct is GIA certified with
+              a 'Triple Excellent' rating in Cut, Polish, and Symmetry.</p>
           </div>
           <div class="purity-item">
             <h3>Platinum & Rare Earths</h3>
-            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">Our high-jewelry collections feature 950 Platinum and rare-earth metals for lifelong structural integrity.</p>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">Our high-jewelry collections feature 950
+              Platinum and rare-earth metals for lifelong structural integrity.</p>
           </div>
         </div>
       </div>
@@ -368,30 +919,36 @@
       </div>
       <div class="grid-3">
         <div class="card reveal">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400" alt="Artisan 1" style="width: 100%; height: 300px; object-fit: cover;" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400" alt="Artisan 1"
+            style="width: 100%; height: 300px; object-fit: cover;" loading="lazy">
 
           <div class="card-body" style="text-align: center;">
             <h4>Marco Ricci</h4>
             <p class="subtext" style="font-size: 0.7rem; color: var(--color-gold);">Master Goldsmith — Milan</p>
-            <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">A specialist in Italian filigree and architectural structures.</p>
+            <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">A specialist in Italian filigree and
+              architectural structures.</p>
           </div>
         </div>
         <div class="card reveal reveal-delay-1">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400" alt="Artisan 2" style="width: 100%; height: 300px; object-fit: cover;" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400" alt="Artisan 2"
+            style="width: 100%; height: 300px; object-fit: cover;" loading="lazy">
 
           <div class="card-body" style="text-align: center;">
             <h4>Sophie Laurent</h4>
             <p class="subtext" style="font-size: 0.7rem; color: var(--color-gold);">Lead Gemologist — Paris</p>
-            <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">Ensuring every stone meets our uncompromising standards.</p>
+            <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">Ensuring every stone meets our uncompromising
+              standards.</p>
           </div>
         </div>
         <div class="card reveal reveal-delay-2">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400" alt="Artisan 3" style="width: 100%; height: 300px; object-fit: cover;" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400" alt="Artisan 3"
+            style="width: 100%; height: 300px; object-fit: cover;" loading="lazy">
 
           <div class="card-body" style="text-align: center;">
             <h4>Aravind Sharma</h4>
             <p class="subtext" style="font-size: 0.7rem; color: var(--color-gold);">Stone Setter — Mumbai</p>
-            <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">Specializing in traditional pavé and complex prong work.</p>
+            <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">Specializing in traditional pavé and complex
+              prong work.</p>
           </div>
         </div>
       </div>
@@ -408,21 +965,25 @@
       </div>
       <div class="artisan-profile-grid">
         <div class="artisan-profile reveal">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400" class="artisan-avatar" alt="Marco Ricci" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400" class="artisan-avatar"
+            alt="Marco Ricci" loading="lazy">
 
           <div class="artisan-info">
             <span class="title">Master Goldsmith</span>
             <h3>Marco Ricci</h3>
-            <p>With 30 years at the bench in Milan, Marco leads our structural engineering team. His obsession with 'lost-wax' casting has won him 4 international design awards.</p>
+            <p>With 30 years at the bench in Milan, Marco leads our structural engineering team. His obsession with
+              'lost-wax' casting has won him 4 international design awards.</p>
           </div>
         </div>
         <div class="artisan-profile reveal reveal-delay-1">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400" class="artisan-avatar" alt="Sophie Laurent" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400" class="artisan-avatar"
+            alt="Sophie Laurent" loading="lazy">
 
           <div class="artisan-info">
             <span class="title">Lead Gemologist</span>
             <h3>Sophie Laurent</h3>
-            <p>Formerly a senior grader at GIA, Sophie travels to Antwerp and Jaipur monthly to hand-select the raw stones that define the Tanishq aesthetic.</p>
+            <p>Formerly a senior grader at GIA, Sophie travels to Antwerp and Jaipur monthly to hand-select the raw
+              stones that define the Tanishq aesthetic.</p>
           </div>
         </div>
       </div>
@@ -434,18 +995,25 @@
     <div class="container">
       <div class="aura-flex">
         <div class="aura-gallery reveal">
-          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400" class="aura-img" alt="Tool 1" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?q=80&w=400" class="aura-img" alt="Tool 2" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=400" class="aura-img" alt="Tool 3" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=400" class="aura-img" alt="Tool 4" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400" class="aura-img"
+            alt="Tool 1" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?q=80&w=400" class="aura-img"
+            alt="Tool 2" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=400" class="aura-img"
+            alt="Tool 3" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=400" class="aura-img"
+            alt="Tool 4" loading="lazy">
 
         </div>
         <div class="reveal reveal-delay-1" style="flex:1;">
           <p class="subtext" style="color: var(--color-gold);">The Workshop</p>
           <h2 class="heading-lg" style="color:#fff;">Tools of <em>Eternity</em></h2>
-          <p style="color: rgba(255,255,255,0.6); margin-top: 25px; line-height: 1.8;">Our ateliers are a blend of 19th-century mechanical tools and 21st-century precision lasers. From the jeweler's saw to the digital 3D printer, every instrument serves one purpose: the pursuit of absolute perfection.</p>
+          <p style="color: rgba(255,255,255,0.6); margin-top: 25px; line-height: 1.8;">Our ateliers are a blend of
+            19th-century mechanical tools and 21st-century precision lasers. From the jeweler's saw to the digital 3D
+            printer, every instrument serves one purpose: the pursuit of absolute perfection.</p>
           <div style="margin-top: 35px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px;">
-            <p style="font-size: 0.8rem; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.1em;">Daily Production: Max 3 Pieces</p>
+            <p style="font-size: 0.8rem; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.1em;">
+              Daily Production: Max 3 Pieces</p>
           </div>
         </div>
       </div>
@@ -460,12 +1028,14 @@
         <div class="mv-card reveal">
           <p class="subtext" style="color: var(--color-gold);">The Purpose</p>
           <h2>Our <em>Mission</em></h2>
-          <p>To craft jewelry that transcends time and fashion — creating emotional heirlooms that carry the stories of love, commitment, and achievement from one generation to the next.</p>
+          <p>To craft jewelry that transcends time and fashion — creating emotional heirlooms that carry the stories of
+            love, commitment, and achievement from one generation to the next.</p>
         </div>
         <div class="mv-card reveal reveal-delay-1">
           <p class="subtext" style="color: var(--color-gold);">The Future</p>
           <h2>Our <em>Vision</em></h2>
-          <p>To be the world’s most respected jewelry house, setting the global standard for ethical luxury, master craftsmanship, and the ultimate personalized client experience.</p>
+          <p>To be the world’s most respected jewelry house, setting the global standard for ethical luxury, master
+            craftsmanship, and the ultimate personalized client experience.</p>
         </div>
       </div>
     </div>
@@ -480,23 +1050,30 @@
           <h2 class="heading-lg" style="color: #fff; margin-bottom: 40px;">Purity Beyond the <em>Gemstone</em></h2>
           <div class="ethics-box">
             <h3>Conflict-Free Assurance</h3>
-            <p>Every diamond in the Tanishq vault is tracked via Blockchain technology from the moment it is unearthed. We strictly adhere to the Kimberley Process, ensuring our brilliance never comes at a human cost.</p>
+            <p>Every diamond in the Tanishq vault is tracked via Blockchain technology from the moment it is unearthed.
+              We strictly adhere to the Kimberley Process, ensuring our brilliance never comes at a human cost.</p>
           </div>
           <div class="ethics-box">
             <h3>Circular Gold Economy</h3>
-            <p>By 2027, 100% of our gold will be sourced from recycled electronic and medical-grade archives, reducing our carbon footprint by 84% without losing a single karat of purity.</p>
+            <p>By 2027, 100% of our gold will be sourced from recycled electronic and medical-grade archives, reducing
+              our carbon footprint by 84% without losing a single karat of purity.</p>
           </div>
           <div class="ethics-box">
             <h3>Artisanal Preservation</h3>
-            <p>We invest 5% of all proceeds into traditional goldsmithing schools in Jaipur and Vicenza, ensuring that the ancient arts are passed down to the next generation of masters.</p>
+            <p>We invest 5% of all proceeds into traditional goldsmithing schools in Jaipur and Vicenza, ensuring that
+              the ancient arts are passed down to the next generation of masters.</p>
           </div>
         </div>
         <div class="reveal reveal-delay-2" style="position: relative;">
-          <img src="https://plus.unsplash.com/premium_photo-1677993185880-489169dc9bc2?w=600&auto=format&fit=crop&q=60" alt="Sustainability" style="width: 100%; border-radius: var(--radius-lg); filter: contrast(1.1) brightness(0.8);" loading="lazy">
+          <img src="https://plus.unsplash.com/premium_photo-1677993185880-489169dc9bc2?w=600&auto=format&fit=crop&q=60"
+            alt="Sustainability"
+            style="width: 100%; border-radius: var(--radius-lg); filter: contrast(1.1) brightness(0.8);" loading="lazy">
 
-          <div class="rjc-badge" style="position: absolute; bottom: -30px; right: -30px; background: var(--color-gold); padding: 40px; border-radius: var(--radius-md); box-shadow: var(--shadow-gold);">
+          <div class="rjc-badge"
+            style="position: absolute; bottom: -30px; right: -30px; background: var(--color-gold); padding: 40px; border-radius: var(--radius-md); box-shadow: var(--shadow-gold);">
             <p style="color: #000; font-weight: 700; font-size: 1.2rem;">RJC Certified</p>
-            <p style="color: #000; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">Code of Practices</p>
+            <p style="color: #000; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">Code of
+              Practices</p>
           </div>
         </div>
       </div>
@@ -533,7 +1110,8 @@
       <div class="section-header">
         <p class="subtext">A Global Tapestry</p>
         <h2 class="heading-lg">Inspiration <em>Geography</em></h2>
-        <p style="margin-top: 15px; color: #666;">While our roots are in Paris, our designs are informed by the world's diverse artistic heritage.</p>
+        <p style="margin-top: 15px; color: #666;">While our roots are in Paris, our designs are informed by the world's
+          diverse artistic heritage.</p>
       </div>
       <div class="map-container">
         <!-- Pins placed roughly on a visual map grid -->
@@ -554,7 +1132,8 @@
       <div class="section-header" style="margin-bottom: 40px;">
         <p class="subtext">Tanishq in the Spotlight</p>
       </div>
-      <div class="press-logos" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; font-family: var(--font-heading); font-weight: 700; letter-spacing: 0.2em; color: var(--color-black);">
+      <div class="press-logos"
+        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; font-family: var(--font-heading); font-weight: 700; letter-spacing: 0.2em; color: var(--color-black);">
         <span style="font-size: 1.5rem;">VOGUE</span>
         <span style="font-size: 1.5rem;">BAZAAR</span>
         <span style="font-size: 1.5rem;">ELLE</span>
@@ -570,14 +1149,20 @@
     <div class="container">
       <div class="grid-2">
         <div class="reveal">
-          <img src="https://images.unsplash.com/photo-1597177586824-33bda0c29325?w=600&auto=format&fit=crop&q=60" alt="Philanthropy" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft);" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1597177586824-33bda0c29325?w=600&auto=format&fit=crop&q=60"
+            alt="Philanthropy" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft);"
+            loading="lazy">
 
         </div>
         <div class="reveal reveal-delay-1">
           <p class="subtext">Giving Back</p>
           <h2 class="heading-lg">The <em>Tanishq</em> Foundation</h2>
-          <p class="lead" style="margin-top: 20px;">We believe that beauty should empower those who create it. Through the Tanishq Foundation, we provide healthcare and education to mining communities in Botswana and Sri Lanka.</p>
-          <p style="margin-top: 20px; color: #555; line-height: 1.8;">Since 2010, we have funded the construction of 14 primary schools and provided clean water access to over 50,000 people. Our commitment to the Tanishq brand legacy is equaled only by our commitment to the people who build it.</p>
+          <p class="lead" style="margin-top: 20px;">We believe that beauty should empower those who create it. Through
+            the Tanishq Foundation, we provide healthcare and education to mining communities in Botswana and Sri Lanka.
+          </p>
+          <p style="margin-top: 20px; color: #555; line-height: 1.8;">Since 2010, we have funded the construction of 14
+            primary schools and provided clean water access to over 50,000 people. Our commitment to the Tanishq brand
+            legacy is equaled only by our commitment to the people who build it.</p>
           <div style="margin-top: 30px;">
             <a href="#" class="btn btn-outline">Read Impact Report</a>
           </div>
@@ -592,11 +1177,20 @@
     <div class="container" style="text-align: center;">
       <div class="reveal">
         <h3 class="heading-md" style="margin-bottom: 40px;">Certified <em>Excellence</em></h3>
-        <div style="display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; opacity: 0.6;">
-          <div style="text-align: center;"><i class="fa-solid fa-certificate" style="font-size: 2rem; color: var(--color-gold); display: block; margin-bottom: 5px;"></i><span style="font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 600;">GIA GRADED</span></div>
-          <div style="text-align: center;"><i class="fa-solid fa-shield-heart" style="font-size: 2rem; color: var(--color-gold); display: block; margin-bottom: 5px;"></i><span style="font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 600;">RJC MEMBER</span></div>
-          <div style="text-align: center;"><i class="fa-solid fa-award" style="font-size: 2rem; color: var(--color-gold); display: block; margin-bottom: 5px;"></i><span style="font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 600;">ISO 9001</span></div>
-          <div style="text-align: center;"><i class="fa-solid fa-leaf" style="font-size: 2rem; color: var(--color-gold); display: block; margin-bottom: 5px;"></i><span style="font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 600;">ECO-CERTIFIED</span></div>
+        <div
+          style="display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; opacity: 0.6;">
+          <div style="text-align: center;"><i class="fa-solid fa-certificate"
+              style="font-size: 2rem; color: var(--color-gold); display: block; margin-bottom: 5px;"></i><span
+              style="font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 600;">GIA GRADED</span></div>
+          <div style="text-align: center;"><i class="fa-solid fa-shield-heart"
+              style="font-size: 2rem; color: var(--color-gold); display: block; margin-bottom: 5px;"></i><span
+              style="font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 600;">RJC MEMBER</span></div>
+          <div style="text-align: center;"><i class="fa-solid fa-award"
+              style="font-size: 2rem; color: var(--color-gold); display: block; margin-bottom: 5px;"></i><span
+              style="font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 600;">ISO 9001</span></div>
+          <div style="text-align: center;"><i class="fa-solid fa-leaf"
+              style="font-size: 2rem; color: var(--color-gold); display: block; margin-bottom: 5px;"></i><span
+              style="font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 600;">ECO-CERTIFIED</span></div>
         </div>
       </div>
     </div>
@@ -608,11 +1202,15 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <span class="nav-logo-name">Tanishq</span>
-          <p>Crafting timeless treasures for life's most precious moments. A legacy built on light, love, and loyalty.</p>
+          <p>Crafting timeless treasures for life's most precious moments. A legacy built on light, love, and loyalty.
+          </p>
           <div class="footer-socials">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.pinterest.com/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-pinterest"></i></a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="footer-social-link"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.pinterest.com/" target="_blank" rel="noopener" class="footer-social-link"><i
+                class="fa-brands fa-pinterest"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="footer-social-link"><i
+                class="fa-brands fa-facebook-f"></i></a>
           </div>
 
         </div>
@@ -652,5 +1250,5 @@
 
   <script src="script.js"></script>
 </body>
-</html>
 
+</html>

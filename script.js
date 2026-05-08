@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     toast.textContent = message;
     setTimeout(() => { toast.style.opacity = '1'; toast.style.transform = 'translateY(0)'; }, 10);
-    setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateY(12px)'; }, 3200);
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateY(12px)'; }, 2000); // Accelerated hide
   };
 
   /* ── Lazy-load images ─────────────────────────────────── */
