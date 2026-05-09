@@ -1,0 +1,499 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta name="description" content="Client Dashboard - Tanishq Fine Jewelry" />
+ <title>Client Dashboard | Tanishq Fine Jewelry</title>
+ <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+   <style>
+  /* Dashboard Specific Styles */
+  body { background: #fafafa; overflow-x: hidden; width: 100%; }
+
+  /* ===== LAYOUT ===== */
+  .dashboard-wrapper {
+    padding: 120px 30px 80px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .dashboard-sidebar {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: var(--radius-md);
+    padding: 35px 25px;
+    height: max-content;
+    position: sticky;
+    top: 100px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .client-profile {
+    text-align: center;
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .client-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--color-black);
+    color: var(--color-gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem;
+    font-family: var(--font-heading);
+    margin: 0 auto 12px;
+  }
+
+  .client-name { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; }
+  .client-status { font-size: 0.72rem; color: #888; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+
+  .sidebar-menu { list-style: none; padding: 0; margin: 0; }
+  .sidebar-menu li { margin-bottom: 6px; }
+  .sidebar-menu a {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 15px;
+    color: #666; border-radius: var(--radius-sm);
+    transition: all 0.3s; font-weight: 500; font-size: 0.9rem;
+  }
+  .signout-btn { color: #a00 !important; border-color: rgba(170, 0, 0, 0.2) !important; }
+  .signout-btn:hover { background: rgba(170, 0, 0, 0.05) !important; }
+  .sidebar-menu a:hover, .sidebar-menu a.active {
+    background: rgba(212,175,55,0.08); color: var(--color-gold);
+  }
+  .sidebar-menu i { width: 20px; text-align: center; font-size: 1rem; }
+
+  /* ===== MAIN CONTENT ===== */
+  .dashboard-main { display: flex; flex-direction: column; gap: 30px; min-width: 0; }
+  .dashboard-header h1 { font-family: var(--font-heading); font-size: 2.2rem; color: var(--color-black); }
+  .dashboard-header p { color: #666; margin-top: 5px; line-height: 1.5; }
+
+  /* ===== STATS ===== */
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .stat-card {
+    background: #fff; padding: 20px;
+    border-radius: var(--radius-md); border: 1px solid #eee;
+    display: flex; align-items: center; gap: 15px;
+    box-shadow: var(--shadow-soft); min-width: 0;
+  }
+  .stat-icon {
+    width: 46px; height: 46px; border-radius: 10px;
+    background: var(--color-gold-dim); color: var(--color-gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .stat-info h3 { font-family: var(--font-heading); font-size: 1.7rem; line-height: 1; }
+  .stat-info p { font-size: 0.72rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+
+  /* ===== SECTIONS ===== */
+  .dashboard-section {
+    background: #fff; padding: 30px;
+    border-radius: var(--radius-md); border: 1px solid #eee;
+    box-shadow: var(--shadow-soft); min-width: 0;
+  }
+  .section-title {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 25px; font-family: var(--font-heading); font-size: 1.3rem;
+    gap: 10px; flex-wrap: wrap;
+  }
+  .section-title a { font-size: 0.82rem; color: var(--color-gold); font-family: var(--font-body); font-weight: 500; }
+
+  /* ===== TABLE ===== */
+  .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .orders-table { width: 100%; border-collapse: collapse; min-width: 540px; }
+  .orders-table th {
+    text-align: left; padding: 11px 10px;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: #888; border-bottom: 1px solid #eee; white-space: nowrap;
+  }
+  .orders-table td { padding: 14px 10px; border-bottom: 1px solid #fafafa; font-size: 0.88rem; }
+  .order-item { display: flex; align-items: center; gap: 12px; }
+  .order-item img { width: 54px; height: 54px; border-radius: var(--radius-sm); object-fit: cover; flex-shrink: 0; }
+  .order-item-info h4 { font-family: var(--font-heading); font-size: 0.92rem; margin-bottom: 3px; }
+  .order-item-info span { font-size: 0.7rem; color: #888; }
+
+  .status { padding: 4px 10px; border-radius: 50px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; white-space: nowrap; }
+  .status.processing { background: #fff4e5; color: #b7791f; }
+  .status.shipped    { background: #ebf8ff; color: #2b6cb0; }
+  .status.delivered  { background: #f0fff4; color: #2f855a; }
+
+  .action-btn {
+    padding: 7px 13px; border: 1px solid #eee; background: #fff;
+    border-radius: var(--radius-sm); font-size: 0.7rem; cursor: pointer;
+    transition: all 0.3s; white-space: nowrap;
+  }
+  .action-btn:hover { border-color: var(--color-gold); color: var(--color-gold); }
+
+  /* ===== VIEWS ===== */
+  .dash-view { display: none; animation: fadeIn 0.4s ease forwards; }
+  .dash-view.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+  /* ===== FORM ===== */
+  .settings-form label { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 7px; color: #333; }
+  .settings-form input, .settings-form textarea, .settings-form select {
+    width: 100%; padding: 11px; border: 1px solid #ddd;
+    border-radius: var(--radius-sm); margin-bottom: 22px;
+    font-family: var(--font-body); font-size: 0.92rem; box-sizing: border-box;
+  }
+
+  /* ===== RESPONSIVE ===== */
+
+  /* Tablet (<=1024px): Sidebar becomes horizontal scroll tabs */
+  @media (max-width: 1024px) {
+    .dashboard-wrapper {
+      display: flex; flex-direction: column;
+      padding: 100px 20px 60px;
+      gap: 0; max-width: 100%; box-sizing: border-box;
+    }
+    .dashboard-sidebar {
+      position: relative; top: 0;
+      padding: 15px 0; box-shadow: none;
+      border: none; border-bottom: 1px solid #eee;
+      background: transparent; border-radius: 0;
+      margin-bottom: 25px; width: 100%;
+    }
+    .client-profile {
+      display: flex; flex-direction: row; align-items: center;
+      text-align: left; gap: 14px;
+      margin-bottom: 14px; padding-bottom: 14px;
+    }
+    .client-avatar { width: 54px; height: 54px; font-size: 1.3rem; margin: 0; }
+    .sidebar-menu {
+      display: flex; overflow-x: auto; gap: 8px;
+      padding-bottom: 6px; scrollbar-width: none;
+    }
+    .sidebar-menu::-webkit-scrollbar { display: none; }
+    .sidebar-menu li { margin-bottom: 0; flex-shrink: 0; }
+    .sidebar-menu a {
+      padding: 8px 16px; white-space: nowrap;
+      background: #fff; border: 1px solid #eee;
+      border-radius: 50px; font-size: 0.82rem; gap: 7px;
+    }
+    .sidebar-menu a i { font-size: 0.85rem; }
+    .stats-grid { grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .dashboard-main { gap: 20px; }
+  }
+
+  /* Mobile (<=768px) */
+  @media (max-width: 768px) {
+    .dashboard-wrapper { padding: 88px 15px 50px; }
+    .dashboard-header h1 { font-size: 1.6rem; }
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat-card { padding: 14px 12px; gap: 12px; }
+    .stat-icon { width: 40px; height: 40px; font-size: 0.95rem; }
+    .stat-info h3 { font-size: 1.35rem; }
+    .dashboard-section { padding: 20px 15px; }
+    .section-title { font-size: 1.15rem; }
+  }
+
+  /* Small Mobile (<=480px) */
+  @media (max-width: 480px) {
+    .dashboard-wrapper { padding: 82px 12px 40px; }
+    .stats-grid { grid-template-columns: 1fr; gap: 10px; }
+    .stat-card { padding: 13px; }
+    .dashboard-header h1 { font-size: 1.4rem; }
+    .dashboard-header p { font-size: 0.88rem; }
+    .dashboard-section { padding: 16px 12px; }
+    .section-title { font-size: 1.1rem; }
+    .orders-table th, .orders-table td { padding: 9px 7px; }
+    .order-item img { width: 42px; height: 42px; }
+    .sidebar-menu a { padding: 7px 13px; font-size: 0.78rem; }
+    .dashboard-main { gap: 15px; }
+  }
+  </style>
+</head>
+
+<body>
+
+ <!-- NAVBAR (Sticky) -->
+ <nav class="navbar" id="navbar">
+ <div class="container">
+ <a href="index.html" class="nav-logo">
+ <span class="nav-logo-name">Tanishq</span>
+ <span class="nav-logo-tagline">Fine Jewelry</span>
+ </a>
+ <ul class="nav-links">
+ <li><a href="index.html">Home</a></li>
+ <li><a href="about.html">About</a></li>
+ <li><a href="products.html">Collections</a></li>
+ <li><a href="catalog.html">Catalog</a></li>
+ <li><a href="gallery.html">Gallery</a></li>
+ <li><a href="pricing.html">Pricing</a></li>
+ <li><a href="contact.html">Contact</a></li>
+ <li class="nav-dropdown" style="margin-left: 10px;">
+ <a href="javascript:void(0)" id="profileDropdownBtn"><i class="fa-regular fa-user"></i></a>
+ <div class="dropdown-menu" id="profileDropdown">
+ <a href="login.html">Log In</a>
+ <a href="signup.html">Sign Up</a>
+ <a href="dashboard.html">Dashboard</a>
+ </div>
+ </li>
+ </ul>
+ <div class="nav-actions">
+ <a href="tryon.html" class="btn btn-primary"
+ style="padding: 8px 18px; font-size: 0.75rem; background: var(--color-gold); color: #000; margin-right: 10px;"><i
+ class="fa-solid fa-camera"></i> Virtual Try-On</a>
+ <a href="contact.html" class="btn btn-outline nav-cta" style="border-width: 1px; padding: 8px 18px;">Book
+ Appointment</a>
+ <a href="javascript:void(0)" class="nav-mobile-profile"><i class="fa-regular fa-user"></i></a><button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+ </div>
+ </div>
+ </nav>
+
+     <div class="nav-mobile" id="navMobile">
+ <button class="nav-mobile-close" id="navClose" aria-label="Close menu">&times;</button>
+ <a href="index.html">Home</a>
+ <a href="about.html">About</a>
+ <a href="products.html">Collections</a>
+ <a href="catalog.html">Catalog</a>
+ <a href="gallery.html">Gallery</a>
+ <a href="pricing.html">Pricing</a>
+ <a href="contact.html">Contact</a>
+ <hr style="width: 40px; border: 0; border-top: 1px solid rgba(212,175,55,0.3); margin: 5px 0;">
+ <a href="tryon.html" style="color: var(--color-gold);"><i class="fa-solid fa-camera"></i> Virtual Try-On</a>
+ <a href="contact.html">Book Appointment</a>
+ </div>
+
+ <!-- DASHBOARD -->
+ <div class="dashboard-wrapper">
+ 
+ <!-- Sidebar -->
+ <aside class="dashboard-sidebar">
+ <div class="client-profile">
+ <div class="client-avatar" id="dashProfileAvatar">E</div>
+ <div>
+ <div class="client-name" id="dashProfileName">Eleanor Vance</div>
+ <div class="client-status">Diamond Member</div>
+ </div>
+ </div>
+ <ul class="sidebar-menu">
+ <li><a href="javascript:void(0)" onclick="switchView('view-dashboard', this)" class="active"><i class="fa-solid fa-border-all"></i> Dashboard</a></li>
+ <li><a href="javascript:void(0)" onclick="switchView('view-orders', this)"><i class="fa-solid fa-box-open"></i> Order History</a></li>
+ <li><a href="javascript:void(0)" onclick="switchView('view-wishlist', this)"><i class="fa-regular fa-heart"></i> My Wishlist</a></li>
+ <li><a href="javascript:void(0)" onclick="switchView('view-appointments', this)"><i class="fa-solid fa-calendar-check"></i> Appointments</a></li>
+ <li><a href="javascript:void(0)" onclick="switchView('view-bespoke', this)"><i class="fa-solid fa-gem"></i> Bespoke Commissions</a></li>
+ <li><a href="javascript:void(0)" onclick="switchView('view-settings', this)"><i class="fa-solid fa-sliders"></i> Account Settings</a></li>
+ <li><a href="#" id="dashSignOut" class="signout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a></li>
+ </ul>
+ </aside>
+
+ <!-- Main Content -->
+ <main class="dashboard-main" id="dashboardMain">
+ 
+ <!-- DASHBOARD VIEW -->
+ <div id="view-dashboard" class="dash-view active">
+ <div class="dashboard-header">
+ <h1 id="dashWelcome">Welcome Back, Eleanor.</h1>
+ <p>Here is an overview of your exclusive acquisitions and bespoke journey.</p>
+ </div>
+
+ <div class="stats-grid">
+ <div class="stat-card">
+ <div class="stat-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+ <div class="stat-info">
+ <h3 id="dashOrderCount">0</h3>
+ <p>Total Orders</p>
+ </div>
+ </div>
+ <div class="stat-card">
+ <div class="stat-icon"><i class="fa-solid fa-calendar-day"></i></div>
+ <div class="stat-info">
+ <h3 id="dashApptCount">0</h3>
+ <p>Upcoming Appt.</p>
+ </div>
+ </div>
+ <div class="stat-card">
+ <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+ <div class="stat-info">
+ <h3 id="dashRewardPoints">500</h3>
+ <p>Reward Points</p>
+ </div>
+ </div>
+ </div>
+
+ <section class="dashboard-section" style="margin-top: 40px;">
+ <div class="section-title">
+ <span>Recent Acquisitions</span>
+ <a href="javascript:void(0)" onclick="switchView('view-orders')">View All Orders &rarr;</a>
+ </div>
+ <div class="table-responsive"><table class="orders-table">
+ <thead><tr><th>Masterpiece</th><th>Order ID</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+ <tbody id="ordersTbody"></tbody>
+ </table></div>
+ </section>
+ </div>
+
+ <!-- ORDERS VIEW -->
+ <div id="view-orders" class="dash-view">
+ <div class="dashboard-header">
+ <h1>Order History</h1>
+ <p>Review your past acquisitions and track current bespoke orders.</p>
+ </div>
+ <section class="dashboard-section" style="margin-top: 40px;">
+ <div class="table-responsive"><table class="orders-table">
+ <thead><tr><th>Masterpiece</th><th>Order ID</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+ <tbody id="fullOrdersTbody"></tbody>
+ </table></div>
+ </section>
+ </div>
+
+ <!-- WISHLIST VIEW -->
+ <div id="view-wishlist" class="dash-view">
+ <div class="dashboard-header">
+ <h1>My Wishlist</h1>
+ <p>Your curated selection of Tanishq masterpieces.</p>
+ </div>
+ <section class="dashboard-section" style="margin-top: 40px;">
+ <div id="wishlistContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;"></div>
+ </section>
+ </div>
+
+ <!-- APPOINTMENTS VIEW -->
+ <div id="view-appointments" class="dash-view">
+ <div class="dashboard-header">
+ <h1>Appointments</h1>
+ <p>Schedule a private viewing at our boutiques.</p>
+ </div>
+ <section class="dashboard-section" style="margin-top: 40px;">
+ <form class="settings-form" id="appointmentForm" style="max-width: 500px;">
+ <label>Preferred Date</label>
+ <input type="date" id="apptDate" required>
+ <label>Boutique Location</label>
+ <select id="apptLocation" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px;" required>
+ <option value="">Select a location</option>
+ <option value="ny">New York - Fifth Avenue</option>
+ <option value="paris">Paris - Place Vend me</option>
+ <option value="london">London - Bond Street</option>
+ </select>
+ <button class="action-btn" style="background: var(--color-black); color: #fff; width: 100%; border: none; padding: 15px; font-family: var(--font-heading); cursor: pointer;">Book Appointment</button>
+ </form>
+ <div id="apptSuccess" style="display: none; padding: 20px; background: rgba(212,175,55,0.1); border-left: 3px solid var(--color-gold); margin-top: 20px; font-weight: bold;">
+ Your private viewing has been scheduled. We will contact you shortly.
+ </div>
+ </section>
+ </div>
+
+ <!-- BESPOKE VIEW -->
+ <div id="view-bespoke" class="dash-view">
+ <div class="dashboard-header">
+ <h1>Bespoke Commissions</h1>
+ <p>Start the journey of creating your custom masterpiece.</p>
+ </div>
+ <section class="dashboard-section" style="margin-top: 40px;">
+ <form class="settings-form" id="bespokeForm" style="max-width: 500px;">
+ <label>Design Concept</label>
+ <textarea id="bespokeDetails" rows="4" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-family: var(--font-body);" placeholder="Describe your vision..." required></textarea>
+ <label>Budget Range</label>
+ <select id="bespokeBudget" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px;" required>
+ <option value="">Select a range</option>
+ <option value="10k">,000 - ,000</option>
+ <option value="25k">,000 - ,000</option>
+ <option value="50k">,000+</option>
+ </select>
+ <button class="action-btn" style="background: var(--color-gold); color: #000; width: 100%; border: none; padding: 15px; font-family: var(--font-heading); cursor: pointer;">Submit Request</button>
+ </form>
+ <div id="bespokeSuccess" style="display: none; padding: 20px; background: rgba(212,175,55,0.1); border-left: 3px solid var(--color-gold); margin-top: 20px; font-weight: bold;">
+ Request submitted. Our master artisans will review your vision.
+ </div>
+ </section>
+ </div>
+
+ <!-- SETTINGS VIEW -->
+ <div id="view-settings" class="dash-view">
+ <div class="dashboard-header">
+ <h1>Account Settings</h1>
+ <p>Manage your profile and security preferences.</p>
+ </div>
+ <section class="dashboard-section" style="margin-top: 40px;">
+ <form class="settings-form" id="settingsForm" style="max-width: 500px;">
+ <label>First Name</label>
+ <input type="text" id="setFname">
+ <label>Last Name</label>
+ <input type="text" id="setLname">
+ <label>Email</label>
+ <input type="email" id="setEmail" disabled style="background: #eee; cursor: not-allowed;">
+ <button class="action-btn" style="background: var(--color-black); color: #fff; width: 100%; border: none; padding: 15px; margin-top: 10px; font-family: var(--font-heading); font-size: 1.1rem; cursor: pointer;">Save Changes</button>
+ </form>
+ </section>
+ </div>
+
+ </main>
+ </div>
+
+ <!-- FOOTER -->
+ <footer class="footer">
+ <div class="container">
+ <div class="footer-grid">
+ <div class="footer-brand">
+ <span class="nav-logo-name">Tanishq</span>
+ <p>Global flagship ateliers in Paris, Milan, and Mumbai. Authorized retailer for the world's finest diamonds.</p>
+ <div class="footer-socials">
+ <a href="https://www.instagram.com/tanishqjewellery/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-instagram"></i></a>
+ <a href="https://www.pinterest.com/tanishqjewellery/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-pinterest"></i></a>
+ <a href="https://www.linkedin.com/company/tanishq/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+ <a href="https://www.facebook.com/Tanishq/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+ </div>
+
+ </div>
+ <div>
+ <h4 class="footer-heading">Explore</h4>
+ <ul class="footer-links">
+ <li><a href="index.html">Home</a></li>
+ <li><a href="about.html">About Us</a></li>
+ <li><a href="products.html">Collections</a></li>
+ <li><a href="catalog.html">Digital Catalog</a></li>
+ <li><a href="gallery.html">House Gallery</a></li>
+ <li><a href="pricing.html">Market Insights</a></li>
+ <li><a href="contact.html">Contact Concierge</a></li>
+ </ul>
+ </div>
+ <div>
+ <h4 class="footer-heading">Boutiques</h4>
+ <ul class="footer-links">
+ <li><a href="#">Paris Saint-Honor </a></li>
+ <li><a href="#">Milan Montenapoleone</a></li>
+ <li><a href="#">Mumbai Taj Palace</a></li>
+ <li><a href="#">Virtual Showroom</a></li>
+ </ul>
+ </div>
+
+ <div class="footer-newsletter">
+ <h4 class="footer-heading">Stay Connected</h4>
+ <p>Receive exclusive invitations to atelier events.</p>
+ <form class="footer-newsletter-form">
+ <input type="email" placeholder="Email Address">
+ <button type="submit">Join</button>
+ </form>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <span> 2026 Tanishq Fine Jewelry. Global Ateliers.</span>
+ <div class="footer-bottom-links">
+ <a href="#">Privacy</a>
+ <a href="#">Terms</a>
+ </div>
+ </div>
+ </div>
+ </footer>
+
+ <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

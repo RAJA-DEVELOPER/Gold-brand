@@ -1,234 +1,235 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Polishing the Brilliance | Tanishq Fine Jewelry</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    body {
-      background: var(--color-black);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding: 20px;
-      overflow-x: hidden;
-    }
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Polishing the Brilliance | Tanishq Fine Jewelry</title>
+ <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ <style>
+ body {
+ background: var(--color-black);
+ color: #fff;
+ min-height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin: 0;
+ padding: 20px;
+ overflow-x: hidden;
+ }
 
-    .maintenance-bg {
-      position: fixed;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070') center/cover;
-      opacity: 0.3;
-      filter: grayscale(100%) brightness(0.5);
-      z-index: -1;
-    }
+ .maintenance-bg {
+ position: fixed;
+ inset: 0;
+ background: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070') center/cover;
+ opacity: 0.3;
+ filter: grayscale(100%) brightness(0.5);
+ z-index: -1;
+ }
 
-    .maintenance-container {
-      text-align: center;
-      width: 100%;
-      max-width: 800px;
-      padding: 60px 40px;
-      background: rgba(15, 15, 15, 0.85);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      border-radius: var(--radius-lg);
-      box-shadow: 0 30px 100px rgba(0,0,0,0.8);
-      position: relative;
-    }
+ .maintenance-container {
+ text-align: center;
+ width: 100%;
+ max-width: 800px;
+ padding: 60px 40px;
+ background: rgba(15, 15, 15, 0.85);
+ backdrop-filter: blur(25px);
+ border: 1px solid rgba(212, 175, 55, 0.2);
+ border-radius: var(--radius-lg);
+ box-shadow: 0 30px 100px rgba(0,0,0,0.8);
+ position: relative;
+ }
 
-    .vector-icon {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 40px;
-      color: var(--color-gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+ .vector-icon {
+ width: 100px;
+ height: 100px;
+ margin: 0 auto 40px;
+ color: var(--color-gold);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ }
 
-    .maintenance-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      margin-bottom: 20px;
-      line-height: 1.2;
-    }
+ .maintenance-title {
+ font-family: var(--font-heading);
+ font-size: clamp(2rem, 8vw, 3.5rem);
+ margin-bottom: 20px;
+ line-height: 1.2;
+ }
 
-    .maintenance-text {
-      color: rgba(255, 255, 255, 0.6);
-      margin: 0 auto 50px;
-      font-size: clamp(0.9rem, 4vw, 1.1rem);
-      line-height: 1.8;
-      max-width: 600px;
-    }
+ .maintenance-text {
+ color: rgba(255, 255, 255, 0.6);
+ margin: 0 auto 50px;
+ font-size: clamp(0.9rem, 4vw, 1.1rem);
+ line-height: 1.8;
+ max-width: 600px;
+ }
 
-    /* Countdown Styles */
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: clamp(20px, 5vw, 40px);
-      margin-bottom: 60px;
-      flex-wrap: wrap;
-    }
+ /* Countdown Styles */
+ .countdown {
+ display: flex;
+ justify-content: center;
+ gap: clamp(20px, 5vw, 40px);
+ margin-bottom: 60px;
+ flex-wrap: wrap;
+ }
 
-    .timer-item {
-      text-align: center;
-      min-width: 80px;
-    }
+ .timer-item {
+ text-align: center;
+ min-width: 80px;
+ }
 
-    .timer-val {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 6vw, 3rem);
-      color: var(--color-gold);
-      line-height: 1;
-    }
+ .timer-val {
+ display: block;
+ font-family: var(--font-heading);
+ font-size: clamp(2rem, 6vw, 3rem);
+ color: var(--color-gold);
+ line-height: 1;
+ }
 
-    .timer-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: rgba(255, 255, 255, 0.4);
-      margin-top: 10px;
-      display: block;
-    }
+ .timer-label {
+ font-size: 0.65rem;
+ text-transform: uppercase;
+ letter-spacing: 0.2em;
+ color: rgba(255, 255, 255, 0.4);
+ margin-top: 10px;
+ display: block;
+ }
 
-    .newsletter-small {
-      max-width: 450px;
-      margin: 0 auto;
-    }
+ .newsletter-small {
+ max-width: 450px;
+ margin: 0 auto;
+ }
 
-    .newsletter-small p {
-      font-size: 0.85rem;
-      margin-bottom: 25px;
-      color: var(--color-gold);
-    }
+ .newsletter-small p {
+ font-size: 0.85rem;
+ margin-bottom: 25px;
+ color: var(--color-gold);
+ }
 
-    /* Ensure form button and input are aligned */
-    .footer-newsletter-form {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-    }
+ /* Ensure form button and input are aligned */
+ .footer-newsletter-form {
+ display: flex;
+ gap: 10px;
+ justify-content: center;
+ }
 
-    .maintenance-footer {
-      margin-top: 60px;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
+ .maintenance-footer {
+ margin-top: 60px;
+ padding-top: 30px;
+ border-top: 1px solid rgba(255, 255, 255, 0.1);
+ display: flex;
+ justify-content: center;
+ gap: 30px;
+ }
 
-    .maintenance-footer a {
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 1.2rem;
-      transition: all 0.3s;
-    }
+ .maintenance-footer a {
+ color: rgba(255, 255, 255, 0.4);
+ font-size: 1.2rem;
+ transition: all 0.3s;
+ }
 
-    .maintenance-footer a:hover {
-      color: var(--color-gold);
-      transform: translateY(-3px);
-    }
+ .maintenance-footer a:hover {
+ color: var(--color-gold);
+ transform: translateY(-3px);
+ }
 
-    /* --- Ultimate Responsive Pass for Maintenance --- */
-    @media (max-width: 768px) {
-      .maintenance-container { padding: 40px 20px !important; }
-      .countdown { gap: 20px !important; }
-      .timer-item { min-width: 60px !important; }
-    }
+ /* --- Ultimate Responsive Pass for Maintenance --- */
+ @media (max-width: 768px) {
+ .maintenance-container { padding: 40px 20px !important; }
+ .countdown { gap: 20px !important; }
+ .timer-item { min-width: 60px !important; }
+ }
 
-    @media (max-width: 480px) {
-      .footer-newsletter-form { flex-direction: column !important; width: 100% !important; gap: 10px !important; }
-      .footer-newsletter-form input { width: 100% !important; border-radius: var(--radius-sm) !important; height: 50px; }
-      .footer-newsletter-form button { width: 100% !important; height: 50px; border-radius: var(--radius-sm) !important; }
-      .maintenance-footer { flex-wrap: wrap !important; gap: 20px !important; }
-    }
+ @media (max-width: 480px) {
+ .footer-newsletter-form { flex-direction: column !important; width: 100% !important; gap: 10px !important; }
+ .footer-newsletter-form input { width: 100% !important; border-radius: var(--radius-sm) !important; height: 50px; }
+ .footer-newsletter-form button { width: 100% !important; height: 50px; border-radius: var(--radius-sm) !important; }
+ .maintenance-footer { flex-wrap: wrap !important; gap: 20px !important; }
+ }
 
-  </style>
+ </style>
 </head>
 <body>
 
-  <div class="maintenance-bg"></div>
+ <div class="maintenance-bg"></div>
 
-  <div class="maintenance-container reveal">
-    <div class="vector-icon">
-      <!-- High-end Jewelers Tool SVG -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
-    </div>
-    
-    <h1 class="maintenance-title">Polishing the <em>Brilliance</em></h1>
-    <p class="maintenance-text">Our digital atelier is currently undergoing a scheduled refinement. We are enhancing our craftsmanship to bring you a more radiant experience. We will return shortly.</p>
+ <div class="maintenance-container reveal">
+ <div class="vector-icon">
+ <!-- High-end Jewelers Tool SVG -->
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+ </svg>
+ </div>
+ 
+ <h1 class="maintenance-title">Polishing the Brilliance</h1>
+ <p class="maintenance-text">Our digital atelier is currently undergoing a scheduled refinement. We are enhancing our craftsmanship to bring you a more radiant experience. We will return shortly.</p>
 
-    <div class="countdown">
-      <div class="timer-item">
-        <span class="timer-val" id="days">00</span>
-        <span class="timer-label">Days</span>
-      </div>
-      <div class="timer-item">
-        <span class="timer-val" id="hours">00</span>
-        <span class="timer-label">Hours</span>
-      </div>
-      <div class="timer-item">
-        <span class="timer-val" id="minutes">00</span>
-        <span class="timer-label">Minutes</span>
-      </div>
-      <div class="timer-item">
-        <span class="timer-val" id="seconds">00</span>
-        <span class="timer-label">Seconds</span>
-      </div>
-    </div>
+ <div class="countdown">
+ <div class="timer-item">
+ <span class="timer-val" id="days">00</span>
+ <span class="timer-label">Days</span>
+ </div>
+ <div class="timer-item">
+ <span class="timer-val" id="hours">00</span>
+ <span class="timer-label">Hours</span>
+ </div>
+ <div class="timer-item">
+ <span class="timer-val" id="minutes">00</span>
+ <span class="timer-label">Minutes</span>
+ </div>
+ <div class="timer-item">
+ <span class="timer-val" id="seconds">00</span>
+ <span class="timer-label">Seconds</span>
+ </div>
+ </div>
 
-    <div class="newsletter-small">
-      <p>Want to be notified when we reopen?</p>
-      <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('We will notify you soon!')">
-        <input type="email" placeholder="Email Address" style="background: rgba(255,255,255,0.05);">
-        <button type="submit">Notify Me</button>
-      </form>
-    </div>
+ <div class="newsletter-small">
+ <p>Want to be notified when we reopen?</p>
+ <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('We will notify you soon!')">
+ <input type="email" placeholder="Email Address" style="background: rgba(255,255,255,0.05);">
+ <button type="submit">Notify Me</button>
+ </form>
+ </div>
 
-    <div class="maintenance-footer">
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-    </div>
-  </div>
+ <div class="maintenance-footer">
+ <a href="#"><i class="fa-brands fa-instagram"></i></a>
+ <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+ <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+ </div>
+ </div>
 
-  <script>
-    // Countdown Timer Logic
-    const targetDate = new Date();
-    targetDate.setHours(targetDate.getHours() + 18); // Set to 18 hours from now
+ <script>
+ // Countdown Timer Logic
+ const targetDate = new Date();
+ targetDate.setHours(targetDate.getHours() + 18); // Set to 18 hours from now
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
+ function updateCountdown() {
+ const now = new Date().getTime();
+ const distance = targetDate - now;
 
-      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((distance % (1000 * 60)) / 1000);
+ const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+ const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+ const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+ const s = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById('days').innerText = d.toString().padStart(2, '0');
-      document.getElementById('hours').innerText = h.toString().padStart(2, '0');
-      document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
-      document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+ document.getElementById('days').innerText = d.toString().padStart(2, '0');
+ document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+ document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+ document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
 
-      if (distance < 0) {
-        clearInterval(timerInterval);
-        document.querySelector('.countdown').innerHTML = "<h3>WE ARE BACK ONLINE</h3>";
-      }
-    }
+ if (distance < 0) {
+ clearInterval(timerInterval);
+ document.querySelector('.countdown').innerHTML = "<h3>WE ARE BACK ONLINE</h3>";
+ }
+ }
 
-    const timerInterval = setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
-  <script src="script.js"></script>
+ const timerInterval = setInterval(updateCountdown, 1000);
+ updateCountdown();
+ </script>
+ <script src="script.js"></script>
 </body>
 </html>
+
 

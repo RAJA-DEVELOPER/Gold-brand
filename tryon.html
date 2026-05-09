@@ -1,909 +1,935 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tanishq Virtual Try-On — Experience our fine jewelry collections in real-time. Upload your photo and position the jewelry to see the perfect fit." />
-  <title>Virtual Try-On | Tanishq Fine Jewelry</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    /* ─── Virtual Try-On Specific Luxury Styles ─── */
-    
-    .tryon-hero {
-      padding-top: calc(var(--nav-height) + 40px);
-      background: linear-gradient(to bottom, #0F0F0F, #1a1a1a);
-      color: #fff;
-      text-align: center;
-      padding-bottom: 60px;
-    }
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta name="description" content="Tanishq Virtual Try-On Experience our fine jewelry collections in real-time. Upload your photo and position the jewelry to see the perfect fit." />
+ <title>Virtual Try-On | Tanishq Fine Jewelry</title>
+ <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ <style>
+ /* Virtual Try-On Specific Luxury Styles */
+ 
+ .tryon-hero {
+ padding-top: calc(var(--nav-height) + 40px);
+ background: linear-gradient(to bottom, #0F0F0F, #1a1a1a);
+ color: #fff;
+ text-align: center;
+ padding-bottom: 60px;
+ }
 
-    .tryon-container {
-      display: grid;
-      grid-template-columns: 350px 1fr;
-      gap: 30px;
-      margin-top: 50px;
-      min-height: 700px;
-    }
+ .tryon-container {
+ display: grid;
+ grid-template-columns: 350px 1fr;
+ gap: 30px;
+ margin-top: 50px;
+ min-height: 700px;
+ }
 
-    /* 1. Sidebar Controls */
-    .tryon-sidebar {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(212, 175, 55, 0.1);
-      border-radius: var(--radius-md);
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
+ /* 1. Sidebar Controls */
+ .tryon-sidebar {
+ background: rgba(255, 255, 255, 0.03);
+ backdrop-filter: blur(10px);
+ border: 1px solid rgba(212, 175, 55, 0.1);
+ border-radius: var(--radius-md);
+ padding: 30px;
+ display: flex;
+ flex-direction: column;
+ gap: 30px;
+ }
 
-    .category-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      justify-content: center;
-    }
+ .category-tabs {
+ display: flex;
+ gap: 10px;
+ margin-bottom: 20px;
+ justify-content: center;
+ }
 
-    .tab-btn {
-      padding: 10px 15px;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: transparent;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      color: #fff;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: var(--radius-sm);
-    }
+ .tab-btn {
+ padding: 10px 15px;
+ font-size: 0.75rem;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ background: transparent;
+ border: 1px solid rgba(212, 175, 55, 0.2);
+ color: #fff;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ border-radius: var(--radius-sm);
+ }
 
-    .tab-btn.active {
-      background: var(--color-gold);
-      color: var(--color-black);
-      border-color: var(--color-gold);
-    }
+ .tab-btn.active {
+ background: var(--color-gold);
+ color: var(--color-black);
+ border-color: var(--color-gold);
+ }
 
-    .jewelry-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      max-height: 400px;
-      overflow-y: auto;
-      padding-right: 5px;
-    }
+ .jewelry-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 15px;
+ max-height: 400px;
+ overflow-y: auto;
+ padding-right: 5px;
+ }
 
-    .jewelry-grid::-webkit-scrollbar { width: 4px; }
-    .jewelry-grid::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 10px; }
+ .jewelry-grid::-webkit-scrollbar { width: 4px; }
+ .jewelry-grid::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 10px; }
 
-    .jewelry-item {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid transparent;
-      border-radius: var(--radius-sm);
-      padding: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: center;
-    }
+ .jewelry-item {
+ background: rgba(255, 255, 255, 0.05);
+ border: 1px solid transparent;
+ border-radius: var(--radius-sm);
+ padding: 10px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ text-align: center;
+ }
 
-    .jewelry-item:hover, .jewelry-item.selected {
-      border-color: var(--color-gold);
-      background: rgba(212, 175, 55, 0.05);
-    }
+ .jewelry-item:hover, .jewelry-item.selected {
+ border-color: var(--color-gold);
+ background: rgba(212, 175, 55, 0.05);
+ }
 
-    .jewelry-item img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-      margin-bottom: 10px;
-    }
+ .jewelry-item img {
+ width: 100%;
+ aspect-ratio: 1;
+ object-fit: cover;
+ border-radius: var(--radius-sm);
+ margin-bottom: 10px;
+ }
 
-    .jewelry-item span {
-      font-size: 0.7rem;
-      display: block;
-      color: rgba(255, 255, 255, 0.7);
-    }
+ .jewelry-item span {
+ font-size: 0.7rem;
+ display: block;
+ color: rgba(255, 255, 255, 0.7);
+ }
 
-    /* 2. Main Preview Area */
-    .tryon-main {
-      position: relative;
-      background: #000;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid rgba(212, 175, 55, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+ /* 2. Main Preview Area */
+ .tryon-main {
+ position: relative;
+ background: #000;
+ border-radius: var(--radius-md);
+ overflow: hidden;
+ border: 1px solid rgba(212, 175, 55, 0.1);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ }
 
-    .preview-canvas-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+ .preview-canvas-container {
+ position: relative;
+ width: 100%;
+ height: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ overflow: hidden;
+ }
 
-    .preview-image {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+ .preview-image {
+ max-width: 100%;
+ max-height: 100%;
+ object-fit: contain;
+ opacity: 0;
+ transition: opacity 0.5s ease;
+ }
 
-    .jewelry-overlay {
-      position: absolute;
-      pointer-events: auto;
-      z-index: 10;
-      cursor: move;
-      user-select: none;
-      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
-      border: 1px dashed transparent;
-      transition: border-color 0.3s;
-    }
+ .jewelry-overlay {
+ position: absolute;
+ pointer-events: auto;
+ z-index: 10;
+ cursor: move;
+ user-select: none;
+ filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+ border: 1px dashed transparent;
+ transition: border-color 0.3s;
+ }
 
-    .jewelry-overlay:hover {
-      border-color: var(--color-gold);
-    }
+ .jewelry-overlay:hover {
+ border-color: var(--color-gold);
+ }
 
-    /* AI UI Elements */
-    .ai-scanner {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 5;
-    }
+ /* AI UI Elements */
+ .ai-scanner {
+ position: absolute;
+ inset: 0;
+ pointer-events: none;
+ z-index: 5;
+ }
 
-    .scanner-line {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-      box-shadow: 0 0 20px var(--color-gold);
-      animation: scan 3s linear infinite;
-      opacity: 0;
-    }
+ .scanner-line {
+ position: absolute;
+ top: 0; left: 0;
+ width: 100%;
+ height: 2px;
+ background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+ box-shadow: 0 0 20px var(--color-gold);
+ animation: scan 3s linear infinite;
+ opacity: 0;
+ }
 
-    .ai-active .scanner-line { opacity: 1; }
+ .ai-active .scanner-line { opacity: 1; }
 
-    @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+ @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
 
-    .ai-points { position: absolute; inset: 0; pointer-events: none; }
+ .ai-points { position: absolute; inset: 0; pointer-events: none; }
 
-    .point {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: var(--color-gold);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--color-gold);
-      opacity: 0;
-    }
+ .point {
+ position: absolute;
+ width: 6px;
+ height: 6px;
+ background: var(--color-gold);
+ border-radius: 50%;
+ box-shadow: 0 0 10px var(--color-gold);
+ opacity: 0;
+ }
 
-    .ai-active .point { opacity: 0.8; animation: pulse-point 2s infinite; }
+ .ai-active .point { opacity: 0.8; animation: pulse-point 2s infinite; }
 
-    @keyframes pulse-point { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.5); opacity: 1; } }
+ @keyframes pulse-point { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.5); opacity: 1; } }
 
-    /* Controls Overlay */
-    .preview-controls {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 15px;
-      z-index: 20;
-    }
+ /* Controls Overlay */
+ .preview-controls {
+ position: absolute;
+ bottom: 30px;
+ left: 50%;
+ transform: translateX(-50%);
+ display: flex;
+ gap: 15px;
+ z-index: 20;
+ }
 
-    .control-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
+ .control-btn {
+ width: 50px;
+ height: 50px;
+ border-radius: 50%;
+ background: rgba(255, 255, 255, 0.1);
+ border: 1px solid rgba(255, 255, 255, 0.2);
+ color: #fff;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ backdrop-filter: blur(10px);
+ transition: all 0.3s ease;
+ }
 
-    .control-btn:hover { background: var(--color-gold); color: var(--color-black); border-color: var(--color-gold); }
+ .control-btn:hover { background: var(--color-gold); color: var(--color-black); border-color: var(--color-gold); }
 
-    .size-control {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.8);
-      padding: 15px;
-      border-radius: var(--radius-sm);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      z-index: 25;
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      color: #fff;
-    }
+ .size-control {
+ position: absolute;
+ top: 20px;
+ right: 20px;
+ background: rgba(0,0,0,0.8);
+ padding: 15px;
+ border-radius: var(--radius-sm);
+ backdrop-filter: blur(10px);
+ border: 1px solid rgba(212, 175, 55, 0.2);
+ z-index: 25;
+ display: none;
+ flex-direction: column;
+ gap: 10px;
+ color: #fff;
+ }
 
-    .size-control label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-gold); }
-    .size-control input { width: 120px; accent-color: var(--color-gold); }
+ .size-control label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-gold); }
+ .size-control input { width: 120px; accent-color: var(--color-gold); }
 
-    .upload-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 30;
-      transition: opacity 0.5s ease;
-    }
+ .upload-overlay {
+ position: absolute;
+ inset: 0;
+ background: rgba(0,0,0,0.8);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ z-index: 30;
+ transition: opacity 0.5s ease;
+ }
 
-    .upload-box {
-      border: 2px dashed rgba(212, 175, 55, 0.3);
-      padding: 40px;
-      border-radius: var(--radius-md);
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+ .upload-box {
+ border: 2px dashed rgba(212, 175, 55, 0.3);
+ padding: 40px;
+ border-radius: var(--radius-md);
+ text-align: center;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ }
 
-    .upload-box:hover { border-color: var(--color-gold); background: rgba(212, 175, 55, 0.05); }
+ .upload-box:hover { border-color: var(--color-gold); background: rgba(212, 175, 55, 0.05); }
 
-    .upload-box i { font-size: 3rem; color: var(--color-gold); margin-bottom: 20px; }
+ .upload-box i { font-size: 3rem; color: var(--color-gold); margin-bottom: 20px; }
 
-    /* Comparison Section */
-    .comparison-section { padding: 100px 0; background: #fff; }
+ /* Comparison Section */
+ .comparison-section { padding: 100px 0; background: #fff; }
 
-    .comparison-container {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      height: 500px;
-      margin: 50px auto 0;
-      overflow: hidden;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-premium);
-    }
+ .comparison-container {
+ position: relative;
+ width: 100%;
+ max-width: 900px;
+ height: 500px;
+ margin: 50px auto 0;
+ overflow: hidden;
+ border-radius: var(--radius-md);
+ box-shadow: var(--shadow-premium);
+ }
 
-    .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+ .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
 
-    .img-after { width: 50%; z-index: 2; border-right: 2px solid var(--color-gold); }
+ .img-after { width: 50%; z-index: 2; border-right: 2px solid var(--color-gold); }
 
-    .comparison-slider {
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 50%;
-      width: 2px;
-      background: var(--color-gold);
-      z-index: 3;
-      transform: translateX(-50%);
-    }
+ .comparison-slider {
+ position: absolute;
+ top: 0; bottom: 0;
+ left: 50%;
+ width: 2px;
+ background: var(--color-gold);
+ z-index: 3;
+ transform: translateX(-50%);
+ }
 
-    .slider-handle {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 40px; height: 40px;
-      background: var(--color-gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-black);
-      cursor: ew-resize;
-    }
+ .slider-handle {
+ position: absolute;
+ top: 50%; left: 50%;
+ transform: translate(-50%, -50%);
+ width: 40px; height: 40px;
+ background: var(--color-gold);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: var(--color-black);
+ cursor: ew-resize;
+ }
 
-    .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+ .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
 
-    .exp-card { text-align: center; padding: 40px; background: var(--color-ivory); border-radius: var(--radius-md); transition: transform 0.3s ease; }
+ .exp-card { text-align: center; padding: 40px; background: var(--color-ivory); border-radius: var(--radius-md); transition: transform 0.3s ease; }
 
-    .exp-card:hover { transform: translateY(-10px); }
+ .exp-card:hover { transform: translateY(-10px); }
 
-    .exp-icon { font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px; }
+ .exp-icon { font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px; }
 
-    /* --- Ultimate Responsive Pass for Try-On --- */
-    @media (max-width: 1024px) {
-      .tryon-container { grid-template-columns: 1fr !important; gap: 30px !important; }
-      .tryon-sidebar { order: 2 !important; }
-      .tryon-main { order: 1 !important; height: 500px !important; width: 100% !important; }
-      .experience-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    }
+ /* --- Ultimate Responsive Pass for Try-On --- */
+ @media (max-width: 1024px) {
+ .tryon-container { grid-template-columns: 1fr !important; gap: 30px !important; }
+ .tryon-sidebar { order: 2 !important; }
+ .tryon-main { order: 1 !important; height: 500px !important; width: 100% !important; }
+ .experience-grid { grid-template-columns: repeat(2, 1fr) !important; }
+ }
 
-    @media (max-width: 768px) {
-      .tryon-hero { padding-top: 100px !important; padding-bottom: 40px !important; }
-      .tryon-main { height: 400px !important; }
-      .experience-grid { grid-template-columns: 1fr !important; }
-      .category-tabs { flex-wrap: wrap !important; gap: 5px !important; }
-      .tab-btn { padding: 8px 12px !important; font-size: 0.7rem !important; }
-      
-      .preview-controls { bottom: 20px !important; gap: 10px !important; }
-      .control-btn { width: 40px !important; height: 40px !important; font-size: 0.9rem !important; }
-      
-      .comparison-container { height: 350px !important; }
-    }
+ @media (max-width: 768px) {
+ .tryon-hero { padding-top: 100px !important; padding-bottom: 40px !important; }
+ .tryon-main { height: 400px !important; }
+ .experience-grid { grid-template-columns: 1fr !important; }
+ .category-tabs { flex-wrap: wrap !important; gap: 5px !important; }
+ .tab-btn { padding: 8px 12px !important; font-size: 0.7rem !important; }
+ 
+ .preview-controls { bottom: 20px !important; gap: 10px !important; }
+ .control-btn { width: 40px !important; height: 40px !important; font-size: 0.9rem !important; }
+ 
+ .comparison-container { height: 350px !important; }
+ }
 
-    @media (max-width: 480px) {
-      .tryon-main { height: 400px !important; }
-      .upload-overlay { padding-bottom: 50px !important; box-sizing: border-box; }
-      .upload-box { padding: 20px !important; }
-      .upload-box i { font-size: 2rem !important; }
-      .tryon-sidebar { padding: 20px !important; gap: 20px !important; }
-      .jewelry-grid { max-height: 280px !important; }
-      .control-btn { width: 36px !important; height: 36px !important; }
-      .preview-controls { gap: 8px !important; }
-      .size-control input { width: 90px !important; }
-    }
+ @media (max-width: 480px) {
+ .tryon-main { height: 400px !important; }
+ .upload-overlay { padding-bottom: 50px !important; box-sizing: border-box; }
+ .upload-box { padding: 20px !important; }
+ .upload-box i { font-size: 2rem !important; }
+ .tryon-sidebar { padding: 20px !important; gap: 20px !important; }
+ .jewelry-grid { max-height: 280px !important; }
+ .control-btn { width: 36px !important; height: 36px !important; }
+ .preview-controls { gap: 8px !important; }
+ .size-control input { width: 90px !important; }
+ }
 
-    @media (max-width: 375px) {
-      .tryon-hero { padding-top: 90px !important; }
-      .tryon-container { gap: 20px !important; }
-      .tryon-main { height: 380px !important; }
-      .tryon-sidebar { padding: 16px !important; }
-      .category-tabs { gap: 4px !important; }
-      .tab-btn { padding: 6px 10px !important; font-size: 0.65rem !important; }
-      .jewelry-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
-      .experience-grid { gap: 16px !important; }
-      .exp-card { padding: 24px !important; }
-      .comparison-container { height: 250px !important; }
-    }
-  </style>
+ @media (max-width: 375px) {
+ .tryon-hero { padding-top: 90px !important; }
+ .tryon-container { gap: 20px !important; }
+ .tryon-main { height: 380px !important; }
+ .tryon-sidebar { padding: 16px !important; }
+ .category-tabs { gap: 4px !important; }
+ .tab-btn { padding: 6px 10px !important; font-size: 0.65rem !important; }
+ .jewelry-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+ .experience-grid { gap: 16px !important; }
+ .exp-card { padding: 24px !important; }
+ .comparison-container { height: 250px !important; }
+ }
+ </style>
 </head>
 <body>
 
-  <nav class="navbar scrolled" id="navbar">
-    <div class="container">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-name">Tanishq</span>
-        <span class="nav-logo-tagline">Fine Jewelry</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="products.html">Collections</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="contact.html" class="btn btn-outline nav-cta" style="border-width: 1px; padding: 8px 18px;">Book Appointment</a>
-        <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-  </nav>
+ <!-- NAVBAR (Sticky) -->
+ <nav class="navbar" id="navbar">
+ <div class="container">
+ <a href="index.html" class="nav-logo">
+ <span class="nav-logo-name">Tanishq</span>
+ <span class="nav-logo-tagline">Fine Jewelry</span>
+ </a>
+ <ul class="nav-links">
+ <li><a href="index.html">Home</a></li>
+ <li><a href="about.html">About</a></li>
+ <li><a href="products.html">Collections</a></li>
+ <li><a href="catalog.html">Catalog</a></li>
+ <li><a href="gallery.html">Gallery</a></li>
+ <li><a href="pricing.html">Pricing</a></li>
+ <li><a href="contact.html">Contact</a></li>
+ <li class="nav-dropdown" style="margin-left: 10px;">
+ <a href="javascript:void(0)" id="profileDropdownBtn"><i class="fa-regular fa-user"></i></a>
+ <div class="dropdown-menu" id="profileDropdown">
+ <a href="login.html">Log In</a>
+ <a href="signup.html">Sign Up</a>
+ <a href="dashboard.html">Dashboard</a>
+ </div>
+ </li>
+ </ul>
+ <div class="nav-actions">
+ <a href="tryon.html" class="btn btn-primary"
+ style="padding: 8px 18px; font-size: 0.75rem; background: var(--color-gold); color: #000; margin-right: 10px;"><i
+ class="fa-solid fa-camera"></i> Virtual Try-On</a>
+ <a href="contact.html" class="btn btn-outline nav-cta" style="border-width: 1px; padding: 8px 18px;">Book
+ Appointment</a>
+ <a href="javascript:void(0)" class="nav-mobile-profile"><i class="fa-regular fa-user"></i></a><button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+ </div>
+ </div>
+ </nav>
 
-  <div class="nav-mobile" id="navMobile">
-    <button class="nav-mobile-close" id="navClose" aria-label="Close menu">✕</button>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="products.html">Collections</a>
-    <a href="catalog.html">Catalog</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="contact.html">Contact</a>
-    <hr style="width: 40px; border: 0; border-top: 1px solid rgba(212,175,55,0.3); margin: 5px 0;">
-    <a href="tryon.html" style="color: var(--color-gold);"><i class="fa-solid fa-camera"></i> Virtual Try-On</a>
-    <a href="contact.html">Book Appointment</a>
-  </div>
+ <div class="nav-mobile" id="navMobile">
+ <button class="nav-mobile-close" id="navClose" aria-label="Close menu">&times;</button>
+ <a href="index.html">Home</a>
+ <a href="about.html">About</a>
+ <a href="products.html">Collections</a>
+ <a href="catalog.html">Catalog</a>
+ <a href="gallery.html">Gallery</a>
+ <a href="pricing.html">Pricing</a>
+ <a href="contact.html">Contact</a>
+ <hr style="width: 40px; border: 0; border-top: 1px solid rgba(212,175,55,0.3); margin: 5px 0;">
+ <a href="tryon.html" style="color: var(--color-gold);"><i class="fa-solid fa-camera"></i> Virtual Try-On</a>
+ <a href="contact.html">Book Appointment</a>
+ </div>
 
-  <!-- HERO -->
-  <section class="tryon-hero">
-    <div class="container">
-      <span class="subtext">The Future of Jewelry</span>
-      <h1 class="heading-xl">The <em>Digital</em> Atelier</h1>
-      <p class="lead" style="margin: 20px auto 0; color: rgba(255,255,255,0.7);">Step into the next dimension of luxury. Our AI-powered lab allows you to visualize, style, and perfect your look with sub-millimeter precision.</p>
-    </div>
-  </section>
+ <!-- HERO -->
+ <section class="tryon-hero">
+ <div class="container">
+ <span class="subtext">The Future of Jewelry</span>
+ <h1 class="heading-xl">The Digital Atelier</h1>
+ <p class="lead" style="margin: 20px auto 0; color: rgba(255,255,255,0.7);">Step into the next dimension of luxury. Our AI-powered lab allows you to visualize, style, and perfect your look with sub-millimeter precision.</p>
+ </div>
+ </section>
 
-  <!-- TRY-ON INTERFACE -->
-  <section class="section" style="background: #0F0F0F; padding-top: 0;">
-    <div class="container">
-      <div class="tryon-container">
-        
-        <!-- SIDEBAR -->
-        <div class="tryon-sidebar">
-          <div class="sidebar-header">
-            <h3 class="heading-md" style="color: #fff; margin-bottom: 20px;">Curated Lab</h3>
-            <div class="category-tabs">
-              <button class="tab-btn active" data-category="rings">Rings</button>
-              <button class="tab-btn" data-category="necklaces">Necklaces</button>
-              <button class="tab-btn" data-category="earrings">Earrings</button>
-            </div>
-          </div>
+ <!-- TRY-ON INTERFACE -->
+ <section class="section" style="background: #0F0F0F; padding-top: 0;">
+ <div class="container">
+ <div class="tryon-container">
+ 
+ <!-- SIDEBAR -->
+ <div class="tryon-sidebar">
+ <div class="sidebar-header">
+ <h3 class="heading-md" style="color: #fff; margin-bottom: 20px;">Curated Lab</h3>
+ <div class="category-tabs">
+ <button class="tab-btn active" data-category="rings">Rings</button>
+ <button class="tab-btn" data-category="necklaces">Necklaces</button>
+ <button class="tab-btn" data-category="earrings">Earrings</button>
+ </div>
+ </div>
 
-          <div class="jewelry-grid" id="jewelryGrid">
-            <!-- Items will be injected by JS -->
-          </div>
+ <div class="jewelry-grid" id="jewelryGrid">
+ <!-- Items will be injected by JS -->
+ </div>
 
-          <div class="ai-status">
-            <p style="font-size: 0.8rem; color: var(--color-gold); display: flex; align-items: center; gap: 8px;">
-              <span style="width: 8px; height: 8px; background: var(--color-gold); border-radius: 50%; animation: pulse 2s infinite;"></span>
-              AI Precision Tracking Active
-            </p>
-            <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm);">
-              <p style="font-size: 0.7rem; color: rgba(255,255,255,0.5); line-height: 1.4;">"Our AI uses 128 unique facial anchor points to ensure your chosen piece sits with natural gravity and light refraction."</p>
-            </div>
-          </div>
-        </div>
+ <div class="ai-status">
+ <p style="font-size: 0.8rem; color: var(--color-gold); display: flex; align-items: center; gap: 8px;">
+ <span style="width: 8px; height: 8px; background: var(--color-gold); border-radius: 50%; animation: pulse 2s infinite;"></span>
+ AI Precision Tracking Active
+ </p>
+ <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm);">
+ <p style="font-size: 0.7rem; color: rgba(255,255,255,0.5); line-height: 1.4;">"Our AI uses 128 unique facial anchor points to ensure your chosen piece sits with natural gravity and light refraction."</p>
+ </div>
+ </div>
+ </div>
 
-        <!-- MAIN PREVIEW -->
-        <div class="tryon-main" id="tryonMain">
-          
-          <div class="upload-overlay" id="uploadOverlay">
-            <input type="file" id="fileInput" hidden accept="image/*">
-            <div class="upload-box" id="uploadBtn">
-              <i class="fa-solid fa-camera-retro"></i>
-              <h4 style="color: #fff;">Enter the Lab</h4>
-              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">Upload a portrait to begin your virtual styling session</p>
-              <button class="btn btn-primary" style="margin-top: 20px;">Upload Portrait</button>
-            </div>
-          </div>
+ <!-- MAIN PREVIEW -->
+ <div class="tryon-main" id="tryonMain">
+ 
+ <div class="upload-overlay" id="uploadOverlay">
+ <input type="file" id="fileInput" hidden accept="image/*">
+ <div class="upload-box" id="uploadBtn">
+ <i class="fa-solid fa-camera-retro"></i>
+ <h4 style="color: #fff;">Enter the Lab</h4>
+ <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">Upload a portrait to begin your virtual styling session</p>
+ <button class="btn btn-primary" style="margin-top: 20px;">Upload Portrait</button>
+ </div>
+ </div>
 
-          <div class="preview-canvas-container" id="previewContainer">
-            <img src="" alt="" class="preview-image" id="facePreview">
-            
-            <div class="ai-scanner">
-              <div class="scanner-line"></div>
-            </div>
-            
-            <div class="ai-points" id="aiPoints"></div>
+ <div class="preview-canvas-container" id="previewContainer">
+ <img src="" alt="" class="preview-image" id="facePreview">
+ 
+ <div class="ai-scanner">
+ <div class="scanner-line"></div>
+ </div>
+ 
+ <div class="ai-points" id="aiPoints"></div>
 
-            <!-- Jewelry Overlay -->
-            <img src="" alt="" class="jewelry-overlay" id="jewelryOverlay" style="display: none;">
+ <!-- Jewelry Overlay -->
+ <img src="" alt="" class="jewelry-overlay" id="jewelryOverlay" style="display: none;">
 
-            <!-- Size Control -->
-            <div class="size-control" id="sizeControl">
-              <label>Jewelry Scale</label>
-              <input type="range" id="sizeSlider" min="2" max="60" value="15">
-              <label>Rotation</label>
-              <input type="range" id="rotateSlider" min="-180" max="180" value="0">
-            </div>
-          </div>
+ <!-- Size Control -->
+ <div class="size-control" id="sizeControl">
+ <label>Jewelry Scale</label>
+ <input type="range" id="sizeSlider" min="2" max="60" value="15">
+ <label>Rotation</label>
+ <input type="range" id="rotateSlider" min="-180" max="180" value="0">
+ </div>
+ </div>
 
-          <!-- CONTROLS -->
-          <div class="preview-controls">
-            <button class="control-btn" title="Use Sample Model" id="cameraBtn"><i class="fa-solid fa-user-tie"></i></button>
-            <button class="control-btn" title="Reset Session" id="resetBtn"><i class="fa-solid fa-trash-can"></i></button>
-            <button class="control-btn" title="Save Transformation" id="downloadBtn"><i class="fa-solid fa-bookmark"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- CONTROLS -->
+ <div class="preview-controls">
+ <button class="control-btn" title="Use Sample Model" id="cameraBtn"><i class="fa-solid fa-user-tie"></i></button>
+ <button class="control-btn" title="Reset Session" id="resetBtn"><i class="fa-solid fa-trash-can"></i></button>
+ <button class="control-btn" title="Save Transformation" id="downloadBtn"><i class="fa-solid fa-bookmark"></i></button>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- NEW SECTION: PERSONALIZED STYLING GUIDE -->
-  <section class="section" style="background: var(--color-ivory);">
-    <div class="container">
-      <div class="grid-2" style="align-items: center;">
-        <div class="reveal">
-          <p class="subtext">Expert Guidance</p>
-          <h2 class="heading-lg">Styling for Your <em>Unique</em> Glow</h2>
-          <p class="lead" style="margin-top: 25px;">Finding the right piece is more than just taste—it's about harmony. Our stylists recommend pieces that complement your specific features.</p>
-          
-          <div style="margin-top: 40px; display: grid; gap: 20px;">
-            <div style="display: flex; gap: 20px; align-items: flex-start;">
-              <div style="width: 40px; height: 40px; background: var(--color-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-face-smile"></i></div>
-              <div>
-                <h4 style="font-family: var(--font-heading); margin-bottom: 5px;">Oval Face Shape</h4>
-                <p style="font-size: 0.85rem; color: #666;">Opt for long, dangling earrings to emphasize your natural symmetry. Teardrop necklaces work exceptionally well.</p>
-              </div>
-            </div>
-            <div style="display: flex; gap: 20px; align-items: flex-start;">
-              <div style="width: 40px; height: 40px; background: var(--color-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-moon"></i></div>
-              <div>
-                <h4 style="font-family: var(--font-heading); margin-bottom: 5px;">Round Face Shape</h4>
-                <p style="font-size: 0.85rem; color: #666;">Choose angular pieces or V-shaped necklaces to create a beautiful elongated effect and add definition.</p>
-              </div>
-            </div>
-            <div style="display: flex; gap: 20px; align-items: flex-start;">
-              <div style="width: 40px; height: 40px; background: var(--color-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-sun"></i></div>
-              <div>
-                <h4 style="font-family: var(--font-heading); margin-bottom: 5px;">Heart Face Shape</h4>
-                <p style="font-size: 0.85rem; color: #666;">Choker-style necklaces and wider earring drops help balance the chin and highlight your cheekbones.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-2">
-          <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=800" alt="Styling Guide" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-premium);">
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- NEW SECTION: PERSONALIZED STYLING GUIDE -->
+ <section class="section" style="background: var(--color-ivory);">
+ <div class="container">
+ <div class="grid-2" style="align-items: center;">
+ <div class="reveal">
+ <p class="subtext">Expert Guidance</p>
+ <h2 class="heading-lg">Styling for Your Unique Glow</h2>
+ <p class="lead" style="margin-top: 25px;">Finding the right piece is more than just taste it's about harmony. Our stylists recommend pieces that complement your specific features.</p>
+ 
+ <div style="margin-top: 40px; display: grid; gap: 20px;">
+ <div style="display: flex; gap: 20px; align-items: flex-start;">
+ <div style="width: 40px; height: 40px; background: var(--color-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-face-smile"></i></div>
+ <div>
+ <h4 style="font-family: var(--font-heading); margin-bottom: 5px;">Oval Face Shape</h4>
+ <p style="font-size: 0.85rem; color: #666;">Opt for long, dangling earrings to emphasize your natural symmetry. Teardrop necklaces work exceptionally well.</p>
+ </div>
+ </div>
+ <div style="display: flex; gap: 20px; align-items: flex-start;">
+ <div style="width: 40px; height: 40px; background: var(--color-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-moon"></i></div>
+ <div>
+ <h4 style="font-family: var(--font-heading); margin-bottom: 5px;">Round Face Shape</h4>
+ <p style="font-size: 0.85rem; color: #666;">Choose angular pieces or V-shaped necklaces to create a beautiful elongated effect and add definition.</p>
+ </div>
+ </div>
+ <div style="display: flex; gap: 20px; align-items: flex-start;">
+ <div style="width: 40px; height: 40px; background: var(--color-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-sun"></i></div>
+ <div>
+ <h4 style="font-family: var(--font-heading); margin-bottom: 5px;">Heart Face Shape</h4>
+ <p style="font-size: 0.85rem; color: #666;">Choker-style necklaces and wider earring drops help balance the chin and highlight your cheekbones.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="reveal reveal-delay-2">
+ <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=800" alt="Styling Guide" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-premium);">
+ </div>
+ </div>
+ </div>
+ </section>
 
 
 
-  <!-- NEW SECTION: VIRTUAL CONSULTATION -->
-  <section class="section" style="background: var(--color-black); color: #fff;">
-    <div class="container">
-      <div class="grid-2" style="align-items: center;">
-        <div class="reveal">
-          <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=800" alt="Virtual Concierge" style="width: 100%; border-radius: var(--radius-lg); opacity: 0.8;" loading="lazy">
-        </div>
-        <div class="reveal reveal-delay-1" style="padding-left: 50px;">
-          <p class="subtext" style="color: var(--color-gold);">Human Connection</p>
-          <h2 class="heading-lg">Virtual <em>Concierge</em> Session</h2>
-          <p class="lead" style="color: rgba(255,255,255,0.7); margin-top: 25px;">Need a second opinion? Our lead stylists are available for a 1-on-1 virtual walkthrough of your try-on session.</p>
-          <ul style="list-style: none; margin-top: 30px; display: flex; flex-direction: column; gap: 15px;">
-            <li><i class="fa-solid fa-check" style="color: var(--color-gold); margin-right: 10px;"></i> Real-time styling advice</li>
-            <li><i class="fa-solid fa-check" style="color: var(--color-gold); margin-right: 10px;"></i> High-res macro view of stones</li>
-            <li><i class="fa-solid fa-check" style="color: var(--color-gold); margin-right: 10px;"></i> Instant quote for bespoke tweaks</li>
-          </ul>
-          <a href="contact.html" class="btn btn-primary" style="margin-top: 40px;">Book Virtual Session</a>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- NEW SECTION: VIRTUAL CONSULTATION -->
+ <section class="section" style="background: var(--color-black); color: #fff;">
+ <div class="container">
+ <div class="grid-2" style="align-items: center;">
+ <div class="reveal">
+ <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=800" alt="Virtual Concierge" style="width: 100%; border-radius: var(--radius-lg); opacity: 0.8;" loading="lazy">
+ </div>
+ <div class="reveal reveal-delay-1" style="padding-left: 50px;">
+ <p class="subtext" style="color: var(--color-gold);">Human Connection</p>
+ <h2 class="heading-lg">Virtual Concierge Session</h2>
+ <p class="lead" style="color: rgba(255,255,255,0.7); margin-top: 25px;">Need a second opinion? Our lead stylists are available for a 1-on-1 virtual walkthrough of your try-on session.</p>
+ <ul style="list-style: none; margin-top: 30px; display: flex; flex-direction: column; gap: 15px;">
+ <li><i class="fa-solid fa-check" style="color: var(--color-gold); margin-right: 10px;"></i> Real-time styling advice</li>
+ <li><i class="fa-solid fa-check" style="color: var(--color-gold); margin-right: 10px;"></i> High-res macro view of stones</li>
+ <li><i class="fa-solid fa-check" style="color: var(--color-gold); margin-right: 10px;"></i> Instant quote for bespoke tweaks</li>
+ </ul>
+ <a href="contact.html" class="btn btn-primary" style="margin-top: 40px;">Book Virtual Session</a>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- BEFORE/AFTER SECTION -->
-  <section class="comparison-section">
-    <div class="container">
-      <div class="section-header">
-        <p class="subtext">Visual Evidence</p>
-        <h2 class="heading-lg">The Power of <em>Presence</em></h2>
-        <p class="lead" style="margin: 20px auto 0;">Slider across to see how our Virtual Try-On accurately projects the presence of our jewelry on your silhouette.</p>
-        <div class="gold-divider"></div>
-      </div>
+ <!-- BEFORE/AFTER SECTION -->
+ <section class="comparison-section">
+ <div class="container">
+ <div class="section-header">
+ <p class="subtext">Visual Evidence</p>
+ <h2 class="heading-lg">The Power of Presence</h2>
+ <p class="lead" style="margin: 20px auto 0;">Slider across to see how our Virtual Try-On accurately projects the presence of our jewelry on your silhouette.</p>
+ <div class="gold-divider"></div>
+ </div>
 
-      <div class="comparison-container" id="comparison">
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200" alt="Before" class="comparison-img">
-        <div class="comparison-img img-after" id="afterImg">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200" alt="After" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) contrast(1.1);">
-          <img src="https://pngimg.com/uploads/necklace/necklace_PNG103.png" style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); width: 30%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));" alt="Jewelry">
-        </div>
-        <div class="comparison-slider" id="comparisonSlider">
-          <div class="slider-handle"><i class="fa-solid fa-arrows-left-right"></i></div>
-        </div>
-      </div>
-    </div>
-  </section>
+ <div class="comparison-container" id="comparison">
+ <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200" alt="Before" class="comparison-img">
+ <div class="comparison-img img-after" id="afterImg">
+ <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200" alt="After" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) contrast(1.1);">
+ <img src="https://pngimg.com/uploads/necklace/necklace_PNG103.png" style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); width: 30%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));" alt="Jewelry">
+ </div>
+ <div class="comparison-slider" id="comparisonSlider">
+ <div class="slider-handle"><i class="fa-solid fa-arrows-left-right"></i></div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- NEW SECTION: COMPREHENSIVE FAQ -->
-  <section class="section" style="background: var(--color-ivory);">
-    <div class="container" style="max-width: 900px;">
-      <div class="section-header">
-        <p class="subtext">Assurance</p>
-        <h2 class="heading-lg">Common <em>Inquiries</em></h2>
-        <div class="gold-divider"></div>
-      </div>
-      
-      <div style="margin-top: 60px; display: grid; gap: 30px;">
-        <div style="background: #fff; padding: 30px; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft);">
-          <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">How accurate is the jewelry size?</h4>
-          <p style="font-size: 0.9rem; color: #666;">Our AI uses the relative distance of your features (like your eyes or nose) to calculate your silhouette's scale, ensuring the jewelry is displayed in its true physical proportions.</p>
-        </div>
-        <div style="background: #fff; padding: 30px; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft);">
-          <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">Are my photos stored?</h4>
-          <p style="font-size: 0.9rem; color: #666;">Absolutely not. For your privacy, all image processing occurs locally on your browser. Your portrait never leaves your device and is deleted as soon as you close the tab.</p>
-        </div>
-        <div style="background: #fff; padding: 30px; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft);">
-          <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">Can I try on custom designs?</h4>
-          <p style="font-size: 0.9rem; color: #666;">Yes. Once you start a bespoke journey with our designers, we can upload your custom 3D model to your private 'Digital Atelier' for you to try on before crafting begins.</p>
-        </div>
-        <div style="background: #fff; padding: 30px; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft);">
-          <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">What lighting works best?</h4>
-          <p style="font-size: 0.9rem; color: #666;">For the best results, we recommend natural, soft lighting from the front. Avoid harsh shadows or backlighting to allow the AI to track facial features accurately.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- NEW SECTION: COMPREHENSIVE FAQ -->
+ <section class="section" style="background: var(--color-ivory);">
+ <div class="container" style="max-width: 900px;">
+ <div class="section-header">
+ <p class="subtext">Assurance</p>
+ <h2 class="heading-lg">Common Inquiries</h2>
+ <div class="gold-divider"></div>
+ </div>
+ 
+ <div style="margin-top: 60px; display: grid; gap: 30px;">
+ <div style="background: #fff; padding: 30px; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft);">
+ <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">How accurate is the jewelry size?</h4>
+ <p style="font-size: 0.9rem; color: #666;">Our AI uses the relative distance of your features (like your eyes or nose) to calculate your silhouette's scale, ensuring the jewelry is displayed in its true physical proportions.</p>
+ </div>
+ <div style="background: #fff; padding: 30px; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft);">
+ <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">Are my photos stored?</h4>
+ <p style="font-size: 0.9rem; color: #666;">Absolutely not. For your privacy, all image processing occurs locally on your browser. Your portrait never leaves your device and is deleted as soon as you close the tab.</p>
+ </div>
+ <div style="background: #fff; padding: 30px; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft);">
+ <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">Can I try on custom designs?</h4>
+ <p style="font-size: 0.9rem; color: #666;">Yes. Once you start a bespoke journey with our designers, we can upload your custom 3D model to your private 'Digital Atelier' for you to try on before crafting begins.</p>
+ </div>
+ <div style="background: #fff; padding: 30px; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft);">
+ <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">What lighting works best?</h4>
+ <p style="font-size: 0.9rem; color: #666;">For the best results, we recommend natural, soft lighting from the front. Avoid harsh shadows or backlighting to allow the AI to track facial features accurately.</p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- NEW SECTION: THE BESPOKE DIGITAL JOURNEY -->
-  <section class="section" style="background: #fff;">
-    <div class="container">
-      <div class="section-header">
-        <p class="subtext">From Sketch to Soul</p>
-        <h2 class="heading-lg">The <em>Bespoke</em> Digital Journey</h2>
-        <div class="gold-divider"></div>
-      </div>
-      
-      <div class="grid-4" style="margin-top: 60px;">
-        <div class="reveal" style="text-align: center;">
-          <div style="font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px;">01</div>
-          <h4 style="font-family: var(--font-heading); margin-bottom: 15px;">Initial Draft</h4>
-          <p style="font-size: 0.85rem; color: #666;">Our artists capture your vision in high-fidelity sketches and initial 3D block-outs.</p>
-        </div>
-        <div class="reveal reveal-delay-1" style="text-align: center;">
-          <div style="font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px;">02</div>
-          <h4 style="font-family: var(--font-heading); margin-bottom: 15px;">Virtual Fitting</h4>
-          <p style="font-size: 0.85rem; color: #666;">Try on your custom design in the 'Digital Atelier' using this very platform to perfect the scale.</p>
-        </div>
-        <div class="reveal reveal-delay-2" style="text-align: center;">
-          <div style="font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px;">03</div>
-          <h4 style="font-family: var(--font-heading); margin-bottom: 15px;">Stone Selection</h4>
-          <p style="font-size: 0.85rem; color: #666;">View 360° scans of your specific stones, matched to your digital silhouette for brilliance check.</p>
-        </div>
-        <div class="reveal reveal-delay-3" style="text-align: center;">
-          <div style="font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px;">04</div>
-          <h4 style="font-family: var(--font-heading); margin-bottom: 15px;">Master Craft</h4>
-          <p style="font-size: 0.85rem; color: #666;">Once you've 'seen' and 'felt' the piece digitally, our artisans bring it to physical life.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- NEW SECTION: THE BESPOKE DIGITAL JOURNEY -->
+ <section class="section" style="background: #fff;">
+ <div class="container">
+ <div class="section-header">
+ <p class="subtext">From Sketch to Soul</p>
+ <h2 class="heading-lg">The Bespoke Digital Journey</h2>
+ <div class="gold-divider"></div>
+ </div>
+ 
+ <div class="grid-4" style="margin-top: 60px;">
+ <div class="reveal" style="text-align: center;">
+ <div style="font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px;">01</div>
+ <h4 style="font-family: var(--font-heading); margin-bottom: 15px;">Initial Draft</h4>
+ <p style="font-size: 0.85rem; color: #666;">Our artists capture your vision in high-fidelity sketches and initial 3D block-outs.</p>
+ </div>
+ <div class="reveal reveal-delay-1" style="text-align: center;">
+ <div style="font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px;">02</div>
+ <h4 style="font-family: var(--font-heading); margin-bottom: 15px;">Virtual Fitting</h4>
+ <p style="font-size: 0.85rem; color: #666;">Try on your custom design in the 'Digital Atelier' using this very platform to perfect the scale.</p>
+ </div>
+ <div class="reveal reveal-delay-2" style="text-align: center;">
+ <div style="font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px;">03</div>
+ <h4 style="font-family: var(--font-heading); margin-bottom: 15px;">Stone Selection</h4>
+ <p style="font-size: 0.85rem; color: #666;">View 360 scans of your specific stones, matched to your digital silhouette for brilliance check.</p>
+ </div>
+ <div class="reveal reveal-delay-3" style="text-align: center;">
+ <div style="font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px;">04</div>
+ <h4 style="font-family: var(--font-heading); margin-bottom: 15px;">Master Craft</h4>
+ <p style="font-size: 0.85rem; color: #666;">Once you've 'seen' and 'felt' the piece digitally, our artisans bring it to physical life.</p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- NEW SECTION: SECURITY & PRIVACY PROTOCOL -->
-  <section class="section" style="background: var(--color-black); color: #fff;">
-    <div class="container">
-      <div class="grid-2" style="align-items: center;">
-        <div class="reveal">
-          <p class="subtext" style="color: var(--color-gold);">Uncompromising Safety</p>
-          <h2 class="heading-lg">Our <em>Security</em> Protocol</h2>
-          <p class="lead" style="color: rgba(255,255,255,0.7); margin-top: 25px;">Tanishq values your privacy as much as our diamonds. Our Virtual Try-On is built on a foundation of 'Zero-Knowledge' architecture.</p>
-          
-          <div style="margin-top: 40px; display: grid; gap: 25px;">
-            <div style="display: flex; gap: 15px;">
-              <i class="fa-solid fa-lock" style="color: var(--color-gold); margin-top: 5px;"></i>
-              <p style="font-size: 0.9rem;"><strong style="color: var(--color-gold);">Edge Computing:</strong> 100% of the image analysis happens on your local processor. We never see your face.</p>
-            </div>
-            <div style="display: flex; gap: 15px;">
-              <i class="fa-solid fa-trash-arrow-up" style="color: var(--color-gold); margin-top: 5px;"></i>
-              <p style="font-size: 0.9rem;"><strong style="color: var(--color-gold);">Auto-Purge:</strong> All temporary cache data is wiped automatically when you navigate away from the page.</p>
-            </div>
-            <div style="display: flex; gap: 15px;">
-              <i class="fa-solid fa-user-shield" style="color: var(--color-gold); margin-top: 5px;"></i>
-              <p style="font-size: 0.9rem;"><strong style="color: var(--color-gold);">No Cookies:</strong> We do not use tracking cookies for the try-on session. Your identity remains yours alone.</p>
-            </div>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-2" style="text-align: center;">
-          <!-- Visual representation of security -->
-          <div style="width: 100%; max-width: 400px; margin: 0 auto; padding: 60px; border: 1px solid rgba(212,175,55,0.2); border-radius: 50%; position: relative;">
-            <i class="fa-solid fa-shield-halved" style="font-size: 6rem; color: var(--color-gold); opacity: 0.8;"></i>
-            <div style="position: absolute; inset: -10px; border: 1px solid rgba(212,175,55,0.1); border-radius: 50%; animation: rotatePulse 10s infinite linear;"></div>
-          </div>
-          <style>
-            @keyframes rotatePulse { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-          </style>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- NEW SECTION: SECURITY & PRIVACY PROTOCOL -->
+ <section class="section" style="background: var(--color-black); color: #fff;">
+ <div class="container">
+ <div class="grid-2" style="align-items: center;">
+ <div class="reveal">
+ <p class="subtext" style="color: var(--color-gold);">Uncompromising Safety</p>
+ <h2 class="heading-lg">Our Security Protocol</h2>
+ <p class="lead" style="color: rgba(255,255,255,0.7); margin-top: 25px;">Tanishq values your privacy as much as our diamonds. Our Virtual Try-On is built on a foundation of 'Zero-Knowledge' architecture.</p>
+ 
+ <div style="margin-top: 40px; display: grid; gap: 25px;">
+ <div style="display: flex; gap: 15px;">
+ <i class="fa-solid fa-lock" style="color: var(--color-gold); margin-top: 5px;"></i>
+ <p style="font-size: 0.9rem;"><strong style="color: var(--color-gold);">Edge Computing:</strong> 100% of the image analysis happens on your local processor. We never see your face.</p>
+ </div>
+ <div style="display: flex; gap: 15px;">
+ <i class="fa-solid fa-trash-arrow-up" style="color: var(--color-gold); margin-top: 5px;"></i>
+ <p style="font-size: 0.9rem;"><strong style="color: var(--color-gold);">Auto-Purge:</strong> All temporary cache data is wiped automatically when you navigate away from the page.</p>
+ </div>
+ <div style="display: flex; gap: 15px;">
+ <i class="fa-solid fa-user-shield" style="color: var(--color-gold); margin-top: 5px;"></i>
+ <p style="font-size: 0.9rem;"><strong style="color: var(--color-gold);">No Cookies:</strong> We do not use tracking cookies for the try-on session. Your identity remains yours alone.</p>
+ </div>
+ </div>
+ </div>
+ <div class="reveal reveal-delay-2" style="text-align: center;">
+ <!-- Visual representation of security -->
+ <div style="width: 100%; max-width: 400px; margin: 0 auto; padding: 60px; border: 1px solid rgba(212,175,55,0.2); border-radius: 50%; position: relative;">
+ <i class="fa-solid fa-shield-halved" style="font-size: 6rem; color: var(--color-gold); opacity: 0.8;"></i>
+ <div style="position: absolute; inset: -10px; border: 1px solid rgba(212,175,55,0.1); border-radius: 50%; animation: rotatePulse 10s infinite linear;"></div>
+ </div>
+ <style>
+ @keyframes rotatePulse { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+ </style>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- NEW SECTION: SIGNATURE STONE QUIZ TEASER -->
-  <section class="section" style="background: var(--color-ivory);">
-    <div class="container" style="text-align: center;">
-      <div class="reveal">
-        <p class="subtext">Interactive Discovery</p>
-        <h2 class="heading-lg">Which <em>Gemstone</em> Suits Your Glow?</h2>
-        <p class="lead" style="margin: 20px auto 40px;">Take our 2-minute lifestyle quiz and we'll automatically load the perfect collection into your try-on session.</p>
-        
-        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-          <div class="card reveal" style="width: 250px; padding: 40px; background: #fff; cursor: pointer;">
-            <i class="fa-solid fa-gem" style="font-size: 2rem; color: var(--color-gold); margin-bottom: 20px;"></i>
-            <h4>Diamond</h4>
-            <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">For the timeless, classic spirit who values purity.</p>
-          </div>
-          <div class="card reveal reveal-delay-1" style="width: 250px; padding: 40px; background: #fff; cursor: pointer;">
-            <i class="fa-solid fa-droplet" style="font-size: 2rem; color: #0047AB; margin-bottom: 20px;"></i>
-            <h4>Sapphire</h4>
-            <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">For the deep thinker who radiates wisdom and calm.</p>
-          </div>
-          <div class="card reveal reveal-delay-2" style="width: 250px; padding: 40px; background: #fff; cursor: pointer;">
-            <i class="fa-solid fa-leaf" style="font-size: 2rem; color: #008080; margin-bottom: 20px;"></i>
-            <h4>Emerald</h4>
-            <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">For the vibrant soul who embraces growth and vitality.</p>
-          </div>
-        </div>
-        
-        <a href="#" class="btn btn-outline" style="margin-top: 50px;">Begin Personalized Quiz</a>
-      </div>
-    </div>
-  </section>
+ <!-- NEW SECTION: SIGNATURE STONE QUIZ TEASER -->
+ <section class="section" style="background: var(--color-ivory);">
+ <div class="container" style="text-align: center;">
+ <div class="reveal">
+ <p class="subtext">Interactive Discovery</p>
+ <h2 class="heading-lg">Which Gemstone Suits Your Glow?</h2>
+ <p class="lead" style="margin: 20px auto 40px;">Take our 2-minute lifestyle quiz and we'll automatically load the perfect collection into your try-on session.</p>
+ 
+ <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+ <div class="card reveal" style="width: 250px; padding: 40px; background: #fff; cursor: pointer;">
+ <i class="fa-solid fa-gem" style="font-size: 2rem; color: var(--color-gold); margin-bottom: 20px;"></i>
+ <h4>Diamond</h4>
+ <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">For the timeless, classic spirit who values purity.</p>
+ </div>
+ <div class="card reveal reveal-delay-1" style="width: 250px; padding: 40px; background: #fff; cursor: pointer;">
+ <i class="fa-solid fa-droplet" style="font-size: 2rem; color: #0047AB; margin-bottom: 20px;"></i>
+ <h4>Sapphire</h4>
+ <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">For the deep thinker who radiates wisdom and calm.</p>
+ </div>
+ <div class="card reveal reveal-delay-2" style="width: 250px; padding: 40px; background: #fff; cursor: pointer;">
+ <i class="fa-solid fa-leaf" style="font-size: 2rem; color: #008080; margin-bottom: 20px;"></i>
+ <h4>Emerald</h4>
+ <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">For the vibrant soul who embraces growth and vitality.</p>
+ </div>
+ </div>
+ 
+ <a href="#" class="btn btn-outline" style="margin-top: 50px;">Begin Personalized Quiz</a>
+ </div>
+ </div>
+ </section>
 
-  <!-- NEW SECTION: COMMUNITY MOMENTS -->
-  <section class="section" style="background: #fff;">
-    <div class="container">
-      <div class="section-header">
-        <p class="subtext">Real Transformations</p>
-        <h2 class="heading-lg">Community <em>Moments</em></h2>
-        <p class="lead" style="margin: 20px auto 0;">Join thousands of others who have found their perfect sparkle in our digital lab.</p>
-        <div class="gold-divider"></div>
-      </div>
-      
-      <div class="aura-grid" style="grid-template-columns: 1fr; max-width: 400px; margin: 60px auto 0;">
-        <div class="reveal" style="position: relative; aspect-ratio: 1; border-radius: var(--radius-sm); overflow: hidden;">
-          <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=400" alt="Moment 1" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-          <div style="position: absolute; bottom: 10px; left: 10px; color: #fff; font-size: 0.7rem; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 50px;">@sophia_v</div>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- NEW SECTION: COMMUNITY MOMENTS -->
+ <section class="section" style="background: #fff;">
+ <div class="container">
+ <div class="section-header">
+ <p class="subtext">Real Transformations</p>
+ <h2 class="heading-lg">Community Moments</h2>
+ <p class="lead" style="margin: 20px auto 0;">Join thousands of others who have found their perfect sparkle in our digital lab.</p>
+ <div class="gold-divider"></div>
+ </div>
+ 
+ <div class="aura-grid" style="grid-template-columns: 1fr; max-width: 400px; margin: 60px auto 0;">
+ <div class="reveal" style="position: relative; aspect-ratio: 1; border-radius: var(--radius-sm); overflow: hidden;">
+ <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=400" alt="Moment 1" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+ <div style="position: absolute; bottom: 10px; left: 10px; color: #fff; font-size: 0.7rem; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 50px;">@sophia_v</div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- CALL TO ACTION -->
-  <section class="section" style="background: var(--color-gold); color: var(--color-black); text-align: center;">
-    <div class="container" style="max-width: 800px;">
-      <h2 class="heading-lg">Seen Something You <em>Love?</em></h2>
-      <p class="lead" style="color: var(--color-black); margin: 20px auto 40px; font-weight: 500;">Take the next step and experience these masterpieces in person.</p>
-      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-        <a href="contact.html" class="btn" style="background: var(--color-black); color: var(--color-gold);">Book Showroom Appointment</a>
-        <a href="products.html" class="btn" style="background: transparent; border: 1px solid var(--color-black); color: var(--color-black);">Explore Collections</a>
-      </div>
-    </div>
-  </section>
+ <!-- CALL TO ACTION -->
+ <section class="section" style="background: var(--color-gold); color: var(--color-black); text-align: center;">
+ <div class="container" style="max-width: 800px;">
+ <h2 class="heading-lg">Seen Something You Love?</h2>
+ <p class="lead" style="color: var(--color-black); margin: 20px auto 40px; font-weight: 500;">Take the next step and experience these masterpieces in person.</p>
+ <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+ <a href="contact.html" class="btn" style="background: var(--color-black); color: var(--color-gold);">Book Showroom Appointment</a>
+ <a href="products.html" class="btn" style="background: transparent; border: 1px solid var(--color-black); color: var(--color-black);">Explore Collections</a>
+ </div>
+ </div>
+ </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="nav-logo-name">Tanishq</span>
-          <p>Crafting timeless treasures for life's most precious moments. Every piece is a promise of excellence.</p>
-          <div class="footer-socials">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.pinterest.com/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-pinterest"></i></a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
-          </div>
-        </div>
-        <div>
-          <h4 class="footer-heading">Explore</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="products.html">Collections</a></li>
-            <li><a href="catalog.html">Digital Catalog</a></li>
-            <li><a href="gallery.html">House Gallery</a></li>
-            <li><a href="pricing.html">Market Insights</a></li>
-            <li><a href="contact.html">Contact Concierge</a></li>
-          </ul>
-        </div>
-        <div class="footer-newsletter">
-          <h4 class="footer-heading">Newsletter</h4>
-          <p>Subscribe for exclusive updates.</p>
-          <form class="footer-newsletter-form">
-            <input type="email" placeholder="Email Address">
-            <button type="submit">Join</button>
-          </form>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Tanishq Fine Jewelry. All rights reserved.</span>
-        <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+ <!-- FOOTER -->
+ <footer class="footer">
+ <div class="container">
+ <div class="footer-grid">
+ <div class="footer-brand">
+ <span class="nav-logo-name">Tanishq</span>
+ <p>Global flagship ateliers in Paris, Milan, and Mumbai. Authorized retailer for the world's finest diamonds.</p>
+ <div class="footer-socials">
+ <a href="https://www.instagram.com/tanishqjewellery/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-instagram"></i></a>
+ <a href="https://www.pinterest.com/tanishqjewellery/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-pinterest"></i></a>
+ <a href="https://www.linkedin.com/company/tanishq/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+ <a href="https://www.facebook.com/Tanishq/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+ </div>
 
-  <script src="script.js"></script>
-  <script>
-    const jewelryData = {
-      rings: [
-        { id: 1, name: "Ethereal Diamond Ring", price: "$12,500", img: "https://images.unsplash.com/photo-1598560917505-59a3ad559071?q=80&w=600", overlay: "https://pngimg.com/uploads/ring/ring_PNG55.png" },
-        { id: 2, name: "Sapphire Halo Ring", price: "$9,200", img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=600", overlay: "https://pngimg.com/uploads/ring/ring_PNG27.png" }
-      ],
-      necklaces: [
-        { id: 4, name: "Sapphire Glow Necklace", price: "$8,200", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=600", overlay: "https://pngimg.com/uploads/necklace/necklace_PNG103.png" }
-      ],
-      earrings: [
-        { id: 6, name: "Golden Drop Earrings", price: "$4,600", img: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?q=80&w=600", overlay: "https://pngimg.com/uploads/earrings/earrings_PNG56.png" }
-      ]
-    };
+ </div>
+ <div>
+ <h4 class="footer-heading">Explore</h4>
+ <ul class="footer-links">
+ <li><a href="index.html">Home</a></li>
+ <li><a href="about.html">About Us</a></li>
+ <li><a href="products.html">Collections</a></li>
+ <li><a href="catalog.html">Digital Catalog</a></li>
+ <li><a href="gallery.html">House Gallery</a></li>
+ <li><a href="pricing.html">Market Insights</a></li>
+ <li><a href="contact.html">Contact Concierge</a></li>
+ </ul>
+ </div>
+ <div>
+ <h4 class="footer-heading">Boutiques</h4>
+ <ul class="footer-links">
+ <li><a href="#">Paris Saint-Honor </a></li>
+ <li><a href="#">Milan Montenapoleone</a></li>
+ <li><a href="#">Mumbai Taj Palace</a></li>
+ <li><a href="#">Virtual Showroom</a></li>
+ </ul>
+ </div>
 
-    const jewelryGrid = document.getElementById('jewelryGrid');
-    const jewelryOverlay = document.getElementById('jewelryOverlay');
-    const facePreview = document.getElementById('facePreview');
-    const uploadOverlay = document.getElementById('uploadOverlay');
-    const fileInput = document.getElementById('fileInput');
-    const tryonMain = document.getElementById('tryonMain');
-    const aiPoints = document.getElementById('aiPoints');
-    const sizeControl = document.getElementById('sizeControl');
-    const sizeSlider = document.getElementById('sizeSlider');
-    const rotateSlider = document.getElementById('rotateSlider');
-    const previewContainer = document.getElementById('previewContainer');
+ <div class="footer-newsletter">
+ <h4 class="footer-heading">Stay Connected</h4>
+ <p>Receive exclusive invitations to atelier events.</p>
+ <form class="footer-newsletter-form">
+ <input type="email" placeholder="Email Address">
+ <button type="submit">Join</button>
+ </form>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <span> 2026 Tanishq Fine Jewelry. Global Ateliers.</span>
+ <div class="footer-bottom-links">
+ <a href="#">Privacy</a>
+ <a href="#">Terms</a>
+ </div>
+ </div>
+ </div>
+ </footer>
 
-    document.getElementById('uploadBtn').onclick = () => fileInput.click();
-    fileInput.onchange = (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          facePreview.src = event.target.result;
-          facePreview.style.display = 'block';
-          uploadOverlay.style.display = 'none';
-          facePreview.style.opacity = '1';
-        };
-        reader.readAsDataURL(file);
-      }
-    };
+ <script src="script.js"></script>
+ <script>
+ const jewelryData = {
+ rings: [
+ { id: 1, name: "Ethereal Diamond Ring", price: "$12,500", img: "https://images.unsplash.com/photo-1598560917505-59a3ad559071?q=80&w=600", overlay: "https://pngimg.com/uploads/ring/ring_PNG55.png" },
+ { id: 2, name: "Sapphire Halo Ring", price: "$9,200", img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=600", overlay: "https://pngimg.com/uploads/ring/ring_PNG27.png" }
+ ],
+ necklaces: [
+ { id: 4, name: "Sapphire Glow Necklace", price: "$8,200", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=600", overlay: "https://pngimg.com/uploads/necklace/necklace_PNG103.png" }
+ ],
+ earrings: [
+ { id: 6, name: "Golden Drop Earrings", price: "$4,600", img: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?q=80&w=600", overlay: "https://pngimg.com/uploads/earrings/earrings_PNG56.png" }
+ ]
+ };
 
-    function loadItems(category) {
-      jewelryGrid.innerHTML = '';
-      jewelryData[category].forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'jewelry-item';
-        div.innerHTML = `<img src="${item.img}" alt="${item.name}"><p style="color:#fff;font-size:0.8rem;">${item.name}</p><span>${item.price}</span>`;
-        div.onclick = (e) => selectJewelry(item, category, e);
-        jewelryGrid.appendChild(div);
-      });
-    }
+ const jewelryGrid = document.getElementById('jewelryGrid');
+ const jewelryOverlay = document.getElementById('jewelryOverlay');
+ const facePreview = document.getElementById('facePreview');
+ const uploadOverlay = document.getElementById('uploadOverlay');
+ const fileInput = document.getElementById('fileInput');
+ const tryonMain = document.getElementById('tryonMain');
+ const aiPoints = document.getElementById('aiPoints');
+ const sizeControl = document.getElementById('sizeControl');
+ const sizeSlider = document.getElementById('sizeSlider');
+ const rotateSlider = document.getElementById('rotateSlider');
+ const previewContainer = document.getElementById('previewContainer');
 
-    function selectJewelry(item, category, event) {
-      document.querySelectorAll('.jewelry-item').forEach(el => el.classList.remove('selected'));
-      event.currentTarget.classList.add('selected');
-      jewelryOverlay.src = item.overlay;
-      jewelryOverlay.style.display = 'block';
-      sizeControl.style.display = 'flex';
-      jewelryOverlay.style.left = '50%';
-      jewelryOverlay.style.top = '50%';
-      jewelryOverlay.style.transform = 'translate(-50%, -50%)';
-      updateJewelryStyle();
-      tryonMain.classList.add('ai-active');
-      setTimeout(() => tryonMain.classList.remove('ai-active'), 2000);
-    }
+ document.getElementById('uploadBtn').onclick = () => fileInput.click();
+ fileInput.onchange = (e) => {
+ const file = e.target.files[0];
+ if (file) {
+ const reader = new FileReader();
+ reader.onload = (event) => {
+ facePreview.src = event.target.result;
+ facePreview.style.display = 'block';
+ uploadOverlay.style.display = 'none';
+ facePreview.style.opacity = '1';
+ };
+ reader.readAsDataURL(file);
+ }
+ };
 
-    function updateJewelryStyle() {
-      jewelryOverlay.style.width = sizeSlider.value + '%';
-      jewelryOverlay.style.transform = `translate(-50%, -50%) rotate(${rotateSlider.value}deg)`;
-    }
+ function loadItems(category) {
+ jewelryGrid.innerHTML = '';
+ jewelryData[category].forEach(item => {
+ const div = document.createElement('div');
+ div.className = 'jewelry-item';
+ div.innerHTML = `<img src="${item.img}" alt="${item.name}"><p style="color:#fff;font-size:0.8rem;">${item.name}</p><span>${item.price}</span>`;
+ div.onclick = (e) => selectJewelry(item, category, e);
+ jewelryGrid.appendChild(div);
+ });
+ }
 
-    sizeSlider.oninput = updateJewelryStyle;
-    rotateSlider.oninput = updateJewelryStyle;
+ function selectJewelry(item, category, event) {
+ document.querySelectorAll('.jewelry-item').forEach(el => el.classList.remove('selected'));
+ event.currentTarget.classList.add('selected');
+ jewelryOverlay.src = item.overlay;
+ jewelryOverlay.style.display = 'block';
+ sizeControl.style.display = 'flex';
+ jewelryOverlay.style.left = '50%';
+ jewelryOverlay.style.top = '50%';
+ jewelryOverlay.style.transform = 'translate(-50%, -50%)';
+ updateJewelryStyle();
+ tryonMain.classList.add('ai-active');
+ setTimeout(() => tryonMain.classList.remove('ai-active'), 2000);
+ }
 
-    let isDragging = false;
-    const startDrag = () => { isDragging = true; jewelryOverlay.style.borderColor = 'var(--color-gold)'; };
-    const drag = (e) => {
-      if (!isDragging) return;
-      let clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-      let clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-      const rect = previewContainer.getBoundingClientRect();
-      jewelryOverlay.style.left = ((clientX - rect.left) / rect.width) * 100 + '%';
-      jewelryOverlay.style.top = ((clientY - rect.top) / rect.height) * 100 + '%';
-    };
-    const endDrag = () => { isDragging = false; jewelryOverlay.style.borderColor = 'transparent'; };
+ function updateJewelryStyle() {
+ jewelryOverlay.style.width = sizeSlider.value + '%';
+ jewelryOverlay.style.transform = `translate(-50%, -50%) rotate(${rotateSlider.value}deg)`;
+ }
 
-    jewelryOverlay.addEventListener('mousedown', startDrag);
-    jewelryOverlay.addEventListener('touchstart', startDrag, { passive: true });
-    window.addEventListener('mousemove', drag);
-    window.addEventListener('touchmove', drag, { passive: true });
-    window.addEventListener('mouseup', endDrag);
-    window.addEventListener('touchend', endDrag);
+ sizeSlider.oninput = updateJewelryStyle;
+ rotateSlider.oninput = updateJewelryStyle;
 
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.onclick = () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        loadItems(btn.dataset.category);
-      };
-    });
+ let isDragging = false;
+ const startDrag = () => { isDragging = true; jewelryOverlay.style.borderColor = 'var(--color-gold)'; };
+ const drag = (e) => {
+ if (!isDragging) return;
+ let clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+ let clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+ const rect = previewContainer.getBoundingClientRect();
+ jewelryOverlay.style.left = ((clientX - rect.left) / rect.width) * 100 + '%';
+ jewelryOverlay.style.top = ((clientY - rect.top) / rect.height) * 100 + '%';
+ };
+ const endDrag = () => { isDragging = false; jewelryOverlay.style.borderColor = 'transparent'; };
 
-    document.getElementById('resetBtn').onclick = () => location.reload();
-    document.getElementById('cameraBtn').onclick = () => {
-      alert("Camera activation simulated.");
-      facePreview.src = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200";
-      facePreview.style.display = 'block';
-      uploadOverlay.style.display = 'none';
-      facePreview.style.opacity = '1';
-    };
-    document.getElementById('downloadBtn').onclick = () => alert("Image saved to your device.");
-    loadItems('rings');
+ jewelryOverlay.addEventListener('mousedown', startDrag);
+ jewelryOverlay.addEventListener('touchstart', startDrag, { passive: true });
+ window.addEventListener('mousemove', drag);
+ window.addEventListener('touchmove', drag, { passive: true });
+ window.addEventListener('mouseup', endDrag);
+ window.addEventListener('touchend', endDrag);
 
-    const comparison = document.getElementById('comparison');
-    const afterImg = document.getElementById('afterImg');
-    const slider = document.getElementById('comparisonSlider');
-    const handleComparisonSlide = (e) => {
-      let clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-      let rect = comparison.getBoundingClientRect();
-      let percent = ((clientX - rect.left) / rect.width) * 100;
-      if (percent >= 0 && percent <= 100) {
-        afterImg.style.width = percent + '%';
-        slider.style.left = percent + '%';
-      }
-    };
-    
-    comparison.addEventListener('mousemove', handleComparisonSlide);
-    comparison.addEventListener('touchmove', handleComparisonSlide, { passive: true });
-  </script>
+ document.querySelectorAll('.tab-btn').forEach(btn => {
+ btn.onclick = () => {
+ document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+ btn.classList.add('active');
+ loadItems(btn.dataset.category);
+ };
+ });
+
+ document.getElementById('resetBtn').onclick = () => location.reload();
+ document.getElementById('cameraBtn').onclick = () => {
+ alert("Camera activation simulated.");
+ facePreview.src = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200";
+ facePreview.style.display = 'block';
+ uploadOverlay.style.display = 'none';
+ facePreview.style.opacity = '1';
+ };
+ document.getElementById('downloadBtn').onclick = () => alert("Image saved to your device.");
+ loadItems('rings');
+
+ const comparison = document.getElementById('comparison');
+ const afterImg = document.getElementById('afterImg');
+ const slider = document.getElementById('comparisonSlider');
+ const handleComparisonSlide = (e) => {
+ let clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+ let rect = comparison.getBoundingClientRect();
+ let percent = ((clientX - rect.left) / rect.width) * 100;
+ if (percent >= 0 && percent <= 100) {
+ afterImg.style.width = percent + '%';
+ slider.style.left = percent + '%';
+ }
+ };
+ 
+ comparison.addEventListener('mousemove', handleComparisonSlide);
+ comparison.addEventListener('touchmove', handleComparisonSlide, { passive: true });
+ </script>
 </body>
 </html>
+

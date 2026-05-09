@@ -1,597 +1,610 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Connect with the Tanishq Concierge. Book a private viewing at our global boutiques or enquire about bespoke jewelry commissions." />
-  <title>Boutique Concierge | Tanishq Fine Jewelry - Global Ateliers</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    /* ─── Contact Specific Luxury Styles ─── */
-    
-    .contact-hero {
-      background: var(--color-black);
-      padding: 160px 0 80px;
-      color: #fff;
-      border-bottom: 1px solid rgba(212,175,55,0.1);
-    }
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta name="description" content="Connect with the Tanishq Concierge. Book a private viewing at our global boutiques or enquire about bespoke jewelry commissions." />
+ <title>Boutique Concierge | Tanishq Fine Jewelry - Global Ateliers</title>
+ <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ <style>
+ /* Contact Specific Luxury Styles */
+ 
+ .contact-hero {
+ background: var(--color-black);
+ padding: 160px 0 80px;
+ color: #fff;
+ border-bottom: 1px solid rgba(212,175,55,0.1);
+ }
 
-    /* 1. Luxury Contact Cards */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 30px;
-      margin-top: 60px;
-      position: relative;
-      z-index: 10;
-    }
-    .contact-card {
-      background: #fff;
-      padding: 40px;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-card);
-      text-align: center;
-      transition: all 0.3s;
-      border: 1px solid #eee;
-    }
-    .contact-card:hover { transform: translateY(-10px); border-color: var(--color-gold); }
-    .card-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--color-ivory); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--color-gold); font-size: 1.5rem; }
-    .card-title { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 10px; }
-    .card-text { font-size: 0.9rem; color: #666; line-height: 1.6; }
+ /* 1. Luxury Contact Cards */
+ .contact-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ gap: 30px;
+ margin-top: 60px;
+ position: relative;
+ z-index: 10;
+ }
+ .contact-card {
+ background: #fff;
+ padding: 40px;
+ border-radius: var(--radius-md);
+ box-shadow: var(--shadow-card);
+ text-align: center;
+ transition: all 0.3s;
+ border: 1px solid #eee;
+ }
+ .contact-card:hover { transform: translateY(-10px); border-color: var(--color-gold); }
+ .card-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--color-ivory); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--color-gold); font-size: 1.5rem; }
+ .card-title { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 10px; }
+ .card-text { font-size: 0.9rem; color: #666; line-height: 1.6; }
 
-    /* 2. Inquiry Form & Appointment */
-    .inquiry-section { padding: 100px 0; }
-    .inquiry-container { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; }
-    
-    .form-box { background: var(--color-ivory); padding: 50px; border-radius: var(--radius-lg); border: 1px solid rgba(212,175,55,0.1); }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .form-item { margin-bottom: 20px; }
-    .form-item label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; color: #888; }
-    .form-item input, .form-item select, .form-item textarea {
-      width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 5px; outline: none; transition: all 0.3s; font-family: var(--font-body);
-    }
-    .form-item input:focus { border-color: var(--color-gold); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
+ /* 2. Inquiry Form & Appointment */
+ .inquiry-section { padding: 100px 0; }
+ .inquiry-container { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; }
+ 
+ .form-box { background: var(--color-ivory); padding: 50px; border-radius: var(--radius-lg); border: 1px solid rgba(212,175,55,0.1); }
+ .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+ .form-item { margin-bottom: 20px; }
+ .form-item label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; color: #888; }
+ .form-item input, .form-item select, .form-item textarea {
+ width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 5px; outline: none; transition: all 0.3s; font-family: var(--font-body);
+ }
+ .form-item input:focus { border-color: var(--color-gold); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
 
-    /* 3. WhatsApp & Support */
-    .support-sidebar { display: flex; flex-direction: column; gap: 30px; }
-    .support-box { background: var(--color-black); color: #fff; padding: 40px; border-radius: var(--radius-md); }
-    .whatsapp-btn { background: #25D366; color: #fff; width: 100%; padding: 15px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 600; transition: all 0.3s; margin-top: 20px; text-decoration: none; }
-    .whatsapp-btn:hover { background: #128C7E; transform: scale(1.02); }
+ /* 3. WhatsApp & Support */
+ .support-sidebar { display: flex; flex-direction: column; gap: 30px; }
+ .support-box { background: var(--color-black); color: #fff; padding: 40px; border-radius: var(--radius-md); }
+ .whatsapp-btn { background: #25D366; color: #fff; width: 100%; padding: 15px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 600; transition: all 0.3s; margin-top: 20px; text-decoration: none; }
+ .whatsapp-btn:hover { background: #128C7E; transform: scale(1.02); }
 
-    /* 4. Map & Ambience */
-    .ambience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 40px; }
-    .ambience-item { height: 250px; border-radius: var(--radius-sm); overflow: hidden; }
-    .ambience-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .ambience-item:hover img { transform: scale(1.1); }
+ /* 4. Map & Ambience */
+ .ambience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 40px; }
+ .ambience-item { height: 250px; border-radius: var(--radius-sm); overflow: hidden; }
+ .ambience-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+ .ambience-item:hover img { transform: scale(1.1); }
 
-    .map-container { height: 450px; background: #eee; border-radius: var(--radius-lg); overflow: hidden; margin-top: 60px; border: 1px solid #ddd; }
-    .map-container iframe { width: 100%; height: 100%; border: none; filter: grayscale(100%) invert(90%) contrast(90%); }
+ .map-container { height: 450px; background: #eee; border-radius: var(--radius-lg); overflow: hidden; margin-top: 60px; border: 1px solid #ddd; }
+ .map-container iframe { width: 100%; height: 100%; border: none; filter: grayscale(100%) invert(90%) contrast(90%); }
 
-    /* FAQ */
-    .faq-container { max-width: 800px; margin: 80px auto 0; }
-    .faq-item { border-bottom: 1px solid #eee; padding: 25px 0; cursor: pointer; }
-    .faq-q { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-heading); font-size: 1.1rem; }
-    .faq-a { max-height: 0; overflow: hidden; transition: all 0.3s; color: #666; font-size: 0.95rem; margin-top: 0; }
-    .faq-item.active .faq-a { max-height: 200px; margin-top: 15px; }
-    .faq-item.active .faq-icon { transform: rotate(45deg); }
+ /* FAQ */
+ .faq-container { max-width: 800px; margin: 80px auto 0; }
+ .faq-item { border-bottom: 1px solid #eee; padding: 25px 0; cursor: pointer; }
+ .faq-q { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-heading); font-size: 1.1rem; }
+ .faq-a { max-height: 0; overflow: hidden; transition: all 0.3s; color: #666; font-size: 0.95rem; margin-top: 0; }
+ .faq-item.active .faq-a { max-height: 200px; margin-top: 15px; }
+ .faq-item.active .faq-icon { transform: rotate(45deg); }
 
-    /* Boutique Grid */
-    .boutique-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
-    .boutique-card { background: #fff; padding: 40px; border-radius: var(--radius-md); border: 1px solid #eee; transition: all 0.4s; }
-    .boutique-card:hover { border-color: var(--color-gold); box-shadow: var(--shadow-premium); transform: translateY(-10px); }
-    .boutique-card h3 { font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 15px; }
-    .boutique-card p { font-size: 0.85rem; color: #666; line-height: 1.7; }
+ /* Boutique Grid */
+ .boutique-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+ .boutique-card { background: #fff; padding: 40px; border-radius: var(--radius-md); border: 1px solid #eee; transition: all 0.4s; }
+ .boutique-card:hover { border-color: var(--color-gold); box-shadow: var(--shadow-premium); transform: translateY(-10px); }
+ .boutique-card h3 { font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 15px; }
+ .boutique-card p { font-size: 0.85rem; color: #666; line-height: 1.7; }
 
-    /* Private Viewing Section */
-    .viewing-section { background: var(--color-black); color: #fff; padding: 120px 0; overflow: hidden; }
-    .viewing-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
-    .viewing-img { width: 100%; border-radius: var(--radius-lg); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
-    .viewing-list { list-style: none; margin: 30px 0; display: flex; flex-direction: column; gap: 15px; }
-    .viewing-list li { display: flex; align-items: center; gap: 15px; font-size: 0.95rem; }
+ /* Private Viewing Section */
+ .viewing-section { background: var(--color-black); color: #fff; padding: 120px 0; overflow: hidden; }
+ .viewing-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+ .viewing-img { width: 100%; border-radius: var(--radius-lg); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+ .viewing-list { list-style: none; margin: 30px 0; display: flex; flex-direction: column; gap: 15px; }
+ .viewing-list li { display: flex; align-items: center; gap: 15px; font-size: 0.95rem; }
 
-    /* WhatsApp Premium */
-    .whatsapp-premium { background: var(--color-ivory); padding: 100px 0; text-align: center; }
-    .wp-box { background: #fff; padding: 60px; border-radius: var(--radius-lg); max-width: 800px; margin: 0 auto; box-shadow: var(--shadow-soft); }
+ /* WhatsApp Premium */
+ .whatsapp-premium { background: var(--color-ivory); padding: 100px 0; text-align: center; }
+ .wp-box { background: #fff; padding: 60px; border-radius: var(--radius-lg); max-width: 800px; margin: 0 auto; box-shadow: var(--shadow-soft); }
 
-    /* Timeline Section */
-    .timeline { position: relative; max-width: 1000px; margin: 80px auto 0; padding-left: 40px; border-left: 1px solid var(--color-gold-glow); }
-    .timeline-item { position: relative; margin-bottom: 50px; }
-    .timeline-item::before { content: ''; position: absolute; left: -46px; top: 0; width: 10px; height: 10px; background: var(--color-gold); border-radius: 50%; }
-    .timeline-item h4 { font-family: var(--font-heading); font-size: 1.2rem; color: var(--color-gold); margin-bottom: 10px; }
-    .timeline-item p { font-size: 0.9rem; color: #666; }
+ /* Timeline Section */
+ .timeline { position: relative; max-width: 1000px; margin: 80px auto 0; padding-left: 40px; border-left: 1px solid var(--color-gold-glow); }
+ .timeline-item { position: relative; margin-bottom: 50px; }
+ .timeline-item::before { content: ''; position: absolute; left: -46px; top: 0; width: 10px; height: 10px; background: var(--color-gold); border-radius: 50%; }
+ .timeline-item h4 { font-family: var(--font-heading); font-size: 1.2rem; color: var(--color-gold); margin-bottom: 10px; }
+ .timeline-item p { font-size: 0.9rem; color: #666; }
 
-    /* Logistics Section */
-    .logistics-section { background: var(--color-ivory); padding: 100px 0; }
-    .logistics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
-    .logistics-card { background: #fff; padding: 40px; border-radius: var(--radius-md); text-align: center; }
-    .logistics-card i { font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px; }
+ /* Logistics Section */
+ .logistics-section { background: var(--color-ivory); padding: 100px 0; }
+ .logistics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+ .logistics-card { background: #fff; padding: 40px; border-radius: var(--radius-md); text-align: center; }
+ .logistics-card i { font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px; }
 
-    /* Social Icons Visibility */
-    .social-lum-icons { display: flex; gap: 20px; margin-top: 20px; }
-    .social-lum-icons a { width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; color: var(--color-black); transition: 0.3s; font-size: 1.1rem; }
-    .social-lum-icons a:hover { border-color: var(--color-gold); color: var(--color-gold); transform: translateY(-3px); }
+ /* Social Icons Visibility */
+ .social-lum-icons { display: flex; gap: 20px; margin-top: 20px; }
+ .social-lum-icons a { width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; color: var(--color-black); transition: 0.3s; font-size: 1.1rem; }
+ .social-lum-icons a:hover { border-color: var(--color-gold); color: var(--color-gold); transform: translateY(-3px); }
 
-    /* --- Ultimate Responsive Pass for Contact --- */
-    @media (max-width: 1024px) {
-      .contact-grid, .boutique-grid, .viewing-grid, .logistics-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
-      .inquiry-container { grid-template-columns: 1fr !important; gap: 40px !important; }
-      .form-grid { grid-template-columns: 1fr !important; }
-      .ambience-grid { grid-template-columns: 1fr !important; }
-      .viewing-img { margin-bottom: 30px; }
-    }
+ /* --- Ultimate Responsive Pass for Contact --- */
+ @media (max-width: 1024px) {
+ .contact-grid, .boutique-grid, .viewing-grid, .logistics-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+ .inquiry-container { grid-template-columns: 1fr !important; gap: 40px !important; }
+ .form-grid { grid-template-columns: 1fr !important; }
+ .ambience-grid { grid-template-columns: 1fr !important; }
+ .viewing-img { margin-bottom: 30px; }
+ }
 
-    @media (max-width: 768px) {
-      .contact-hero { padding: 120px 0 60px !important; text-align: center; }
-      .form-box, .wp-box { padding: 30px !important; }
-      .viewing-grid { gap: 40px !important; }
-      .timeline { padding-left: 30px !important; border-left: 1px solid var(--color-gold) !important; }
-      .timeline-item::before { left: -36px !important; }
-      
-      .map-container { height: 350px !important; margin-top: 40px !important; }
-      .social-lum-icons { justify-content: center; }
-      
-      .faq-q { font-size: 1rem !important; }
-    }
+ @media (max-width: 768px) {
+ .contact-hero { padding: 120px 0 60px !important; text-align: center; }
+ .form-box, .wp-box { padding: 30px !important; }
+ .viewing-grid { gap: 40px !important; }
+ .timeline { padding-left: 30px !important; border-left: 1px solid var(--color-gold) !important; }
+ .timeline-item::before { left: -36px !important; }
+ 
+ .map-container { height: 350px !important; margin-top: 40px !important; }
+ .social-lum-icons { justify-content: center; }
+ 
+ .faq-q { font-size: 1rem !important; }
+ }
 
-    @media (max-width: 480px) {
-      .card-title { font-size: 1.1rem !important; }
-      .boutique-card, .logistics-card { padding: 30px 20px !important; }
-      .wp-box { padding: 20px !important; }
-      .whatsapp-btn { font-size: 0.9rem !important; }
-      .contact-hero { padding: 110px 0 50px !important; text-align: center !important; }
-      .contact-hero .section-header { text-align: center !important; }
-      .contact-grid { grid-template-columns: 1fr !important; }
-      .ambience-grid { grid-template-columns: 1fr !important; }
-      .social-lum-icons { justify-content: center !important; }
-    }
+ @media (max-width: 480px) {
+ .card-title { font-size: 1.1rem !important; }
+ .boutique-card, .logistics-card { padding: 30px 20px !important; }
+ .wp-box { padding: 20px !important; }
+ .whatsapp-btn { font-size: 0.9rem !important; }
+ .contact-hero { padding: 110px 0 50px !important; text-align: center !important; }
+ .contact-hero .section-header { text-align: center !important; }
+ .contact-grid { grid-template-columns: 1fr !important; }
+ .ambience-grid { grid-template-columns: 1fr !important; }
+ .social-lum-icons { justify-content: center !important; }
+ }
 
-    @media (max-width: 375px) {
-      .contact-hero { padding: 100px 0 40px !important; }
-      .form-box { padding: 20px !important; }
-      .form-grid { grid-template-columns: 1fr !important; }
-    }
-  </style>
+ @media (max-width: 375px) {
+ .contact-hero { padding: 100px 0 40px !important; }
+ .form-box { padding: 20px !important; }
+ .form-grid { grid-template-columns: 1fr !important; }
+ }
+ </style>
 
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-name">Tanishq</span>
-        <span class="nav-logo-tagline">Fine Jewelry</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="products.html">Collections</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="tryon.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.75rem; background: var(--color-gold); color: #000; margin-right: 10px;"><i class="fa-solid fa-camera"></i> Virtual Try-On</a>
-        <a href="contact.html" class="btn btn-outline nav-cta" style="border-width: 1px; padding: 8px 18px;">Book Appointment</a><button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-  </nav>
+ <!-- NAVBAR (Sticky) -->
+ <nav class="navbar" id="navbar">
+ <div class="container">
+ <a href="index.html" class="nav-logo">
+ <span class="nav-logo-name">Tanishq</span>
+ <span class="nav-logo-tagline">Fine Jewelry</span>
+ </a>
+ <ul class="nav-links">
+ <li><a href="index.html">Home</a></li>
+ <li><a href="about.html">About</a></li>
+ <li><a href="products.html">Collections</a></li>
+ <li><a href="catalog.html">Catalog</a></li>
+ <li><a href="gallery.html">Gallery</a></li>
+ <li><a href="pricing.html">Pricing</a></li>
+ <li><a href="contact.html">Contact</a></li>
+ <li class="nav-dropdown" style="margin-left: 10px;">
+ <a href="javascript:void(0)" id="profileDropdownBtn"><i class="fa-regular fa-user"></i></a>
+ <div class="dropdown-menu" id="profileDropdown">
+ <a href="login.html">Log In</a>
+ <a href="signup.html">Sign Up</a>
+ <a href="dashboard.html">Dashboard</a>
+ </div>
+ </li>
+ </ul>
+ <div class="nav-actions">
+ <a href="tryon.html" class="btn btn-primary"
+ style="padding: 8px 18px; font-size: 0.75rem; background: var(--color-gold); color: #000; margin-right: 10px;"><i
+ class="fa-solid fa-camera"></i> Virtual Try-On</a>
+ <a href="contact.html" class="btn btn-outline nav-cta" style="border-width: 1px; padding: 8px 18px;">Book
+ Appointment</a>
+ <a href="javascript:void(0)" class="nav-mobile-profile"><i class="fa-regular fa-user"></i></a><button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+ </div>
+ </div>
+ </nav>
 
-  <div class="nav-mobile" id="navMobile">
-    <button class="nav-mobile-close" id="navClose" aria-label="Close menu">✕</button>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="products.html">Collections</a>
-    <a href="catalog.html">Catalog</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="contact.html">Contact</a>
-    <hr style="width: 40px; border: 0; border-top: 1px solid rgba(212,175,55,0.3); margin: 5px 0;">
-    <a href="tryon.html" style="color: var(--color-gold);"><i class="fa-solid fa-camera"></i> Virtual Try-On</a>
-    <a href="contact.html">Book Appointment</a>
-  </div>
+ <div class="nav-mobile" id="navMobile">
+ <button class="nav-mobile-close" id="navClose" aria-label="Close menu">&times;</button>
+ <a href="index.html">Home</a>
+ <a href="about.html">About</a>
+ <a href="products.html">Collections</a>
+ <a href="catalog.html">Catalog</a>
+ <a href="gallery.html">Gallery</a>
+ <a href="pricing.html">Pricing</a>
+ <a href="contact.html">Contact</a>
+ <hr style="width: 40px; border: 0; border-top: 1px solid rgba(212,175,55,0.3); margin: 5px 0;">
+ <a href="tryon.html" style="color: var(--color-gold);"><i class="fa-solid fa-camera"></i> Virtual Try-On</a>
+ <a href="contact.html">Book Appointment</a>
+ </div>
 
-  <!-- CONTACT HERO -->
-  <section class="contact-hero">
-    <div class="container">
-      <div class="section-header reveal" style="text-align: left; margin-bottom: 0;">
-        <p class="subtext" style="color: var(--color-gold);">Boutique Concierge</p>
-        <h1 class="heading-xl" style="color: #fff;">Speak with our <em>Curators</em></h1>
-        <p style="color: rgba(255,255,255,0.6); margin-top: 20px; max-width: 600px;">From private viewings in Paris to custom design consultations in Mumbai, the Tanishq experience is tailored to your unique journey.</p>
-      </div>
-    </div>
-  </section>
+ <!-- CONTACT HERO -->
+ <section class="contact-hero">
+ <div class="container">
+ <div class="section-header reveal" style="text-align: left; margin-bottom: 0;">
+ <p class="subtext" style="color: var(--color-gold);">Boutique Concierge</p>
+ <h1 class="heading-xl" style="color: #fff;">Speak with our Curators</h1>
+ <p style="color: rgba(255,255,255,0.6); margin-top: 20px; max-width: 600px;">From private viewings in Paris to custom design consultations in Mumbai, the Tanishq experience is tailored to your unique journey.</p>
+ </div>
+ </div>
+ </section>
 
-  <!-- 1. LUXURY CONTACT CARDS -->
-  <section style="background: var(--color-ivory); padding-bottom: 100px;">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-card reveal">
-          <div class="card-icon"><i class="fa-solid fa-gem"></i></div>
-          <h3 class="card-title">Bespoke Inquiries</h3>
-          <p class="card-text">Collaborate with our head designer on a one-of-a-kind masterpiece.<br><strong>bespoke@tanishq.com</strong></p>
-        </div>
-        <div class="contact-card reveal reveal-delay-1">
-          <div class="card-icon"><i class="fa-solid fa-phone"></i></div>
-          <h3 class="card-title">Global Concierge</h3>
-          <p class="card-text">For immediate assistance with orders or collection details.<br><strong>+33 1 4268 1200</strong></p>
-        </div>
-        <div class="contact-card reveal reveal-delay-2">
-          <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
-          <h3 class="card-title">Boutique Hours</h3>
-          <p class="card-text">Mon - Sat: 10:00 AM - 7:00 PM<br>Sunday: By Private Invitation Only</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- 1. LUXURY CONTACT CARDS -->
+ <section style="background: var(--color-ivory); padding-bottom: 100px;">
+ <div class="container">
+ <div class="contact-grid">
+ <div class="contact-card reveal">
+ <div class="card-icon"><i class="fa-solid fa-gem"></i></div>
+ <h3 class="card-title">Bespoke Inquiries</h3>
+ <p class="card-text">Collaborate with our head designer on a one-of-a-kind masterpiece.<br><strong>bespoke@tanishq.com</strong></p>
+ </div>
+ <div class="contact-card reveal reveal-delay-1">
+ <div class="card-icon"><i class="fa-solid fa-phone"></i></div>
+ <h3 class="card-title">Global Concierge</h3>
+ <p class="card-text">For immediate assistance with orders or collection details.<br><strong>+33 1 4268 1200</strong></p>
+ </div>
+ <div class="contact-card reveal reveal-delay-2">
+ <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
+ <h3 class="card-title">Boutique Hours</h3>
+ <p class="card-text">Mon - Sat: 10:00 AM - 7:00 PM<br>Sunday: By Private Invitation Only</p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- THE BESPOKE JOURNEY -->
-  <section class="section" style="background: #fff;">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="subtext">From Vision to Reality</p>
-        <h2 class="heading-lg">The <em>Bespoke</em> Journey</h2>
-        <div class="gold-divider"></div>
-      </div>
-      
-      <div class="timeline reveal">
-        <div class="timeline-item">
-          <h4>01. Discovery Session</h4>
-          <p>Meet with our lead curators to discuss your vision, inspiration, and preferred gemstones. This session defines the soul of your piece.</p>
-        </div>
-        <div class="timeline-item">
-          <h4>02. Conceptual Rendering</h4>
-          <p>Our designers provide hand-drawn sketches and 3D CAD renders, allowing you to visualize the piece from every angle before we touch the metal.</p>
-        </div>
-        <div class="timeline-item">
-          <h4>03. Master Craftsmanship</h4>
-          <p>Your piece is handcrafted in our Paris atelier. We provide weekly updates and high-resolution behind-the-scenes progress shots.</p>
-        </div>
-        <div class="timeline-item">
-          <h4>04. The Reveal</h4>
-          <p>A private presentation at your preferred flagship, or a worldwide white-glove delivery to your residence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- THE BESPOKE JOURNEY -->
+ <section class="section" style="background: #fff;">
+ <div class="container">
+ <div class="section-header reveal">
+ <p class="subtext">From Vision to Reality</p>
+ <h2 class="heading-lg">The Bespoke Journey</h2>
+ <div class="gold-divider"></div>
+ </div>
+ 
+ <div class="timeline reveal">
+ <div class="timeline-item">
+ <h4>01. Discovery Session</h4>
+ <p>Meet with our lead curators to discuss your vision, inspiration, and preferred gemstones. This session defines the soul of your piece.</p>
+ </div>
+ <div class="timeline-item">
+ <h4>02. Conceptual Rendering</h4>
+ <p>Our designers provide hand-drawn sketches and 3D CAD renders, allowing you to visualize the piece from every angle before we touch the metal.</p>
+ </div>
+ <div class="timeline-item">
+ <h4>03. Master Craftsmanship</h4>
+ <p>Your piece is handcrafted in our Paris atelier. We provide weekly updates and high-resolution behind-the-scenes progress shots.</p>
+ </div>
+ <div class="timeline-item">
+ <h4>04. The Reveal</h4>
+ <p>A private presentation at your preferred flagship, or a worldwide white-glove delivery to your residence.</p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- 2. INQUIRY FORM & SIDEBAR -->
-  <section class="inquiry-section">
-    <div class="container">
-      <div class="inquiry-container">
-        
-        <!-- Inquiry Form -->
-        <div class="form-box reveal">
-          <h2 class="heading-md" style="margin-bottom: 10px;">Send an <em>Enquiry</em></h2>
-          <p style="color: #666; margin-bottom: 30px;">Our curators respond within 24 business hours.</p>
-          <form id="contactForm" onsubmit="handleContact(event)">
-            <div class="form-grid">
-              <div class="form-item">
-                <label>Full Name</label>
-                <input type="text" placeholder="Sophia Laurent" required>
-              </div>
-              <div class="form-item">
-                <label>Email Address</label>
-                <input type="email" placeholder="sophia@example.com" required>
-              </div>
-            </div>
-            <div class="form-grid">
-              <div class="form-item">
-                <label>Nature of Interest</label>
-                <select>
-                  <option>Bespoke Commission</option>
-                  <option>Wedding & Bridal</option>
-                  <option>High Jewelry Purchase</option>
-                  <option>Showroom Appointment</option>
-                </select>
-              </div>
-              <div class="form-item">
-                <label>Preferred Atelier</label>
-                <select>
-                  <option>Paris Flagship</option>
-                  <option>Milan Boutique</option>
-                  <option>Mumbai Showroom</option>
-                  <option>Virtual Consultation</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-item">
-              <label>Message</label>
-              <textarea rows="5" placeholder="Share your vision or enquiry..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Enquiry</button>
-          </form>
-        </div>
+ <!-- 2. INQUIRY FORM & SIDEBAR -->
+ <section class="inquiry-section">
+ <div class="container">
+ <div class="inquiry-container">
+ 
+ <!-- Inquiry Form -->
+ <div class="form-box reveal">
+ <h2 class="heading-md" style="margin-bottom: 10px;">Send an Enquiry</h2>
+ <p style="color: #666; margin-bottom: 30px;">Our curators respond within 24 business hours.</p>
+ <form id="contactForm" onsubmit="handleContact(event)">
+ <div class="form-grid">
+ <div class="form-item">
+ <label>Full Name</label>
+ <input type="text" placeholder="Sophia Laurent" required>
+ </div>
+ <div class="form-item">
+ <label>Email Address</label>
+ <input type="email" placeholder="sophia@example.com" required>
+ </div>
+ </div>
+ <div class="form-grid">
+ <div class="form-item">
+ <label>Nature of Interest</label>
+ <select>
+ <option>Bespoke Commission</option>
+ <option>Wedding & Bridal</option>
+ <option>High Jewelry Purchase</option>
+ <option>Showroom Appointment</option>
+ </select>
+ </div>
+ <div class="form-item">
+ <label>Preferred Atelier</label>
+ <select>
+ <option>Paris Flagship</option>
+ <option>Milan Boutique</option>
+ <option>Mumbai Showroom</option>
+ <option>Virtual Consultation</option>
+ </select>
+ </div>
+ </div>
+ <div class="form-item">
+ <label>Message</label>
+ <textarea rows="5" placeholder="Share your vision or enquiry..."></textarea>
+ </div>
+ <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Enquiry</button>
+ </form>
+ </div>
 
-        <!-- Sidebar Support -->
-        <div class="support-sidebar">
-          <div class="support-box reveal reveal-delay-1">
-            <h3 class="heading-sm" style="color: var(--color-gold);">Quick Support</h3>
-            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 15px;">Need an instant response? Chat with our digital concierge on WhatsApp for immediate styling advice.</p>
-            <a href="https://wa.me/123456789" target="_blank" class="whatsapp-btn">
-              <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-            </a>
-          </div>
+ <!-- Sidebar Support -->
+ <div class="support-sidebar">
+ <div class="support-box reveal reveal-delay-1">
+ <h3 class="heading-sm" style="color: var(--color-gold);">Quick Support</h3>
+ <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 15px;">Need an instant response? Chat with our digital concierge on WhatsApp for immediate styling advice.</p>
+ <a href="https://wa.me/123456789" target="_blank" class="whatsapp-btn">
+ <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+ </a>
+ </div>
 
-          <div class="reveal reveal-delay-2">
-            <h3 class="heading-sm">Reserve a <em>Viewing</em></h3>
-            <p style="font-size: 0.85rem; color: #666; margin: 15px 0 25px;">Private appointments include a personalized selection curation and champagne reception.</p>
-            <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Book Private Appointment</a>
-          </div>
+ <div class="reveal reveal-delay-2">
+ <h3 class="heading-sm">Reserve a Viewing</h3>
+ <p style="font-size: 0.85rem; color: #666; margin: 15px 0 25px;">Private appointments include a personalized selection curation and champagne reception.</p>
+ <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Book Private Appointment</a>
+ </div>
 
-          <div class="reveal reveal-delay-3">
-            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Social Luminescence</h4>
-            <div class="social-lum-icons">
-              <a href="https://www.instagram.com/tanishqjewellery/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-              <a href="https://www.pinterest.com/tanishqjewellery/" target="_blank" rel="noopener"><i class="fa-brands fa-pinterest"></i></a>
-              <a href="https://www.linkedin.com/company/tanishq/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+ <div class="reveal reveal-delay-3">
+ <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Social Luminescence</h4>
+ <div class="social-lum-icons">
+ <a href="https://www.instagram.com/tanishqjewellery/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+ <a href="https://www.pinterest.com/tanishqjewellery/" target="_blank" rel="noopener"><i class="fa-brands fa-pinterest"></i></a>
+ <a href="https://www.linkedin.com/company/tanishq/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- 3. STORE AMBIENCE & MAP -->
-  <!-- 3. GLOBAL BOUTIQUE NETWORK -->
-  <section class="section" style="background: var(--color-ivory);">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="subtext">Global Presence</p>
-        <h2 class="heading-lg">International <em>Flagships</em></h2>
-        <div class="gold-divider"></div>
-      </div>
-      <div class="boutique-grid">
-        <div class="boutique-card reveal">
-          <h3>Milan Atelier</h3>
-          <p>Via Montenapoleone, 27<br>20121 Milano, Italy<br><strong>+39 02 7600 1234</strong></p>
-          <p style="margin-top: 15px; font-style: italic;">Specializing in High-Jewelry Timepieces.</p>
-        </div>
-        <div class="boutique-card reveal reveal-delay-1">
-          <h3>London Mayfair</h3>
-          <p>15 New Bond Street<br>London W1S 3ST, UK<br><strong>+44 20 7493 6789</strong></p>
-          <p style="margin-top: 15px; font-style: italic;">Exclusive Bridal Consultation Suites.</p>
-        </div>
-        <div class="boutique-card reveal reveal-delay-2">
-          <h3>New York 5th Ave</h3>
-          <p>712 Fifth Avenue<br>New York, NY 10019, USA<br><strong>+1 212 582 1000</strong></p>
-          <p style="margin-top: 15px; font-style: italic;">Home of the 'Empire' Bespoke Lab.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- 3. STORE AMBIENCE & MAP -->
+ <!-- 3. GLOBAL BOUTIQUE NETWORK -->
+ <section class="section" style="background: var(--color-ivory);">
+ <div class="container">
+ <div class="section-header reveal">
+ <p class="subtext">Global Presence</p>
+ <h2 class="heading-lg">International Flagships</h2>
+ <div class="gold-divider"></div>
+ </div>
+ <div class="boutique-grid">
+ <div class="boutique-card reveal">
+ <h3>Milan Atelier</h3>
+ <p>Via Montenapoleone, 27<br>20121 Milano, Italy<br><strong>+39 02 7600 1234</strong></p>
+ <p style="margin-top: 15px; font-style: italic;">Specializing in High-Jewelry Timepieces.</p>
+ </div>
+ <div class="boutique-card reveal reveal-delay-1">
+ <h3>London Mayfair</h3>
+ <p>15 New Bond Street<br>London W1S 3ST, UK<br><strong>+44 20 7493 6789</strong></p>
+ <p style="margin-top: 15px; font-style: italic;">Exclusive Bridal Consultation Suites.</p>
+ </div>
+ <div class="boutique-card reveal reveal-delay-2">
+ <h3>New York 5th Ave</h3>
+ <p>712 Fifth Avenue<br>New York, NY 10019, USA<br><strong>+1 212 582 1000</strong></p>
+ <p style="margin-top: 15px; font-style: italic;">Home of the 'Empire' Bespoke Lab.</p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- 4. PRIVATE VIEWING EXPERIENCE -->
-  <section class="viewing-section">
-    <div class="container">
-      <div class="viewing-grid">
-        <div class="reveal">
-          <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=1000" alt="Private Viewing" class="viewing-img">
-        </div>
-        <div class="reveal reveal-delay-1">
-          <p class="subtext" style="color: var(--color-gold);">Personalized Luxury</p>
-          <h2 class="heading-lg">The Private <em>Viewing</em></h2>
-          <p class="lead" style="margin-top: 20px; color: rgba(255,255,255,0.7);">Step into a world of absolute discretion and curated elegance. Our private viewing experience is designed for the discerning collector.</p>
-          <ul class="viewing-list">
-            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Undivided attention from a Senior Curator</li>
-            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Personalized selection based on your profile</li>
-            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Champagne and artisanal refreshments</li>
-            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Discrete, chauffeured transport (on request)</li>
-          </ul>
-          <button class="btn btn-primary" onclick="scrollToForm()">Book an Experience</button>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- 4. PRIVATE VIEWING EXPERIENCE -->
+ <section class="viewing-section">
+ <div class="container">
+ <div class="viewing-grid">
+ <div class="reveal">
+ <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=1000" alt="Private Viewing" class="viewing-img">
+ </div>
+ <div class="reveal reveal-delay-1">
+ <p class="subtext" style="color: var(--color-gold);">Personalized Luxury</p>
+ <h2 class="heading-lg">The Private Viewing</h2>
+ <p class="lead" style="margin-top: 20px; color: rgba(255,255,255,0.7);">Step into a world of absolute discretion and curated elegance. Our private viewing experience is designed for the discerning collector.</p>
+ <ul class="viewing-list">
+ <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Undivided attention from a Senior Curator</li>
+ <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Personalized selection based on your profile</li>
+ <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Champagne and artisanal refreshments</li>
+ <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Discrete, chauffeured transport (on request)</li>
+ </ul>
+ <button class="btn btn-primary" onclick="scrollToForm()">Book an Experience</button>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- 5. WHATSAPP VIP ACCESS -->
-  <section class="whatsapp-premium">
-    <div class="container">
-      <div class="wp-box reveal">
-        <i class="fa-brands fa-whatsapp" style="font-size: 3rem; color: #25D366; margin-bottom: 20px; display: block;"></i>
-        <h2 class="heading-md">VIP <em>WhatsApp</em> Concierge</h2>
-        <p style="color: #666; margin: 20px 0 30px;">Get instant styling advice, high-resolution product videos, and real-time order updates directly on your phone.</p>
-        <a href="#" class="btn btn-primary">Request Access</a>
-      </div>
-    </div>
-  </section>
+ <!-- 5. WHATSAPP VIP ACCESS -->
+ <section class="whatsapp-premium">
+ <div class="container">
+ <div class="wp-box reveal">
+ <i class="fa-brands fa-whatsapp" style="font-size: 3rem; color: #25D366; margin-bottom: 20px; display: block;"></i>
+ <h2 class="heading-md">VIP WhatsApp Concierge</h2>
+ <p style="color: #666; margin: 20px 0 30px;">Get instant styling advice, high-resolution product videos, and real-time order updates directly on your phone.</p>
+ <a href="#" class="btn btn-primary">Request Access</a>
+ </div>
+ </div>
+ </section>
 
-  <!-- 6. VIRTUAL VIEWING PORTAL -->
-  <section class="section" style="background: #fff;">
-    <div class="container">
-      <div class="grid-2" style="align-items: center;">
-        <div class="reveal">
-          <p class="subtext">From Anywhere in the World</p>
-          <h2 class="heading-lg">The Virtual <em>Showroom</em></h2>
-          <p class="lead" style="margin-top: 25px;">Distance should never be a barrier to brilliance. Our Virtual Viewing portal allows you to experience our collections in 4K clarity with a live senior curator.</p>
-          <div style="margin-top: 35px; border-left: 2px solid var(--color-gold); padding-left: 25px;">
-            <p style="font-size: 0.9rem; color: #555;">Available via Zoom, WhatsApp, or FaceTime. We will ship a physical measurement kit to your doorstep prior to the call.</p>
-          </div>
-          <button class="btn btn-outline" style="margin-top: 40px;" onclick="scrollToForm()">Book Virtual Session</button>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <div style="position: relative; padding: 20px; background: var(--color-ivory); border-radius: var(--radius-lg);">
-            <img src="https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?q=80&w=800" alt="Virtual Viewing" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-soft);">
+ <!-- 6. VIRTUAL VIEWING PORTAL -->
+ <section class="section" style="background: #fff;">
+ <div class="container">
+ <div class="grid-2" style="align-items: center;">
+ <div class="reveal">
+ <p class="subtext">From Anywhere in the World</p>
+ <h2 class="heading-lg">The Virtual Showroom</h2>
+ <p class="lead" style="margin-top: 25px;">Distance should never be a barrier to brilliance. Our Virtual Viewing portal allows you to experience our collections in 4K clarity with a live senior curator.</p>
+ <div style="margin-top: 35px; border-left: 2px solid var(--color-gold); padding-left: 25px;">
+ <p style="font-size: 0.9rem; color: #555;">Available via Zoom, WhatsApp, or FaceTime. We will ship a physical measurement kit to your doorstep prior to the call.</p>
+ </div>
+ <button class="btn btn-outline" style="margin-top: 40px;" onclick="scrollToForm()">Book Virtual Session</button>
+ </div>
+ <div class="reveal reveal-delay-1">
+ <div style="position: relative; padding: 20px; background: var(--color-ivory); border-radius: var(--radius-lg);">
+ <img src="https://images.unsplash.com/photo-1512163143273-bde0e3cc7407?q=80&w=800" alt="Virtual Viewing" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-soft);">
 
-            <div style="position: absolute; top: 40px; right: 40px; background: rgba(0,0,0,0.7); color: #fff; padding: 10px 20px; border-radius: 50px; font-size: 0.7rem; display: flex; align-items: center; gap: 8px;">
-              <span style="width: 8px; height: 8px; background: #0f0; border-radius: 50%;"></span> LIVE SESSION
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+ <div style="position: absolute; top: 40px; right: 40px; background: rgba(0,0,0,0.7); color: #fff; padding: 10px 20px; border-radius: 50px; font-size: 0.7rem; display: flex; align-items: center; gap: 8px;">
+ <span style="width: 8px; height: 8px; background: #0f0; border-radius: 50%;"></span> LIVE SESSION
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- GLOBAL LOGISTICS -->
-  <section class="logistics-section reveal">
-    <div class="container">
-      <div class="section-header">
-        <p class="subtext">Secure & Seamless</p>
-        <h2 class="heading-lg">Global <em>White-Glove</em> Logistics</h2>
-        <p style="color: #666; margin-top: 15px;">Every Tanishq piece is fully insured and delivered by specialist luxury couriers.</p>
-      </div>
-      
-      <div class="logistics-grid">
-        <div class="logistics-card">
-          <i class="fa-solid fa-shield-halved"></i>
-          <h4>100% Insured</h4>
-          <p style="font-size: 0.85rem; color: #666;">Full door-to-door insurance coverage for all international shipments via Lloyd's of London.</p>
-        </div>
-        <div class="logistics-card">
-          <i class="fa-solid fa-truck-ramp-box"></i>
-          <h4>Specialist Couriers</h4>
-          <p style="font-size: 0.85rem; color: #666;">We partner with Malca-Amit and Brinks for high-security, climate-controlled transport.</p>
-        </div>
-        <div class="logistics-card">
-          <i class="fa-solid fa-earth-americas"></i>
-          <h4>Tax & Compliance</h4>
-          <p style="font-size: 0.85rem; color: #666;">Our concierge handles all international customs and luxury tax documentation for a seamless arrival.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- GLOBAL LOGISTICS -->
+ <section class="logistics-section reveal">
+ <div class="container">
+ <div class="section-header">
+ <p class="subtext">Secure & Seamless</p>
+ <h2 class="heading-lg">Global White-Glove Logistics</h2>
+ <p style="color: #666; margin-top: 15px;">Every Tanishq piece is fully insured and delivered by specialist luxury couriers.</p>
+ </div>
+ 
+ <div class="logistics-grid">
+ <div class="logistics-card">
+ <i class="fa-solid fa-shield-halved"></i>
+ <h4>100% Insured</h4>
+ <p style="font-size: 0.85rem; color: #666;">Full door-to-door insurance coverage for all international shipments via Lloyd's of London.</p>
+ </div>
+ <div class="logistics-card">
+ <i class="fa-solid fa-truck-ramp-box"></i>
+ <h4>Specialist Couriers</h4>
+ <p style="font-size: 0.85rem; color: #666;">We partner with Malca-Amit and Brinks for high-security, climate-controlled transport.</p>
+ </div>
+ <div class="logistics-card">
+ <i class="fa-solid fa-earth-americas"></i>
+ <h4>Tax & Compliance</h4>
+ <p style="font-size: 0.85rem; color: #666;">Our concierge handles all international customs and luxury tax documentation for a seamless arrival.</p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- 7. CAREERS AT LUMIÈRE -->
-  <section class="section" style="background: var(--color-black); color: #fff;">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="subtext" style="color: var(--color-gold);">Join the House</p>
-        <h2 class="heading-lg">A Legacy in the <em>Making</em></h2>
-        <div class="gold-divider"></div>
-      </div>
-      <div class="grid-2">
-        <div class="reveal">
-          <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">We are always seeking master goldsmiths, visionary designers, and world-class concierge professionals to join our ateliers in Paris, Milan, and New York.</p>
-          <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-            <span style="padding: 8px 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.8rem;">Master Goldsmith — Paris</span>
-            <span style="padding: 8px 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.8rem;">Boutique Manager — Tokyo</span>
-            <span style="padding: 8px 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.8rem;">Gemology Intern — Mumbai</span>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-1" style="text-align: right;">
-          <a href="#" class="btn btn-ghost">View All Openings</a>
-        </div>
-      </div>
-    </div>
-  </section>
+ <!-- 7. CAREERS AT LUMI RE -->
+ <section class="section" style="background: var(--color-black); color: #fff;">
+ <div class="container">
+ <div class="section-header reveal">
+ <p class="subtext" style="color: var(--color-gold);">Join the House</p>
+ <h2 class="heading-lg">A Legacy in the Making</h2>
+ <div class="gold-divider"></div>
+ </div>
+ <div class="grid-2">
+ <div class="reveal">
+ <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">We are always seeking master goldsmiths, visionary designers, and world-class concierge professionals to join our ateliers in Paris, Milan, and New York.</p>
+ <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+ <span style="padding: 8px 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.8rem;">Master Goldsmith Paris</span>
+ <span style="padding: 8px 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.8rem;">Boutique Manager Tokyo</span>
+ <span style="padding: 8px 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.8rem;">Gemology Intern Mumbai</span>
+ </div>
+ </div>
+ <div class="reveal reveal-delay-1" style="text-align: right;">
+ <a href="#" class="btn btn-ghost">View All Openings</a>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="subtext">Visit Our Flagship</p>
-        <h2 class="heading-lg">Paris <em>Experience</em></h2>
-        <div class="gold-divider"></div>
-      </div>
-      <div class="ambience-grid reveal">
-        <div class="ambience-item"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=800" alt="Ambience"></div>
-        <div class="ambience-item"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800" alt="Ambience"></div>
-        <div class="ambience-item"><img src="https://images.unsplash.com/photo-1549416878-b9ca95e26903?q=80&w=800" alt="Ambience"></div>
-      </div>
+ <section class="section">
+ <div class="container">
+ <div class="section-header reveal">
+ <p class="subtext">Visit Our Flagship</p>
+ <h2 class="heading-lg">Paris Experience</h2>
+ <div class="gold-divider"></div>
+ </div>
+ <div class="ambience-grid reveal">
+ <div class="ambience-item"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=800" alt="Ambience"></div>
+ <div class="ambience-item"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800" alt="Ambience"></div>
+ <div class="ambience-item"><img src="https://images.unsplash.com/photo-1549416878-b9ca95e26903?q=80&w=800" alt="Ambience"></div>
+ </div>
 
-      <div class="map-container reveal">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.52431289139!2d2.3275956156743!3d48.8672533792881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2f183d6a3b%3A0xc3f6c8d03541416e!2sRue%20Saint-Honor%C3%A9%2C%2075001%20Paris%2C%20France!5e0!3m2!1sen!2sfr!4v1620000000000!5m2!1sen!2sfr" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-    </div>
-  </section>
+ <div class="map-container reveal">
+ <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.52431289139!2d2.3275956156743!3d48.8672533792881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2f183d6a3b%3A0xc3f6c8d03541416e!2sRue%20Saint-Honor%C3%A9%2C%2075001%20Paris%2C%20France!5e0!3m2!1sen!2sfr!4v1620000000000!5m2!1sen!2sfr" allowfullscreen="" loading="lazy"></iframe>
+ </div>
+ </div>
+ </section>
 
 
-  <!-- 4. FAQ SECTION -->
-  <section class="section" style="background: var(--color-ivory);">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="subtext">Support</p>
-        <h2 class="heading-lg">Boutique <em>FAQ</em></h2>
-        <div class="gold-divider"></div>
-      </div>
+ <!-- 4. FAQ SECTION -->
+ <section class="section" style="background: var(--color-ivory);">
+ <div class="container">
+ <div class="section-header reveal">
+ <p class="subtext">Support</p>
+ <h2 class="heading-lg">Boutique FAQ</h2>
+ <div class="gold-divider"></div>
+ </div>
 
-      <div class="faq-container reveal">
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div class="faq-q">Do I need an appointment to visit? <i class="fa-solid fa-plus faq-icon"></i></div>
-          <div class="faq-a">While we welcome walk-in visitors, we highly recommend booking a private viewing to ensure a curator is available to provide undivided attention and a personalized selection of pieces.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div class="faq-q">Can I pick up online orders in-store? <i class="fa-solid fa-plus faq-icon"></i></div>
-          <div class="faq-a">Yes, our 'Boutique Collection' service allows you to purchase online and collect your piece at any of our global ateliers, accompanied by a complimentary fitting.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div class="faq-q">Do you offer valuation services? <i class="fa-solid fa-plus faq-icon"></i></div>
-          <div class="faq-a">We provide professional appraisal and valuation certificates for all Tanishq pieces. For heritage jewelry from other houses, please book a specialist consultation.</div>
-        </div>
-      </div>
-    </div>
-  </section>
+ <div class="faq-container reveal">
+ <div class="faq-item" onclick="this.classList.toggle('active')">
+ <div class="faq-q">Do I need an appointment to visit? <i class="fa-solid fa-plus faq-icon"></i></div>
+ <div class="faq-a">While we welcome walk-in visitors, we highly recommend booking a private viewing to ensure a curator is available to provide undivided attention and a personalized selection of pieces.</div>
+ </div>
+ <div class="faq-item" onclick="this.classList.toggle('active')">
+ <div class="faq-q">Can I pick up online orders in-store? <i class="fa-solid fa-plus faq-icon"></i></div>
+ <div class="faq-a">Yes, our 'Boutique Collection' service allows you to purchase online and collect your piece at any of our global ateliers, accompanied by a complimentary fitting.</div>
+ </div>
+ <div class="faq-item" onclick="this.classList.toggle('active')">
+ <div class="faq-q">Do you offer valuation services? <i class="fa-solid fa-plus faq-icon"></i></div>
+ <div class="faq-a">We provide professional appraisal and valuation certificates for all Tanishq pieces. For heritage jewelry from other houses, please book a specialist consultation.</div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="nav-logo-name">Tanishq</span>
-          <p>Global flagship ateliers in Paris, Milan, and Mumbai. Authorized retailer for the world's finest diamonds.</p>
-          <div class="footer-socials">
-            <a href="https://www.instagram.com/tanishqjewellery/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.pinterest.com/tanishqjewellery/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-pinterest"></i></a>
-            <a href="https://www.linkedin.com/company/tanishq/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.facebook.com/Tanishq/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
-          </div>
+ <!-- FOOTER -->
+ <footer class="footer">
+ <div class="container">
+ <div class="footer-grid">
+ <div class="footer-brand">
+ <span class="nav-logo-name">Tanishq</span>
+ <p>Global flagship ateliers in Paris, Milan, and Mumbai. Authorized retailer for the world's finest diamonds.</p>
+ <div class="footer-socials">
+ <a href="https://www.instagram.com/tanishqjewellery/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-instagram"></i></a>
+ <a href="https://www.pinterest.com/tanishqjewellery/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-pinterest"></i></a>
+ <a href="https://www.linkedin.com/company/tanishq/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+ <a href="https://www.facebook.com/Tanishq/" target="_blank" rel="noopener" class="footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+ </div>
 
-        </div>
-        <div>
-          <h4 class="footer-heading">Explore</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="products.html">Collections</a></li>
-            <li><a href="catalog.html">Digital Catalog</a></li>
-            <li><a href="gallery.html">House Gallery</a></li>
-            <li><a href="pricing.html">Market Insights</a></li>
-            <li><a href="contact.html">Contact Concierge</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-heading">Boutiques</h4>
-          <ul class="footer-links">
-            <li><a href="#">Paris Saint-Honoré</a></li>
-            <li><a href="#">Milan Montenapoleone</a></li>
-            <li><a href="#">Mumbai Taj Palace</a></li>
-            <li><a href="#">Virtual Showroom</a></li>
-          </ul>
-        </div>
+ </div>
+ <div>
+ <h4 class="footer-heading">Explore</h4>
+ <ul class="footer-links">
+ <li><a href="index.html">Home</a></li>
+ <li><a href="about.html">About Us</a></li>
+ <li><a href="products.html">Collections</a></li>
+ <li><a href="catalog.html">Digital Catalog</a></li>
+ <li><a href="gallery.html">House Gallery</a></li>
+ <li><a href="pricing.html">Market Insights</a></li>
+ <li><a href="contact.html">Contact Concierge</a></li>
+ </ul>
+ </div>
+ <div>
+ <h4 class="footer-heading">Boutiques</h4>
+ <ul class="footer-links">
+ <li><a href="#">Paris Saint-Honor </a></li>
+ <li><a href="#">Milan Montenapoleone</a></li>
+ <li><a href="#">Mumbai Taj Palace</a></li>
+ <li><a href="#">Virtual Showroom</a></li>
+ </ul>
+ </div>
 
-        <div class="footer-newsletter">
-          <h4 class="footer-heading">Stay Connected</h4>
-          <p>Receive exclusive invitations to atelier events.</p>
-          <form class="footer-newsletter-form">
-            <input type="email" placeholder="Email Address">
-            <button type="submit">Join</button>
-          </form>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Tanishq Fine Jewelry. Global Ateliers.</span>
-        <div class="footer-bottom-links">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+ <div class="footer-newsletter">
+ <h4 class="footer-heading">Stay Connected</h4>
+ <p>Receive exclusive invitations to atelier events.</p>
+ <form class="footer-newsletter-form">
+ <input type="email" placeholder="Email Address">
+ <button type="submit">Join</button>
+ </form>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <span> 2026 Tanishq Fine Jewelry. Global Ateliers.</span>
+ <div class="footer-bottom-links">
+ <a href="#">Privacy</a>
+ <a href="#">Terms</a>
+ </div>
+ </div>
+ </div>
+ </footer>
 
-  <button class="scroll-top" id="scrollTop"><i class="fa-solid fa-chevron-up"></i></button>
+ <button class="scroll-top" id="scrollTop"><i class="fa-solid fa-chevron-up"></i></button>
 
-  <script src="script.js"></script>
-  <script>
-    function handleContact(e) {
-      e.preventDefault();
-      alert("Thank you for your enquiry. A Tanishq curator will contact you within 24 hours.");
-      e.target.reset();
-    }
-    function scrollToForm() {
-      document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
+ <script src="script.js"></script>
+ <script>
+ function handleContact(e) {
+ e.preventDefault();
+ alert("Thank you for your enquiry. A Tanishq curator will contact you within 24 hours.");
+ e.target.reset();
+ }
+ function scrollToForm() {
+ document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });
+ }
+ </script>
 </body>
 </html>
+
 
