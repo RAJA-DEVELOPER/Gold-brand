@@ -1189,6 +1189,16 @@ ul {
  ULTIMATE RESPONSIVE SYSTEM
  ============================================================ */
 
+/* --- Small Laptops (Up to 1200px) --- */
+@media (max-width: 1200px) {
+ .nav-links { gap: 0; }
+ .nav-links a { padding: 8px 6px; font-size: 0.72rem; letter-spacing: 0.05em; }
+ .nav-logo-name { font-size: 1.2rem; }
+ .nav-logo-tagline { font-size: 0.45rem; letter-spacing: 0.2em; }
+ .nav-actions { gap: 8px; }
+ .nav-actions .btn { padding: 6px 10px !important; font-size: 0.7rem !important; margin-right: 5px !important; }
+}
+
 /* --- Tablet & Large Mobile (Up to 1024px) --- */
 @media (max-width: 1024px) {
  .container {
